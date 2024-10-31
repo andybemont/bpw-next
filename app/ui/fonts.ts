@@ -1,5 +1,4 @@
-import { Inter } from "next/font/google";
-import { Lusitana } from "next/font/google";
+import { Bebas_Neue, Josefin_Slab } from "next/font/google";
 
-export const inter = Inter({ subsets: ["latin"] });
-export const lusitana = Lusitana({ weight: "400", subsets: ["latin"] });
+export const titleText = Bebas_Neue({ weight: "400", subsets: ["latin"] });
+export const mainText = Josefin_Slab({ weight: "400", subsets: ["latin"] });
