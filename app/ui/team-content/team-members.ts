@@ -1,7 +1,7 @@
 import { StaticImageData } from "next/image";
-import andyPic from "../../../public/team/andy.webp";
-import carlyPic from "../../../public/team/carly.webp";
-import gillianPic from "../../../public/team/gillian.webp";
+import andyPic from "../../../public/team/andy.jpg";
+import carlyPic from "../../../public/team/carly.jpg";
+import gillianPic from "../../../public/team/gillian.jpg";
 
 export type TeamMember = {
   name: string;
@@ -30,8 +30,9 @@ const TeamMembers: TeamMember[] = [
     email: "andy@bemontphoto.com",
     phone: "585-590-0570",
     photo: andyPic,
-    likes: "",
-    dislikes: "",
+    likes:
+      "Mario Kart, Pink Floyd, cheeseburgers, cats, mulch, sci-fi, naps, crossbreezes, cars",
+    dislikes: "Centipedes, wasps, scorpions, maggots, botflies, eggplant",
   },
   {
     name: "Gillian Bemont",

@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SitePage image={namedPictures.flowers}>
-      <div className="absolute right-0 top-0 w-1/3 bg-blue-950/40 z-1 max-h-full overflow-y-auto">
+      <div className="absolute right-0 top-0 bg-blue-950/40 z-1 overflow-y-auto">
         <TeamContent />
       </div>
     </SitePage>

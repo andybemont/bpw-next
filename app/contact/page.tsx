@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SitePage image={namedPictures.gcvmKiss}>
-      <ContactContent />
+      <div className="absolute w-1/3 bg-white/50 z-1 h-full">
+        <ContactContent />
+      </div>
     </SitePage>
   );
 }

@@ -12,14 +12,14 @@ const faqContent = [
       "We don't require an engagement session, but we recommend it because we get a chance to meet and work together before your wedding, and you'll get some practice posing! But we'll still cut the price if you don't need it.",
   },
   {
-    question: "How many photographers should I have?",
+    question: "Do I need two photographers?",
     answer:
-      "We can do just fine with one photographer, but a second photographer gives you more angles and more chances to catch candid moments. So you'll get more pictures and variety with two; and three is even better!",
+      "We do just fine with one photographer, but a second photographer gives you more angles and more chances to catch candid moments. So you'll get more pictures and variety with two; and three is even better!",
   },
   {
     question: "What's your style?",
     answer:
-      "Photo-y! We just get pictures of everything, capturing tons of candid moments without neglecting the posed photos (your mom wants them even if  tastes change and highly edited photos just look dated in a few years.",
+      "Photo-y! We just get pictures of everything, capturing tons of candid moments without neglecting the posed photos (your mom wants them even if you don't). We edit in a clean, natural style because tastes change and highly edited photos just dated in a few years.",
   },
   {
     question:

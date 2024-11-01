@@ -12,6 +12,9 @@ importers:
 
   .:
     dependencies:
+      '@emailjs/browser':
+        specifier: ^4.4.1
+        version: 4.4.1
       '@emotion/cache':
         specifier: ^11.13.1
         version: 11.13.1
@@ -66,6 +69,9 @@ importers:
       react-dom:
         specifier: 19.0.0-rc-cd22717c-20241013
         version: 19.0.0-rc-cd22717c-20241013(react@19.0.0-rc-cd22717c-20241013)
+      react-hook-form:
+        specifier: ^7.53.1
+        version: 7.53.1(react@19.0.0-rc-cd22717c-20241013)
       react-tooltip:
         specifier: ^5.28.0
         version: 5.28.0(react-dom@19.0.0-rc-cd22717c-20241013(react@19.0.0-rc-cd22717c-20241013))(react@19.0.0-rc-cd22717c-20241013)
@@ -155,6 +161,10 @@ packages:
   '@babel/types@7.26.0':
     resolution: {integrity: sha512-Z/yiTPj+lDVnF7lWeKCIJzaIkI0vYO87dMpZ4bg4TDrFe4XXLFWL1TbXU27gBP3QccxV9mZICCrnjnYlJjXHOA==}
     engines: {node: '>=6.9.0'}
+
+  '@emailjs/browser@4.4.1':
+    resolution: {integrity: sha512-DGSlP9sPvyFba3to2A50kDtZ+pXVp/0rhmqs2LmbMS3I5J8FSOgLwzY2Xb4qfKlOVHh29EAutLYwe5yuEZmEFg==}
+    engines: {node: '>=14.0.0'}
 
   '@emnapi/runtime@1.2.0':
     resolution: {integrity: sha512-bV21/9LQmcQeCPEg3BDFtvwL6cwiTMksYNWQQ4KOxCZikEGalWtenoZ0wCiukJINlGCIi2KXx01g4FoH/LxpzQ==}
@@ -1270,6 +1280,12 @@ packages:
     peerDependencies:
       react: 19.0.0-rc-cd22717c-20241013
 
+  react-hook-form@7.53.1:
+    resolution: {integrity: sha512-6aiQeBda4zjcuaugWvim9WsGqisoUk+etmFEsSUMm451/Ic8L/UAb7sRtMj3V+Hdzm6mMjU1VhiSzYUZeBm0Vg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -1639,6 +1655,8 @@ snapshots:
     dependencies:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
+
+  '@emailjs/browser@4.4.1': {}
 
   '@emnapi/runtime@1.2.0':
     dependencies:
@@ -2668,6 +2686,10 @@ snapshots:
     dependencies:
       react: 19.0.0-rc-cd22717c-20241013
       scheduler: 0.25.0-rc-cd22717c-20241013
+
+  react-hook-form@7.53.1(react@19.0.0-rc-cd22717c-20241013):
+    dependencies:
+      react: 19.0.0-rc-cd22717c-20241013
 
   react-is@16.13.1: {}
 

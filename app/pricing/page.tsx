@@ -10,7 +10,9 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SitePage image={namedPictures.gianStepsKiss}>
-      <PricingContent />
+      <div className="absolute right-0 top-0 bg-white/50 z-1 overflow-y-auto">
+        <PricingContent />
+      </div>
     </SitePage>
   );
 }
