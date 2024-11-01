@@ -5,6 +5,8 @@ import TeamContent from "../ui/team-content/team-content";
 
 export const metadata: Metadata = {
   title: "Rochester Wedding Photography | Photographers | Bemont Photo",
+  description:
+    "Bemont Photo is your fun and laid back wedding photography team in Rochester, NY",
 };
 
 export default function Page() {

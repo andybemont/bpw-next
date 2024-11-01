@@ -1,5 +1,5 @@
 import "@/app/ui/global.css";
-import { mainText, titleText } from "@/app/ui/fonts";
+import { titleText } from "@/app/ui/fonts";
 import Header from "./ui/header/header";
 
 export default function RootLayout({

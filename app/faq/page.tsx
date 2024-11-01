@@ -6,6 +6,8 @@ import SitePage from "../ui/shared/site-page";
 const pageTitle = "Rochester Wedding Photography | FAQ | Bemont Photo";
 export const metadata: Metadata = {
   title: pageTitle,
+  description:
+    "All the information about Rochester's favorite wedding photographers",
 };
 
 export default function Page() {

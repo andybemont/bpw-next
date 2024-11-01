@@ -5,6 +5,8 @@ import SitePage from "../ui/shared/site-page";
 
 export const metadata: Metadata = {
   title: "Rochester Wedding Photography | Pricing | Bemont Photo",
+  description:
+    "Pricing and packages for Rochester, Buffalo, and Finger Lakes wedding photography",
 };
 
 export default function Page() {
