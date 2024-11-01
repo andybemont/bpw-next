@@ -1,3 +1,4 @@
+import { StaticImageData } from "next/image";
 import pi1027 from "../../public/portfolio/BPBO2-1027.jpg";
 import pi1063 from "../../public/portfolio/BPBO2-1063.jpg";
 import pi1078 from "../../public/portfolio/BPBO2-1078.jpg";
@@ -51,36 +52,46 @@ import pi1291 from "../../public/portfolio/BPBO5-1291.jpg";
 import pi1412 from "../../public/portfolio/BPBO5-1412.jpg";
 import pi1486 from "../../public/portfolio/BPBO5-1486.jpg";
 
+type NamedImage = {
+  image: StaticImageData;
+  alt: string;
+  positioning: string;
+};
 const namedPictures = {
   dadPokingBubble: {
     image: pi1076,
     alt: "Bride with parents and bubbles in Ithaca, NY",
-    positioning: "center",
+    positioning: "object-center",
   },
   chaseBuildingDip: {
     image: pi1140,
     alt: "Couple with wedding party kissing in Rochester, NY",
-    positioning: "bottom",
+    positioning: "object-bottom",
   },
   gcvmKiss: {
     image: pi1207,
     alt: "A couple in a field at Genesee Country Village and Museum",
-    positioning: "center",
+    positioning: "object-center",
   },
   lydiaFlowers: {
     image: pi1291,
     alt: "A couple in Buffalo, NY with flower petals falling",
-    positioning: "top",
+    positioning: "object-center",
   },
   gianStepsKiss: {
     image: pi1412,
     alt: "A couple relaxing on the steps at their wedding",
-    positioning: "top",
+    positioning: "object-top",
   },
   mimiGolfCart: {
     image: pi1486,
     alt: "A bride looks up at her new husband while sitting in a golf cart",
-    positioning: "center",
+    positioning: "object-center",
+  },
+  flowers: {
+    image: pi1119,
+    alt: "Bridal bouquet by the window",
+    positioning: "object-center",
   },
 };
 const fullPortfolio = [
@@ -139,3 +150,4 @@ const fullPortfolio = [
 ];
 
 export { fullPortfolio, namedPictures };
+export type { NamedImage };

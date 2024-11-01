@@ -9,7 +9,7 @@ interface IconHeaderLinkProps {
 const IconHeaderLink = (props: IconHeaderLinkProps) => {
   const { link } = props;
   return (
-    <div suppressHydrationWarning={true} className="grow pb-1 text-center">
+    <div className={`grow pb-1 text-center`}>
       <Link
         key={link.tag}
         href={link.url}

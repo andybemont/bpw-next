@@ -18,7 +18,7 @@ type HeaderLink = {
 };
 
 const overview: HeaderLink = {
-  url: "/overview",
+  url: "/",
   tooltip: "Overview",
   tag: "overview",
   icon: homeIcon,
@@ -37,7 +37,7 @@ const meetTheTeam: HeaderLink = {
 };
 const pricing: HeaderLink = {
   url: "/pricing",
-  tooltip: "Pricing Calculator",
+  tooltip: "Pricing",
   tag: "pricing",
   icon: pricingIcon,
 };

@@ -1,9 +1,19 @@
-import andyPic from "../../../assets/team/andy.webp";
-import carlyPic from "../../../assets/team/carly.webp";
-import gillianPic from "../../../assets/team/gillian.webp";
+import { StaticImageData } from "next/image";
+import andyPic from "../../../public/team/andy.webp";
+import carlyPic from "../../../public/team/carly.webp";
+import gillianPic from "../../../public/team/gillian.webp";
 
-const TeamTitle = "Meet the Team";
-const TeamMembers = [
+export type TeamMember = {
+  name: string;
+  title: string;
+  email: string;
+  phone: string;
+  photo: StaticImageData;
+  likes: string;
+  dislikes: string;
+};
+
+const TeamMembers: TeamMember[] = [
   {
     name: "Carly Straight",
     title:
@@ -11,6 +21,8 @@ const TeamMembers = [
     email: "carly@bemontphoto.com",
     phone: "585-755-7665",
     photo: carlyPic,
+    likes: "",
+    dislikes: "",
   },
   {
     name: "Andy Bemont",
@@ -18,6 +30,8 @@ const TeamMembers = [
     email: "andy@bemontphoto.com",
     phone: "585-590-0570",
     photo: andyPic,
+    likes: "",
+    dislikes: "",
   },
   {
     name: "Gillian Bemont",
@@ -25,7 +39,9 @@ const TeamMembers = [
     email: "gillianbemont@gmail.com",
     phone: "315-871-9503",
     photo: gillianPic,
+    likes: "",
+    dislikes: "",
   },
 ];
 
-export { TeamTitle, TeamMembers };
+export default TeamMembers;

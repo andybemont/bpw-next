@@ -10,8 +10,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${titleText.className} antialiased`}>
-        <Header />
-        {children}
+        <main>
+          <Header />
+          {children}
+        </main>
       </body>
     </html>
   );

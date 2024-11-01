@@ -1,25 +1,19 @@
 import { Metadata } from "next";
-import WelcomeContent from "./ui/welcome-content/welcome-content";
-import TeamContent from "./ui/team-content/team-content";
 import OverviewContent from "./ui/overview-content/overview-content";
-import FaqContent from "./ui/faq-content/faq-content";
-import PricingContent from "./ui/pricing-content/pricing-content";
-import ContactContent from "./ui/contact-content/contact-content";
-import "react-tooltip/dist/react-tooltip.css";
+import SitePage from "./ui/shared/site-page";
+import { namedPictures } from "./lib/portfolio";
 
 export const metadata: Metadata = {
-  title: "Rochester Wedding Photography by Bemont Photo",
+  title:
+    "Rochester Wedding Photography | Packages and Availability | Bemont Photo",
 };
 
 export default function Page() {
   return (
-    <main>
-      <WelcomeContent />
-      <OverviewContent />
-      <TeamContent />
-      <FaqContent />
-      <PricingContent />
-      <ContactContent />
-    </main>
+    <SitePage image={namedPictures.chaseBuildingDip}>
+      <div className="absolute w-1/3 bg-white/50 z-1 max-h-full overflow-y-auto">
+        <OverviewContent />
+      </div>
+    </SitePage>
   );
 }

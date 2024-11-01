@@ -1,11 +1,16 @@
 import { Metadata } from "next";
-import Header from "../ui/header/header";
 import ContactContent from "../ui/contact-content/contact-content";
+import { namedPictures } from "../lib/portfolio";
+import SitePage from "../ui/shared/site-page";
 
 export const metadata: Metadata = {
-  title: "Next.js",
+  title: "Rochester Wedding Photography | Contact | Bemont Photo",
 };
 
 export default function Page() {
-  return <ContactContent />;
+  return (
+    <SitePage image={namedPictures.gcvmKiss}>
+      <ContactContent />
+    </SitePage>
+  );
 }
