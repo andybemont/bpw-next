@@ -1,5 +1,3 @@
-import { GlobeAltIcon } from "@heroicons/react/24/outline";
-import { lusitana } from "@/app/ui/fonts";
 import logo from "../../public/logo.webp";
 import Image from "next/image";
 
