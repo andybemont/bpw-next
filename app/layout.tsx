@@ -1,7 +1,8 @@
 import "@/app/ui/global.css";
 import { titleText } from "@/app/ui/fonts";
-import HeaderV2 from "./ui/header/header_v2";
+import Header from "./ui/header/header";
 import { Metadata } from "next";
+import Header from "./ui/header/header";
 
 export const metadata: Metadata = {
   openGraph: {
@@ -26,7 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${titleText.className} bg-red antialiased`}>
         <main className="relative">
-          <HeaderV2 />
+          <Header />
           {children}
         </main>
       </body>
