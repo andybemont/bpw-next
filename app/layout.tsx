@@ -2,7 +2,6 @@ import "@/app/ui/global.css";
 import { titleText } from "@/app/ui/fonts";
 import Header from "./ui/header/header";
 import { Metadata } from "next";
-import Header from "./ui/header/header";
 
 export const metadata: Metadata = {
   openGraph: {
