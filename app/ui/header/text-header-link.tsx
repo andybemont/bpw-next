@@ -1,15 +1,14 @@
 import Link from "next/link";
 import { HeaderLink } from "@/app/ui/header/header-content";
 
-interface TextHeaderLinkProps {
+export default function TextHeaderLink(props: {
   link: HeaderLink;
-}
+  hideBasedOnSize: boolean;
+}) {
+  const { link, hideBasedOnSize } = props;
 
-const TextHeaderLink = (props: TextHeaderLinkProps) => {
-  const { link } = props;
   return (
     <Link
-      className={`grow pb-1 text-center transition-all border-b-2 border-transparent hover:border-blue-950 hidden ${link.minSizeToShow}:block`}
       key={link.tag}
       href={link.url}
       target={link.url.startsWith("http") ? "_blank" : ""}
@@ -17,6 +16,4 @@ const TextHeaderLink = (props: TextHeaderLinkProps) => {
       {link.tooltip}
     </Link>
   );
-};
-
-export default TextHeaderLink;
+}

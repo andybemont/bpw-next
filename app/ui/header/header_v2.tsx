@@ -10,7 +10,7 @@ export const MenuHeight = "128px";
 
 export default function HeaderV2() {
   return (
-    <div className="fixed flex flex-row w-screen h-16 sm:h-[84px]  bg-white/70 z-10 text-blue-950">
+    <div className="fixed flex flex-row w-screen h-16 sm:h-[84px] bg-white/70 z-10 text-blue-950">
       <div id="everythingLeftOfIcon" className="grow flex flex-col mb-2 p-1 ">
         <div id="topRow" className="flex flex-row align-text-bottom pt-2">
           <h1 className="text-xl md:text-4xl font-bold text-left ml-auto">
@@ -23,9 +23,21 @@ export default function HeaderV2() {
         <div id="bottomRowWithIcons" className="flex flex-row items-end">
           <div className="grow" />
           {allHeaderLinks.map((link) => {
-            return <TextHeaderLink key={link.tag} link={link} />;
+            return (
+              <div
+                key={link.tag}
+                className={`grow text-center transition-all border-b-2 border-transparent hover:border-blue-950 hidden ${link.minSizeToShow}:block`}
+              >
+                <TextHeaderLink link={link} hideBasedOnSize />
+              </div>
+            );
           })}
-          <MoreLinksMenu />
+          <div
+            key="menu"
+            className="grow text-center transition-all border-b-2 border-transparent hover:border-blue-950 pb-0"
+          >
+            <MoreLinksMenu />
+          </div>
           <div className="grow" />
         </div>
       </div>
