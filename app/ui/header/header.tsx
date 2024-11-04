@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import logo from "../../../public/logo.webp";
 import Image from "next/image";
-import { headerLinks } from "@/app/lib/header-content";
+import { headerLinks } from "@/app/ui/header/header-content";
 import IconHeaderLink from "./icon-header-link";
 
 export default function Header() {

@@ -26,10 +26,7 @@
 }
 
 ::-webkit-scrollbar {
-  height: 300px;
-  width: 16px;
-  overflow: auto;
-  padding: 0 10px;
+  display: none;
 }
 
 ::-webkit-scrollbar-track {

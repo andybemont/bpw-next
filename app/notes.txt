@@ -1,0 +1,20 @@
+MISC
+- Have Gillian review everything
+
+CONTACT
+- Add "how'd you hear about us"
+- Add "wedding date" with validation that we're not booked
+
+MENU
+- finish "more" popup
+- Also have a site menu with everything, with descriptions
+- Link to that site menu from the footer
+
+ADDITIONAL PAGES
+- Gear
+- Venues                                 
+
+SEO
+- Keep researching
+- Links within content to other pages
+- business profiles on Data Axle, Express Update, Neustar Localeze, and Factual.

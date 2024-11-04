@@ -40,8 +40,10 @@ const TeamMembers: TeamMember[] = [
     email: "gillianbemont@gmail.com",
     phone: "315-871-9503",
     photo: gillianPic,
-    likes: "",
-    dislikes: "",
+    likes:
+      "Birds, a lake, flowers, just resting her eyes for a bit, bread, singing, kids, every dog, true crime, dry erase markers",
+    dislikes:
+      "Olives, touching flour, cockroaches, chores, surprises, when people are wearing shorts when it’s way too cold for that",
   },
 ];
 

@@ -1,6 +1,6 @@
 import "@/app/ui/global.css";
 import { titleText } from "@/app/ui/fonts";
-import Header from "./ui/header/header";
+import HeaderV2 from "./ui/header/header_v2";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -24,9 +24,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${titleText.className} antialiased`}>
-        <main>
-          <Header />
+      <body className={`${titleText.className} bg-red antialiased`}>
+        <main className="relative">
+          <HeaderV2 />
           {children}
         </main>
       </body>

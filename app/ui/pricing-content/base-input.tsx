@@ -1,10 +1,12 @@
+import { ReactElement } from "react";
+
 export interface BaseInputProps {
   caption: string;
   currentValueText: string;
   controlId: string;
   register: (id: string) => any;
   defaultValue: any;
-  explanation: string;
+  explanation: ReactElement;
   children?: React.ReactElement;
   clickable?: boolean;
   onClick?: () => void;
