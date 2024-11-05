@@ -34,7 +34,7 @@ const MoreLinksMenu = () => {
         onClick={handleToggleClick}
       >
         <div className="grow" />
-        <div data-title={"Menu"} className="text-blue-950 w-4 h-4 sm:hidden">
+        <div title={"Menu"} className="text-blue-950 w-4 h-4 sm:hidden">
           <Image
             src={menuIcon}
             alt="Menu"

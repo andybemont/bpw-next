@@ -10,7 +10,7 @@ const reasons: Reason[] = [
   {
     title: (
       <span>
-        <Link href="./pricing" className="underline">
+        <Link href="./gallery" className="underline">
           Timeless Pictures
         </Link>
       </span>
@@ -91,7 +91,7 @@ const reasons: Reason[] = [
       <span>
         Nobody likes printing, scanning, or mailing - all your interactions with
         us can be done virtually (apart from the photography). You can e-sign
-        your contract and payment can be done via Venmo or credit card
+        your contract and pay via Venmo or credit card
       </span>
     ),
   },

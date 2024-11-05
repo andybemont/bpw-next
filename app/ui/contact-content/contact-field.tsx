@@ -12,7 +12,7 @@ interface ContactFieldProps {
 }
 
 const sharedInputStyle =
-  "px-1 bg-transparent border-blue-950 border-0 border-b-blue-950 border-b-2 w-full font-text text-bold text-xl border-transparent focus:border-transparent focus:ring-0 focus:border-b-blue-950 focus:border-b-2";
+  "px-1 bg-transparent border-blue-950 border-0 border-b-blue-950 border-b-2 w-full font-text text-normal border-transparent focus:border-transparent focus:ring-0 focus:border-b-blue-950 focus:border-b-2";
 
 function BaseContactField(props: ContactFieldProps) {
   const { id, caption, children, grow, required } = props;

@@ -1,17 +1,17 @@
-do laundry
-get zyns
-prep chicken
 
 *** SITE ***
 TODO
-- MENU hide gallery, venues until done, add link to Site Menu, hide until done
 - CONTACT Add "how'd you hear about us", "wedding date" (with validation that we're not booked)
 - PRICING Add availability check
 - MOBILE main page
 - MOBILE hide links to individual pages
-- Have Gillian review everything
 
-NEW PAGES
+FINISHING TOUCHES
+- Have Gillian review everything
+- Move email to google
+- Move domain to vercel
+
+NEW PAGES (uncomment from menu metadata when done)
 - Gear
 - Venues
 - Site Menu with everything, descriptions (add link)

@@ -6,6 +6,13 @@ type HeaderLink = {
   minSizeToShow: string;
 };
 
+const siteMenu: HeaderLink = {
+  url: "/sitemenu",
+  tooltip: "Everything",
+  tag: "sitemenu",
+  isExternal: false,
+  minSizeToShow: "3xl",
+};
 const overview: HeaderLink = {
   url: "/",
   tooltip: "Wedding Photography",
@@ -43,7 +50,7 @@ const contact: HeaderLink = {
 };
 const gallery: HeaderLink = {
   url: "/gallery",
-  tooltip: "Gallery",
+  tooltip: "Favorite Photos",
   tag: "gallery",
   isExternal: false,
   minSizeToShow: "sm",
@@ -64,13 +71,13 @@ const venues: HeaderLink = {
 };
 const morePictures: HeaderLink = {
   url: "https://gallery.bemontphoto.com/favorites/",
-  tooltip: "Portfolio",
+  tooltip: "Extended Portfolio",
   tag: "morePictures",
   isExternal: true,
   minSizeToShow: "3xl",
 };
 const galleries: HeaderLink = {
-  url: "http://gallery.bemontphoto.com/",
+  url: "https://gallery.bemontphoto.com/",
   tooltip: "Full Galleries",
   tag: "galleries",
   isExternal: true,
@@ -107,14 +114,15 @@ const headerLinks = {
 };
 
 const allHeaderLinks = [
+  //siteMenu,
   overview,
   faq,
   pricing,
   contact,
   meetTheTeam,
   gallery,
-  gear,
-  venues,
+  //gear,
+  //venues,
   morePictures,
   galleries,
   makeAPayment,
@@ -125,6 +133,7 @@ export {
   type HeaderLink,
   headerLinks,
   allHeaderLinks,
+  siteMenu,
   overview,
   faq,
   pricing,

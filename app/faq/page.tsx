@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SitePage image={namedPictures.lydiaFlowers}>
-      <div className="absolute w-1/3 bg-white/50 z-1 max-h-full overflow-y-auto">
+      <div className="absolute min-w-[342px] w-[40%] bg-white/50 z-1 max-h-full overflow-y-auto">
         <FaqContent />
       </div>
     </SitePage>

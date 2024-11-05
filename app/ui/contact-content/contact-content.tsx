@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
-import { SendEmail } from "@/app/lib/helpers";
 import { ContactTextAreaField, ContactTextField } from "./contact-field";
 
 export default function ContactContent() {
@@ -22,17 +21,34 @@ export default function ContactContent() {
       return;
     }
 
-    if (
-      SendEmail(
-        currentValues.name,
-        currentValues.phone,
-        currentValues.email,
-        currentValues.message
-      )
-    ) {
-      reset();
-      setFormHasInfo(false);
-      setSubmitted(true);
+    try {
+      emailjs
+        .send(
+          process.env.NEXT_PUBLIC_REACT_APP_EMAILJS_SERVICE_ID || "",
+          process.env.NEXT_PUBLIC_REACT_APP_EMAILJS_TEMPLATE_ID || "",
+          {
+            name: currentValues.name,
+            phone: currentValues.phone,
+            email: currentValues.email,
+            message: currentValues.message,
+          },
+          {
+            publicKey:
+              process.env.NEXT_PUBLIC_REACT_APP_EMAILJS_PUBLIC_KEY || "",
+          }
+        )
+        .then(
+          function (response) {
+            reset();
+            setFormHasInfo(false);
+            setSubmitted(true);
+          },
+          function (error) {
+            console.error(error);
+          }
+        );
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -86,7 +102,7 @@ export default function ContactContent() {
             grow
             register={register}
           />
-          <div aria-disabled="true" className="flex mx-auto w-64 mt-4">
+          <div aria-disabled="true" className="flex mx-auto w-36 mt-4">
             {submitted && !formHasInfo && (
               <button
                 className="bg-blue-950 text-white rounded-3xl w-36 h-12 text-2xl"
@@ -99,6 +115,7 @@ export default function ContactContent() {
               <button
                 className="bg-blue-950 text-white rounded-3xl w-36 h-12 text-2xl disabled:bg-gray-600"
                 disabled={!isValid}
+                onClick={handleSubmit}
               >
                 {submitted && !formHasInfo && "Thank You!"}
                 {(!submitted || formHasInfo) && "send it!"}

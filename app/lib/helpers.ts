@@ -1,40 +1,3 @@
-import emailjs from "@emailjs/browser";
-
-function SendEmail(
-  name: string,
-  phone: string,
-  email: string,
-  message: string
-) {
-  try {
-    emailjs
-      .send(
-        process.env.NEXT_PUBLIC_REACT_APP_EMAILJS_SERVICE_ID || "",
-        process.env.NEXT_PUBLIC_REACT_APP_EMAILJS_TEMPLATE_ID || "",
-        {
-          name: name,
-          phone: phone,
-          email: email,
-          message: message,
-        },
-        {
-          publicKey: process.env.NEXT_PUBLIC_REACT_APP_EMAILJS_PUBLIC_KEY || "",
-        }
-      )
-      .then(
-        () => {
-          return true;
-        },
-        (error: any) => {
-          console.error(JSON.stringify(error));
-        }
-      );
-  } catch (error) {
-    console.error(JSON.stringify(error));
-  }
-  return false;
-}
-
 function CalculatePrice(
   distance: number,
   duration: number,
@@ -54,8 +17,7 @@ function CalculatePrice(
       : duration <= 10
       ? 2800
       : 2800 + (duration - 10) * hourlyRate;
-  var durationCostForHourlyPackage =
-    duration < 6 ? duration * hourlyRate : durationCostForNormalPackage;
+  var durationCostForHourlyPackage = duration * hourlyRate;
 
   var distanceInHours = (distance * 15.0) / 60.0;
   var distanceCostForHourlyPackage = distanceInHours * hourlyRate;

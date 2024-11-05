@@ -17,7 +17,7 @@ export default function PricingContent() {
   } = useForm();
 
   const [photographers, setPhotographers] = useState(2);
-  const [priorityEditing, setPriorityEditing] = useState(true);
+  const [priorityEditing, setPriorityEditing] = useState(false);
   const [engagementSession, setEngagementSession] = useState(true);
   const [distance, setDistance] = useState(3);
   const [duration, setDuration] = useState(8);
@@ -30,8 +30,6 @@ export default function PricingContent() {
     }
 
     setPhotographers(currentValues.photographers);
-    setPriorityEditing(currentValues.priorityEditing);
-    setEngagementSession(currentValues.engagementSession);
     setDistance(currentValues.distance);
     setDuration(currentValues.duration);
   };
@@ -49,12 +47,12 @@ export default function PricingContent() {
   }, [distance, duration, engagementSession, photographers, priorityEditing]);
 
   return (
-    <div className="text-blue-950 tracking-wider m-2">
+    <div className="text-blue-950 tracking-wider p-2">
       <h3 className="text-right text-5xl">Price Calculator</h3>
       <p className="text-right text-4xl">
         Estimate: ${Number.isNaN(totalCost) ? "" : totalCost}
       </p>
-      <div className="text-lg">
+      <div className="text-lg w-full">
         <form onChange={onChange}>
           <div className="">
             <RangeInput
@@ -67,16 +65,19 @@ export default function PricingContent() {
               max={14}
               explanation={
                 <span>
-                  Time from when we arrive until we leave. Generally, eight
-                  hours is enough for a wedding day. But every wedding day is
-                  different! You can always add hours - so when in doubt, go
-                  low!
+                  Time from when we arrive until we leave. Eight hours is
+                  usually enough, but every wedding is different! You can always
+                  add hours - so when in doubt, go low!
                 </span>
               }
             />
             <RangeInput
               caption="Team"
-              currentValueText={`${photographers} photographers`}
+              currentValueText={`${
+                photographers === 1
+                  ? "1 photographer"
+                  : photographers + " photographers"
+              }`}
               controlId="photographers"
               register={register}
               defaultValue={photographers}

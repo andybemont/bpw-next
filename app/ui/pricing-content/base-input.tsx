@@ -24,11 +24,11 @@ export default function BaseInput(props: BaseInputProps) {
   return (
     <div
       onClick={onClick}
-      className={`w-96 transition-all ease-in-out outline outline-1 outline-blue-950 rounded-xl hover:outline-2 hover:outline-white ${
+      className={`transition-all ease-in-out outline outline-1 outline-blue-950 rounded-xl hover:outline-2 hover:outline-white ${
         onClick ? "cursor-pointer" : ""
       }`}
     >
-      <div className="font-title w-full px-4">
+      <div className="font-title px-4">
         <div className="flex flex-row">
           <p className="text-left w-48">
             <label
@@ -42,7 +42,7 @@ export default function BaseInput(props: BaseInputProps) {
           <div className="w-36">{children}</div>
         </div>
       </div>
-      <div className="mx-auto mb-2 w-full px-4 text-center text-justify text-sm">
+      <div className="mx-auto mb-2 px-4 text-center text-justify text-sm">
         {explanation}
       </div>
     </div>
