@@ -3,7 +3,7 @@
 TODO
 - CONTACT Add "how'd you hear about us", "wedding date" (with validation that we're not booked)
 - PRICING Add availability check
-- MOBILE main page
+- PRICING - sizing weird in full size
 - MOBILE hide links to individual pages
 
 FINISHING TOUCHES

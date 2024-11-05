@@ -25,7 +25,7 @@ export default function Page() {
           </div>
         </SitePage>
       </div>
-      <div className="sm:hidden absolute top-[64px] w-[calc(100%)]">
+      <div className="sm:hidden absolute top-[64px]">
         <FullWidthImage image={namedPictures.chaseBuildingDip} />
         <OverviewContent />
         <FullWidthImage image={namedPictures.lydiaFlowers} />
@@ -35,8 +35,8 @@ export default function Page() {
         <FullWidthImage image={namedPictures.gianStepsKiss} />
         <ContactContent />
         <FullWidthImage image={namedPictures.mimiGolfCart} />
-        {/* <TeamContent /> */}
-        {/* <FullWidthImage image={namedPictures.flowers} /> */}
+        <TeamContent />
+        <FullWidthImage image={namedPictures.flowers} />
         {/* More links*/}
       </div>
     </>
