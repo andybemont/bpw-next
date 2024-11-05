@@ -6,8 +6,10 @@ export default function TeamContent() {
   return TeamMembers.map((person) => {
     return (
       <>
-        <div className={`grow ${count === 0 ? "hidden" : "block"}`} />
-        <div key={++count} className="sm:w-1/4 bg-blue-950/70 text-white my-4">
+        <div
+          key={++count}
+          className="w-full sm:w-1/4 bg-blue-950/70 text-white my-4"
+        >
           <h4 className="text-center text-3xl">{person.name}</h4>
           <p className="text-center text-xl">{person.email}</p>
           <Image
