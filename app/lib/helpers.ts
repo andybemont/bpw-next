@@ -46,4 +46,4 @@ function CalculatePrice(
   return Math.min(hourlyPackageCost, normalPackageCost);
 }
 
-export { CalculatePrice, SendEmail };
+export { CalculatePrice };
