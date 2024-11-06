@@ -8,7 +8,7 @@ export default function TeamContent() {
       <>
         <div
           key={++count}
-          className="w-full sm:w-1/4 bg-blue-950/70 text-white my-4"
+          className="w-full sm:w-1/4 bg-blue-950 sm:bg-blue-950/70 text-white my-4 transition-all hover:bg-blue-950 rounded-lg"
         >
           <h4 className="text-center text-3xl">{person.name}</h4>
           <p className="text-center text-xl">{person.email}</p>

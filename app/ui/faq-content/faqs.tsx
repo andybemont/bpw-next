@@ -92,10 +92,10 @@ const faqContent: FaqDef[] = [
           contact form
         </Link>{" "}
         below! Then we can do a Zoom call or stick to email. To book us,
-        complete an online contract pay us a deposit, and you're official! Then
-        you can book your engagement session any time before the wedding. We'll
-        get in touch about a month before the wedding to get all the good
-        details about your itinerary.
+        complete an online contract and deposit, and you're official! Then you
+        can book your engagement session any time before the wedding. We'll get
+        in touch about a month before the wedding to get all the good details
+        about your itinerary.
       </span>
     ),
   },
@@ -129,7 +129,9 @@ const faqContent: FaqDef[] = [
     ),
   },
   {
-    question: <span>My venue is asking about insurance for my vendors...</span>,
+    question: (
+      <span>My venue is asking about insurance for my vendors... ?</span>
+    ),
     answer: (
       <span>
         No problem! We have liability insurance and will be happy to send your

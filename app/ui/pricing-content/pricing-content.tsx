@@ -5,6 +5,8 @@ import CheckboxInput from "./checkbox-input";
 import { CalculatePrice } from "@/app/lib/helpers";
 import RangeInput from "./range-input";
 import Link from "next/link";
+import DateInput from "./date-input";
+import { isDateBooked } from "../../lib/booked-dates";
 
 const googleMapUrl =
   "https://www.google.com/maps/dir/Rochester,+New+York//@42.8955153,-77.9863505,9.25z/data=!4m9!4m8!1m5!1m1!1s0x89d6b3059614b353:0x5a001ffc4125e61e!2m2!1d-77.6088465!2d43.1565779!1m0!3e0!5m1!1e4?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D";
@@ -22,6 +24,8 @@ export default function PricingContent() {
   const [distance, setDistance] = useState(3);
   const [duration, setDuration] = useState(8);
   const [totalCost, setTotalCost] = useState(0);
+  const [date, setDate] = useState("2025-01-01");
+  const [dateBooked, setDateBooked] = useState(false);
 
   const onChange = () => {
     var currentValues = getValues();
@@ -32,6 +36,8 @@ export default function PricingContent() {
     setPhotographers(currentValues.photographers);
     setDistance(currentValues.distance);
     setDuration(currentValues.duration);
+    setDate(currentValues.date);
+    setDateBooked(isDateBooked(currentValues.date));
   };
 
   useEffect(() => {
@@ -55,6 +61,11 @@ export default function PricingContent() {
       <div className="text-lg w-full">
         <form onChange={onChange}>
           <div className="">
+            <DateInput
+              controlId="date"
+              register={register}
+              isDateBooked={dateBooked}
+            />
             <RangeInput
               caption="Duration"
               currentValueText={`${duration} hours`}
