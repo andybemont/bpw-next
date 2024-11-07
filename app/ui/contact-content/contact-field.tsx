@@ -8,35 +8,33 @@ interface ContactFieldProps {
   required: boolean;
   register: UseFormRegister<any>;
   children?: React.ReactElement;
-  grow?: boolean;
+  isDateBooked?: boolean;
 }
 
-const sharedInputStyle =
-  "px-1 bg-transparent border-blue-950 border-0 border-b-blue-950 border-b-2 w-full font-text text-normal border-transparent focus:border-transparent focus:ring-0 focus:border-b-blue-950 focus:border-b-2";
-
-function BaseContactField(props: ContactFieldProps) {
-  const { id, caption, children, grow, required } = props;
+function Label(props: ContactFieldProps) {
+  const { caption, id, required } = props;
 
   return (
-    <div className={`pt-2 ${grow && "grow"} flex flex-col`}>
-      <label htmlFor={id} className="text-2xl font-normal">
-        {caption + (required ? "*" : " (optional)")}
-      </label>
-      <div className="grow">{children}</div>
-    </div>
+    <label htmlFor={id} className="text-xl font-normal">
+      {caption + (required ? "*" : "")}
+    </label>
   );
 }
+
+const noBorderOnFocus = "focus:ring-0 focus:border-transparent";
 
 export function ContactTextField(props: ContactFieldProps) {
   const { id, required, register } = props;
   return (
-    <BaseContactField {...props}>
-      <div className="w-full">
+    <div className={`grow pt-2 px-2 w-1/4 min-w-[190px]`}>
+      <Label {...props} />
+      <div className={`${noBorderOnFocus} border-b-blue-950 border-b-2`}>
         <input
           id={id}
-          className={sharedInputStyle}
+          className={`w-full m-1 p-0 bg-transparent text-normal border-transparent  ${noBorderOnFocus}`}
           type="text"
           required={required}
+          autoComplete="false"
           aria-required={required}
           placeholder=""
           aria-invalid="true"
@@ -45,7 +43,37 @@ export function ContactTextField(props: ContactFieldProps) {
           })}
         />
       </div>
-    </BaseContactField>
+    </div>
+  );
+}
+
+export function ReferenceField(props: ContactFieldProps) {
+  const { id, required, register } = props;
+  return (
+    <div className={`grow pt-2 px-2 w-1/4 min-w-[190px]`}>
+      <Label {...props} />
+      <div className={``}>
+        <select
+          id={id}
+          className={`bg-transparent p-0 text-normal w-full border-blue-950 focus:border-blue-950 focus:ring-0`}
+          required={required}
+          autoComplete="false"
+          aria-required={required}
+          aria-invalid="true"
+          {...register(id, {
+            required: required ? "This is required" : undefined,
+          })}
+        >
+          <option value=""></option>
+          <option value="Social Media">Social Media</option>
+          <option value="The Knot">The Knot</option>
+          <option value="Wedding Wire">Wedding Wire</option>
+          <option value="Google/Web Search">Google/Web</option>
+          <option value="Word of Mouth">Word of Mouth</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+    </div>
   );
 }
 
@@ -53,12 +81,14 @@ export function ContactTextAreaField(props: ContactFieldProps) {
   const { id, required, register } = props;
 
   return (
-    <BaseContactField {...props} grow>
-      <div className="w-full bb-2 mb-2 h-full">
+    <div className={`h-[calc(100%-20px)] pt-2 px-2`}>
+      <Label {...props} />
+      <div className={`${noBorderOnFocus} w-full h-full p-0 m-0`}>
         <textarea
           id={id}
-          className={sharedInputStyle + " h-full resize-none"}
+          className={`bg-transparent text-normal h-full resize-none w-full focus:ring-0 border-blue-950 focus:border-blue-950`}
           required={required}
+          autoComplete="false"
           aria-required={required}
           aria-invalid="true"
           {...register(id, {
@@ -66,6 +96,29 @@ export function ContactTextAreaField(props: ContactFieldProps) {
           })}
         />
       </div>
-    </BaseContactField>
+    </div>
+  );
+}
+
+export function AvailabilityField(props: ContactFieldProps) {
+  const { id, register, isDateBooked } = props;
+
+  return (
+    <div className={`grow pt-2 px-2 w-1/4 min-w-[190px]`}>
+      <Label {...props} />
+      <div className={`flex flex-row`}>
+        <input
+          className="grow p-0 pl-1 m-0 bg-transparent text-right"
+          id={id}
+          type="date"
+          defaultValue={"2026-01-01"}
+          {...register(id)}
+        />
+        <p className="pt-0 px-2 text-xl w-1/3 text-right">
+          {isDateBooked && <span className="text-red-800">Not Available</span>}
+          {!isDateBooked && <span className="text-green-800">Available</span>}
+        </p>
+      </div>
+    </div>
   );
 }

@@ -4,21 +4,16 @@ type HeaderLink = {
   tag: string;
   isExternal: boolean;
   minSizeToShow: string;
+  showLinkOnMobile: boolean;
 };
 
-const siteMenu: HeaderLink = {
-  url: "/sitemenu",
-  tooltip: "Everything",
-  tag: "sitemenu",
-  isExternal: false,
-  minSizeToShow: "3xl",
-};
 const overview: HeaderLink = {
   url: "/",
   tooltip: "Wedding Photography",
   tag: "overview",
   isExternal: false,
   minSizeToShow: "sm",
+  showLinkOnMobile: true,
 };
 const faq: HeaderLink = {
   url: "/faq",
@@ -26,6 +21,7 @@ const faq: HeaderLink = {
   tag: "faq",
   isExternal: false,
   minSizeToShow: "sm",
+  showLinkOnMobile: false,
 };
 const meetTheTeam: HeaderLink = {
   url: "/team",
@@ -33,6 +29,7 @@ const meetTheTeam: HeaderLink = {
   tag: "team",
   isExternal: false,
   minSizeToShow: "md",
+  showLinkOnMobile: false,
 };
 const pricing: HeaderLink = {
   url: "/pricing",
@@ -40,6 +37,7 @@ const pricing: HeaderLink = {
   tag: "pricing",
   isExternal: false,
   minSizeToShow: "sm",
+  showLinkOnMobile: false,
 };
 const contact: HeaderLink = {
   url: "/contact",
@@ -47,6 +45,7 @@ const contact: HeaderLink = {
   tag: "contact",
   isExternal: false,
   minSizeToShow: "sm",
+  showLinkOnMobile: false,
 };
 const gallery: HeaderLink = {
   url: "/gallery",
@@ -54,20 +53,7 @@ const gallery: HeaderLink = {
   tag: "gallery",
   isExternal: false,
   minSizeToShow: "sm",
-};
-const gear: HeaderLink = {
-  url: "/gear",
-  tooltip: "Gear",
-  tag: "gear",
-  isExternal: false,
-  minSizeToShow: "lg",
-};
-const venues: HeaderLink = {
-  url: "/venues",
-  tooltip: "Favorite Venues",
-  tag: "venues",
-  isExternal: false,
-  minSizeToShow: "xl",
+  showLinkOnMobile: false,
 };
 const morePictures: HeaderLink = {
   url: "https://gallery.bemontphoto.com/favorites/",
@@ -75,6 +61,7 @@ const morePictures: HeaderLink = {
   tag: "morePictures",
   isExternal: true,
   minSizeToShow: "3xl",
+  showLinkOnMobile: true,
 };
 const galleries: HeaderLink = {
   url: "https://gallery.bemontphoto.com/",
@@ -82,6 +69,7 @@ const galleries: HeaderLink = {
   tag: "galleries",
   isExternal: true,
   minSizeToShow: "3xl",
+  showLinkOnMobile: true,
 };
 const makeAPayment: HeaderLink = {
   url: "https://www.paypal.me/BemontPhoto",
@@ -89,6 +77,7 @@ const makeAPayment: HeaderLink = {
   tag: "payment",
   isExternal: true,
   minSizeToShow: "3xl",
+  showLinkOnMobile: true,
 };
 const instagram: HeaderLink = {
   url: "https://www.instagram.com/thebemontphoto/",
@@ -96,6 +85,7 @@ const instagram: HeaderLink = {
   tag: "instagram",
   isExternal: true,
   minSizeToShow: "3xl",
+  showLinkOnMobile: true,
 };
 
 const headerLinks = {
@@ -105,8 +95,6 @@ const headerLinks = {
   contact: contact,
   meetTheTeam: meetTheTeam,
   gallery: gallery,
-  gear: gear,
-  venues: venues,
   morePictures: morePictures,
   galleries: galleries,
   makeAPayment: makeAPayment,
@@ -114,15 +102,12 @@ const headerLinks = {
 };
 
 const allHeaderLinks = [
-  //siteMenu,
   overview,
   faq,
   pricing,
   contact,
   meetTheTeam,
   gallery,
-  //gear,
-  //venues,
   morePictures,
   galleries,
   makeAPayment,
@@ -133,15 +118,12 @@ export {
   type HeaderLink,
   headerLinks,
   allHeaderLinks,
-  siteMenu,
   overview,
   faq,
   pricing,
   contact,
   meetTheTeam,
   gallery,
-  gear,
-  venues,
   morePictures,
   galleries,
   makeAPayment,

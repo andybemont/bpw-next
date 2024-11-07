@@ -24,7 +24,7 @@ export default function BaseInput(props: BaseInputProps) {
   return (
     <div
       onClick={onClick}
-      className={`transition-all ease-in-out outline outline-1 outline-blue-950 rounded-xl hover:outline-2 hover:outline-white ${
+      className={`transition-all ease-in-out outline outline-1 outline-blue-950 rounded-xl ${
         onClick ? "cursor-pointer" : ""
       }`}
     >

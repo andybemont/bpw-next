@@ -26,7 +26,7 @@ const MoreLinksMenu = () => {
   }, []);
 
   return (
-    <div className="relative">
+    <div className="relative flex flex-col items-center justify-center">
       <div
         className={`flex flex-row cursor-pointer`}
         key={"menu"}
@@ -47,10 +47,15 @@ const MoreLinksMenu = () => {
         <div className="grow" />
       </div>
       {showMenu && (
-        <ul className="absolute min-w-[100%] top-[32px] left-[0px] text-white bg-blue-950/70 text-center">
+        <ul className="absolute w-32 min-w-full top-[24px] sm:top-[32px] text-white bg-blue-950/70 text-center">
           {allHeaderLinks.map((link) => {
             return (
-              <li className="h-[25px]" key={link.tag}>
+              <li
+                className={`h-[25px] ${
+                  link.showLinkOnMobile ? "" : "hidden sm:block"
+                }`}
+                key={link.tag}
+              >
                 <TextHeaderLink link={link} hideBasedOnSize={false} />
               </li>
             );

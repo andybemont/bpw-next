@@ -1,19 +1,21 @@
 
 *** SITE ***
-TODO
-- CONTACT Add "how'd you hear about us", "wedding date" (with validation that we're not booked)
-- MOBILE hide links to individual pages
-
 FINISHING TOUCHES
 - Have Gillian review everything
 - Move email to google
 - Move domain to vercel
 
-NEW PAGES (uncomment from menu metadata when done)
-- Gear
-- Venues
-- Site Menu with everything, descriptions (add link)
+LONG TERM
+ - Revamp portfolio 
+    - Each picture has lens, venue, SEO-friendly alt text
+    - Gallery shows this info
 
-SEO
-- Keep researching
-- business profiles on Data Axle, Express Update, Neustar Localeze, and Factual.
+ - Additional pages with SEO-friendly text
+    - Site Menu with everything
+    - Typical wedding day
+    - Benefits of a first look
+    - Gear (leverage portfolio lens info)
+    - Venues (leverage portfolio lens info)
+ - More SEO 
+    - use claude.ai to keep optimizing
+    - business profiles on Data Axle, Express Update, Neustar Localeze, and Factual.
