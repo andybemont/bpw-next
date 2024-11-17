@@ -29,16 +29,17 @@ const reasons: Reason[] = [
     blurb: (
       <span>
         You'll have your pictures within a month, guaranteed, and most couples
-        get their photos within 2-3 weeks.
+        get their photos sooner. Splurge for Priority Editing to get them in a
+        week!
       </span>
     ),
   },
   {
-    title: <span>Transparent Pricing</span>,
+    title: <span>Clear Pricing</span>,
     blurb: (
       <span>
-        If you're sick of vendor websites omitting this main piece of
-        information, you'll love our{" "}
+        If you're sick of vendor websites hiding this main piece of information,
+        you'll love our{" "}
         <Link href="./pricing" className="underline">
           interactive price calculator
         </Link>
@@ -47,11 +48,11 @@ const reasons: Reason[] = [
     ),
   },
   {
-    title: <span>Efficient Wedding Day</span>,
+    title: <span>Efficient Wedding Days</span>,
     blurb: (
       <span>
         We will not keep you out doing photos for two hours! We hated it on our
-        wedding day, and we prioritize getting you to your party
+        wedding day, so we prioritize getting you back to the party
       </span>
     ),
   },
@@ -59,9 +60,9 @@ const reasons: Reason[] = [
     title: <span>Calm and Flexible</span>,
     blurb: (
       <span>
-        Your wedding day can be crazy, but we promise we'll be your rock! Even
-        when the timeline is falling apart, we'll stay calm and adjust as we go.
-        We'll help stay on track, but will go with the flow as the day evolves
+        Your wedding day could get crazy, but we'll be your rock! We practically
+        invented "going with the flow". We will help you stick to your timeline,
+        but sometimes the timeline just fails and we will make it work!
       </span>
     ),
   },
@@ -69,9 +70,9 @@ const reasons: Reason[] = [
     title: <span>Unobtrusive</span>,
     blurb: (
       <span>
-        You'll forget we're there for much of the day. We generally use
-        longer-range lenses and stay out of your business. You won't see us
-        sprinting around in a tizzy.
+        You'll forget we're there for much of the day (apart from our great
+        jokes). We generally use longer-range lenses and stay out of your
+        business. You won't see us sprinting around in a tizzy.
       </span>
     ),
   },
@@ -89,9 +90,9 @@ const reasons: Reason[] = [
     title: <span>Easy Paperwork</span>,
     blurb: (
       <span>
-        Nobody likes printing, scanning, or mailing - all your interactions with
-        us can be done virtually (apart from the photography). You can e-sign
-        your contract and pay via Venmo or credit card
+        No printing, scanning, or mailing - all your interactions with us can be
+        done virtually (apart from the photography). You can e-sign your
+        contract and pay via Venmo or credit card
       </span>
     ),
   },

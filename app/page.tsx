@@ -1,11 +1,10 @@
 import { Metadata } from "next";
 import OverviewContent from "./ui/overview-content/overview-content";
 import SitePage from "./ui/shared/site-page";
-import { namedPictures } from "./lib/portfolio";
+import { namedPortfolioImages } from "./lib/best-ofs";
 import FaqContent from "./ui/faq-content/faq-content";
 import PricingContent from "./ui/pricing-content/pricing-content";
 import TeamContent from "./ui/team-content/team-content";
-import GalleryContent from "./ui/gallery-content/gallery-content";
 import ContactContent from "./ui/contact-content/contact-content";
 import FullWidthImage from "./ui/shared/full-width-image";
 
@@ -19,24 +18,27 @@ export default function Page() {
   return (
     <>
       <div className="hidden sm:block">
-        <SitePage image={namedPictures.chaseBuildingDip}>
+        <SitePage
+          image={namedPortfolioImages.aliciaField}
+          positioning="object-bottom"
+        >
           <div className="absolute min-w-[342px] w-1/3 bg-white/50 z-1 max-h-full overflow-y-auto">
             <OverviewContent />
           </div>
         </SitePage>
       </div>
       <div className="sm:hidden absolute top-[64px]">
-        <FullWidthImage image={namedPictures.chaseBuildingDip} />
+        <FullWidthImage image={namedPortfolioImages.kidsWithDog} />
         <OverviewContent />
-        <FullWidthImage image={namedPictures.lydiaFlowers} />
+        <FullWidthImage image={namedPortfolioImages.gcvm} />
         <FaqContent />
-        <FullWidthImage image={namedPictures.dadPokingBubble} />
+        <FullWidthImage image={namedPortfolioImages.kacieDip} />
         <PricingContent />
-        <FullWidthImage image={namedPictures.gianStepsKiss} />
+        <FullWidthImage image={namedPortfolioImages.ilonaInField} />
         <ContactContent />
-        <FullWidthImage image={namedPictures.mimiGolfCart} />
+        <FullWidthImage image={namedPortfolioImages.hyattDip} />
         <TeamContent />
-        <FullWidthImage image={namedPictures.flowers} />
+        <FullWidthImage image={namedPortfolioImages.lydiaFlowers} />
         {/* More links*/}
       </div>
     </>

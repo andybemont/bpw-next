@@ -23,6 +23,16 @@ const faqContent: FaqDef[] = [
     ),
   },
   {
+    question: <span>How long does it take to receive our pictures?</span>,
+    answer: (
+      <span>
+        Your contract guarantees pictures within thirty days of the wedding, but
+        it's often less. And if you're into instant gratification, you can opt
+        for Priority Editing and get your pictures within one week!
+      </span>
+    ),
+  },
+  {
     question: <span>Should we do an engagement session?</span>,
     answer: (
       <span>
@@ -48,6 +58,18 @@ const faqContent: FaqDef[] = [
     ),
   },
   {
+    question: <span>Who is your second photographer?</span>,
+    answer: (
+      <span>
+        We don't have a "second photographer" - we're a{" "}
+        <Link href={headerLinks.meetTheTeam.url} className="underline">
+          team of three photographers
+        </Link>{" "}
+        and we love to work together!
+      </span>
+    ),
+  },
+  {
     question: (
       <span>
         <Link href={headerLinks.gallery.url} className="underline">
@@ -60,7 +82,7 @@ const faqContent: FaqDef[] = [
         Photo-y! We just get pictures of everything, capturing tons of candid
         moments without neglecting the posed photos (your mom wants them even if
         you don't). We edit in a clean, natural style because tastes change and
-        highly edited photos just dated in a few years.
+        highly edited photos just look dated in a few years.
       </span>
     ),
   },
@@ -76,26 +98,44 @@ const faqContent: FaqDef[] = [
         <Link href={headerLinks.meetTheTeam.url} className="underline">
           three wedding photographers
         </Link>{" "}
-        and you're probably hiring one or two. So we can handle unexpected
-        illness or injury. And if our kids are sick, we have an awesome and
-        extensive and local family who watches our kids while we work, and we
-        trust them with any emergency.
+        and you're probably hiring two. So we can handle unexpected illness or
+        injury. And if our kids are sick, we have an awesome and extensive and
+        local family who watches our kids while we work, and we trust them with
+        any emergency.
       </span>
     ),
   },
   {
-    question: <span>How do we book you?</span>,
+    question: <span>Can we book you?</span>,
+    answer: <span>Sure!</span>,
+  },
+  {
+    question: <span>Right, but how?</span>,
     answer: (
       <span>
-        Start with the{" "}
+        Oh. Start with the{" "}
         <Link href={headerLinks.contact.url} className="underline">
           contact form
         </Link>{" "}
-        below! Then we can do a Zoom call or stick to email. To book us,
-        complete an online contract and deposit, and you're official! Then you
-        can book your engagement session any time before the wedding. We'll get
-        in touch about a month before the wedding to get all the good details
-        about your itinerary.
+        below, where you can check our availability! Then we can do a Zoom call
+        or stick to email. To seal the deal, complete an online contract and
+        deposit! Then you can book your engagement session any time before the
+        wedding. We'll get in touch about a month before the wedding to get all
+        the good details about your itinerary.
+      </span>
+    ),
+  },
+  {
+    question: <span>What are your packages?</span>,
+    answer: (
+      <span>
+        We really don't have "packages" - we price based on duration, distance
+        (as measure from our couch), number of photographers, and whatever
+        extras you want. But if you're looking for a starting point,{" "}
+        <Link href={headerLinks.pricing.url} className="underline">
+          our price calculator
+        </Link>{" "}
+        starts with solid standard choices.
       </span>
     ),
   },
@@ -107,7 +147,7 @@ const faqContent: FaqDef[] = [
         <Link href={headerLinks.pricing.url} className="underline">
           price calculator
         </Link>{" "}
-        !
+        to build the perfect package for your wedding!
       </span>
     ),
   },

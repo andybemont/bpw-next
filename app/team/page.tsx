@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import SitePage from "../ui/shared/site-page";
-import { namedPictures } from "../lib/portfolio";
+import { namedPortfolioImages } from "../lib/best-ofs";
 import TeamContent from "../ui/team-content/team-content";
 
 export const metadata: Metadata = {
@@ -11,8 +11,8 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <SitePage image={namedPictures.flowers}>
-      <div className="w-full max-h-full z-1 absolute bottom-0 overflow-y-auto flex flex-row flex-wrap justify-evenly">
+    <SitePage image={namedPortfolioImages.ringShot} positioning="object-center">
+      <div className="w-full max-h-full z-1 absolute top-0 overflow-y-auto flex flex-row flex-wrap justify-evenly">
         <TeamContent />
       </div>
     </SitePage>

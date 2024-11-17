@@ -114,7 +114,7 @@ export function AvailabilityField(props: ContactFieldProps) {
           defaultValue={"2026-01-01"}
           {...register(id)}
         />
-        <p className="pt-0 px-2 text-xl w-1/3 text-right">
+        <p className="pt-0 px-2 text-x gw-1/3 text-right">
           {isDateBooked && <span className="text-red-800">Not Available</span>}
           {!isDateBooked && <span className="text-green-800">Available</span>}
         </p>

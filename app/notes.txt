@@ -1,11 +1,12 @@
 
 *** SITE ***
-FINISHING TOUCHES
-- Have Gillian review everything
+BEFORE PUBLISHING
+- Review content
 - Move email to google
 - Move domain to vercel
 
 LONG TERM
+ - Review fonts, colors
  - Revamp portfolio 
     - Each picture has lens, venue, SEO-friendly alt text
     - Gallery shows this info

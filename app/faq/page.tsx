@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import FaqContent from "../ui/faq-content/faq-content";
-import { namedPictures } from "../lib/portfolio";
+import { namedPortfolioImages } from "../lib/best-ofs";
 import SitePage from "../ui/shared/site-page";
 
 const pageTitle = "Rochester Wedding Photography | FAQ | Bemont Photo";
@@ -12,7 +12,10 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <SitePage image={namedPictures.lydiaFlowers}>
+    <SitePage
+      image={namedPortfolioImages.kidsWithDog}
+      positioning="object-center"
+    >
       <div className="absolute min-w-[342px] w-[40%] bg-white/50 z-1 max-h-full overflow-y-auto">
         <FaqContent />
       </div>

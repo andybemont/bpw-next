@@ -1,11 +1,12 @@
-import { NamedImage } from "@/app/lib/portfolio";
+import { PortfolioImage } from "@/app/lib/best-ofs";
 import Image from "next/image";
 
 export default function FullBackgroundContainer(props: {
-  image?: NamedImage;
+  image?: PortfolioImage;
+  positioning: string;
   children: React.ReactNode;
 }) {
-  const { image, children } = props;
+  const { image, children, positioning } = props;
 
   return (
     <div className="absolute top-0 left-0 bg-blue-950 w-screen h-screen">
@@ -13,7 +14,7 @@ export default function FullBackgroundContainer(props: {
         <Image
           src={image.image}
           alt={image.alt}
-          className={`w-screen h-screen object-cover ${image.positioning} z-0`}
+          className={`w-screen h-screen object-cover ${positioning} z-0`}
         />
       )}
       <div

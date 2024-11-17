@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import PricingContent from "../ui/pricing-content/pricing-content";
-import { namedPictures } from "../lib/portfolio";
+import { namedPortfolioImages } from "../lib/best-ofs";
 import SitePage from "../ui/shared/site-page";
 
 export const metadata: Metadata = {
@@ -11,7 +11,10 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <SitePage image={namedPictures.gianStepsKiss}>
+    <SitePage
+      image={namedPortfolioImages.ilonaInField}
+      positioning="object-bottom"
+    >
       <div className="absolute min-w-[342px] w-[40%] right-0 top-0 bg-white/50 z-1 overflow-y-auto">
         <PricingContent />
       </div>

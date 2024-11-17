@@ -5,11 +5,42 @@ function CalculatePrice(
   photographers: number,
   priorityEditing: boolean
 ) {
+  const distanceInHours = (distance * 15.0) / 60.0;
+  const baseCost = 0;
+  const photographerCost = (photographers - 1) * 400;
+  const engagementSessionCost = engagementSession ? 300 : 0;
+  const priorityEditingCost = priorityEditing ? 500 : 0;
+  const durationCost =
+    duration <= 6
+      ? duration * 300
+      : duration <= 8
+      ? 1800 + 500
+      : duration <= 10
+      ? 1800 + 500 + 450
+      : 1800 + 500 + 500 + (duration - 10) * 300;
+  const travelCost =
+    distanceInHours <= 0.75
+      ? 0
+      : distanceInHours <= 1.5
+      ? 150
+      : distanceInHours <= 2.25
+      ? 300
+      : distanceInHours <= 3
+      ? 450
+      : 1000;
+
+  return (
+    baseCost +
+    photographerCost +
+    engagementSessionCost +
+    priorityEditingCost +
+    durationCost +
+    travelCost
+  );
+
+  /*
   const hourlyRate = 300;
 
-  var priorityEditingCost = priorityEditing ? 500 : 0;
-  var photographerCost = (photographers - 1) * 400;
-  var engagementSessionCost = engagementSession ? 300 : 0;
 
   var durationCostForNormalPackage =
     duration <= 8
@@ -44,6 +75,7 @@ function CalculatePrice(
     distanceCostForNormalPackage;
 
   return Math.min(hourlyPackageCost, normalPackageCost);
+  */
 }
 
 export { CalculatePrice };

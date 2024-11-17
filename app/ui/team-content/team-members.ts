@@ -21,8 +21,9 @@ const TeamMembers: TeamMember[] = [
     email: "carly@bemontphoto.com",
     phone: "585-755-7665",
     photo: carlyPic,
-    likes: "",
-    dislikes: "",
+    likes: "Cats, Scary Movies, Every Food, When the Sky is Pretty, Bedtime",
+    dislikes:
+      "Loud Noises, Losing Sunglasses, Slow Walkers, the Sound of Chewing",
   },
   {
     name: "Andy Bemont",
@@ -42,8 +43,7 @@ const TeamMembers: TeamMember[] = [
     photo: gillianPic,
     likes:
       "Birds, a lake, flowers, just resting her eyes for a bit, bread, singing, kids, every dog, true crime, dry erase markers",
-    dislikes:
-      "Olives, touching flour, cockroaches, chores, surprises, when people are wearing shorts when it’s way too cold for that",
+    dislikes: "Olives, touching flour, cockroaches, chores, surprises",
   },
 ];
 
