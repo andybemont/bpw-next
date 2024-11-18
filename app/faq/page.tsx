@@ -16,7 +16,7 @@ export default function Page() {
       image={namedPortfolioImages.kidsWithDog}
       positioning="object-center"
     >
-      <div className="absolute min-w-[342px] w-[40%] bg-white/50 z-1 max-h-full overflow-y-auto">
+      <div className="absolute min-w-[342px] w-1/3 bg-primary-50/50 z-1 max-h-full overflow-y-auto">
         <FaqContent />
       </div>
     </SitePage>

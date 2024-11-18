@@ -6,7 +6,7 @@ export default function DateInput(props: {
   const { controlId, register, isDateBooked } = props;
   return (
     <div
-      className={`transition-all ease-in-out outline outline-1 outline-blue-950 rounded-xl mb-2`}
+      className={`transition-all ease-in-out outline outline-1 outline-primary-950 rounded-xl mb-2`}
     >
       <div className="font-title pl-4">
         <div className="flex flex-row">
@@ -15,7 +15,7 @@ export default function DateInput(props: {
           </p>
           <div className="w-36">
             <input
-              className="float-left p-0 pl-1 m-1 bg-transparent text-blue-950"
+              className="float-left p-0 pl-1 m-1 bg-transparent text-primary-950"
               id={controlId}
               type="date"
               defaultValue={"2026-01-01"}

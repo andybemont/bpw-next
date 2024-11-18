@@ -53,7 +53,7 @@ export default function PricingContent() {
   }, [distance, duration, engagementSession, photographers, priorityEditing]);
 
   return (
-    <div className="text-blue-950 tracking-wider p-2">
+    <div className="text-primary-900 tracking-wider p-2">
       <h3 className="text-right text-5xl">Price Calculator</h3>
       <p className="text-right text-4xl">
         Estimate: ${Number.isNaN(totalCost) ? "" : totalCost}

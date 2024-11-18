@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+const colors = require("tailwindcss/colors");
+
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,6 +18,7 @@ const config: Config = {
         "13": "repeat(13, minmax(0, 1fr))",
       },
       colors: {
+        primary: colors.zinc,
         blue: {
           400: "#2589FE",
           500: "#0070F3",

@@ -130,7 +130,7 @@ const faqContent: FaqDef[] = [
     answer: (
       <span>
         We really don't have "packages" - we price based on duration, distance
-        (as measure from our couch), number of photographers, and whatever
+        (as measured from our couch), number of photographers, and whatever
         extras you want. But if you're looking for a starting point,{" "}
         <Link href={headerLinks.pricing.url} className="underline">
           our price calculator
@@ -182,10 +182,6 @@ const faqContent: FaqDef[] = [
   {
     question: <span>Don't you just LOVE sparkler exits?</span>,
     answer: <span>No.</span>,
-  },
-  {
-    question: <span>The garter toss is cool, though, right?</span>,
-    answer: <span>Yuck.</span>,
   },
 ];
 

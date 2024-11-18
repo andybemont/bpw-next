@@ -38,7 +38,10 @@ const reasons: Reason[] = [
     title: <span>Clear Pricing</span>,
     blurb: (
       <span>
-        If you're sick of vendor websites hiding this main piece of information,
+        If you're sick of vendor websites hiding their{" "}
+        <Link href="./pricing" className="underline">
+          pricing, packages, and availability,
+        </Link>{" "}
         you'll love our{" "}
         <Link href="./pricing" className="underline">
           interactive price calculator
@@ -51,8 +54,8 @@ const reasons: Reason[] = [
     title: <span>Efficient Wedding Days</span>,
     blurb: (
       <span>
-        We will not keep you out doing photos for two hours! We hated it on our
-        wedding day, so we prioritize getting you back to the party
+        We won't keep you out doing photos for two hours - we hated it on our
+        wedding day, and we prioritize getting you back to the party
       </span>
     ),
   },
@@ -87,7 +90,7 @@ const reasons: Reason[] = [
     ),
   },
   {
-    title: <span>Easy Paperwork</span>,
+    title: <span>Simple Booking</span>,
     blurb: (
       <span>
         No printing, scanning, or mailing - all your interactions with us can be

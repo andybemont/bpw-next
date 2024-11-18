@@ -80,7 +80,7 @@ export default function ContactContent() {
   };
 
   return (
-    <div className="mx-auto p-2 h-full w-full flex flex-col text-blue-950">
+    <div className="mx-auto p-2 h-full w-full flex flex-col text-primary-900">
       <div className="m-0">
         <h2 className="text-5xl">Contact Us</h2>
       </div>
@@ -135,7 +135,7 @@ export default function ContactContent() {
             <div aria-disabled="true" className="mx-auto w-36 mt-4">
               {submitted && !formHasInfo && (
                 <button
-                  className="bg-blue-950 text-white rounded-3xl w-36 h-12 text-2xl"
+                  className="bg-primary-900 text-primary-50 rounded-3xl w-36 h-12 text-2xl"
                   disabled
                 >
                   Thank You!
@@ -143,7 +143,7 @@ export default function ContactContent() {
               )}
               {(!submitted || formHasInfo) && (
                 <button
-                  className="bg-blue-950 text-white rounded-3xl w-36 h-12 text-2xl disabled:bg-gray-600"
+                  className="bg-primary-900 text-primary-50 rounded-3xl w-36 h-12 text-2xl disabled:bg-gray-600"
                   disabled={!isValid}
                   onClick={handleSubmit}
                 >

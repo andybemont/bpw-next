@@ -9,8 +9,11 @@ import MoreLinksMenu from "./more-links-menu";
 export const MenuHeight = "128px";
 
 export default function Header() {
+  const hoverEffect =
+    "transition-all hover:border-primary-950 hover:[background:radial-gradient(75%_75%_at_50%_50%,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_60%)]";
+
   return (
-    <div className="fixed flex flex-row w-screen h-16 sm:h-[84px] bg-white/70 z-10 text-blue-950">
+    <div className="fixed flex flex-row w-screen h-16 sm:h-[84px] bg-primary-50/90 sm:bg-primary-50/70 z-10 text-primary-900">
       <div id="everythingLeftOfIcon" className="grow flex flex-col mb-2 p-1 ">
         <div id="topRow" className="flex flex-row align-text-bottom pt-2">
           <h1 className="text-xl md:text-4xl font-bold text-left ml-auto">
@@ -26,7 +29,7 @@ export default function Header() {
             return (
               <div
                 key={link.tag}
-                className={`grow text-center transition-all border-b-2 border-transparent hover:border-blue-950 hidden ${link.minSizeToShow}:block`}
+                className={`grow text-center border-b-2 border-transparent ${hoverEffect} hidden ${link.minSizeToShow}:block`}
               >
                 <TextHeaderLink link={link} hideBasedOnSize />
               </div>
@@ -34,14 +37,14 @@ export default function Header() {
           })}
           <div
             key="menu"
-            className="grow text-center transition-all border-b-2 border-transparent hover:border-blue-950 pb-0"
+            className={`grow text-center border-b-2 border-transparent ${hoverEffect} pb-0`}
           >
             <MoreLinksMenu />
           </div>
           <div className="grow" />
         </div>
       </div>
-      <div className="h-[84px] w-[92px] hidden sm:block">
+      <div className="h-[84px] w-[92px] hidden sm:hidden">
         <Link href="/">
           <Image
             priority

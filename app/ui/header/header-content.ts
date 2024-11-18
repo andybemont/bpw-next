@@ -25,7 +25,7 @@ const faq: HeaderLink = {
 };
 const meetTheTeam: HeaderLink = {
   url: "/team",
-  tooltip: "Meet the Team",
+  tooltip: "The Team",
   tag: "team",
   isExternal: false,
   minSizeToShow: "md",
@@ -49,7 +49,7 @@ const contact: HeaderLink = {
 };
 const gallery: HeaderLink = {
   url: "/gallery",
-  tooltip: "Favorite Photos",
+  tooltip: "Galleries & Inspo",
   tag: "gallery",
   isExternal: false,
   minSizeToShow: "sm",
@@ -95,8 +95,8 @@ const headerLinks = {
   contact: contact,
   meetTheTeam: meetTheTeam,
   gallery: gallery,
-  morePictures: morePictures,
-  galleries: galleries,
+  //morePictures: morePictures,
+  //galleries: galleries,
   makeAPayment: makeAPayment,
   instagram: instagram,
 };
@@ -108,8 +108,8 @@ const allHeaderLinks = [
   contact,
   meetTheTeam,
   gallery,
-  morePictures,
-  galleries,
+  //morePictures,
+  //galleries,
   makeAPayment,
   instagram,
 ];
@@ -124,8 +124,8 @@ export {
   contact,
   meetTheTeam,
   gallery,
-  morePictures,
-  galleries,
+  //morePictures,
+  //galleries,
   makeAPayment,
   instagram,
 };

@@ -28,7 +28,7 @@ export function ContactTextField(props: ContactFieldProps) {
   return (
     <div className={`grow pt-2 px-2 w-1/4 min-w-[190px]`}>
       <Label {...props} />
-      <div className={`${noBorderOnFocus} border-b-blue-950 border-b-2`}>
+      <div className={`${noBorderOnFocus} border-b-primary-900 border-b-2`}>
         <input
           id={id}
           className={`w-full m-1 p-0 bg-transparent text-normal border-transparent  ${noBorderOnFocus}`}
@@ -55,7 +55,7 @@ export function ReferenceField(props: ContactFieldProps) {
       <div className={``}>
         <select
           id={id}
-          className={`bg-transparent p-0 text-normal w-full border-blue-950 focus:border-blue-950 focus:ring-0`}
+          className={`bg-transparent p-0 text-normal w-full border-primary-900 focus:border-primary-900 focus:ring-0`}
           required={required}
           autoComplete="false"
           aria-required={required}
@@ -86,7 +86,7 @@ export function ContactTextAreaField(props: ContactFieldProps) {
       <div className={`${noBorderOnFocus} w-full h-full p-0 m-0`}>
         <textarea
           id={id}
-          className={`bg-transparent text-normal h-full resize-none w-full focus:ring-0 border-blue-950 focus:border-blue-950`}
+          className={`bg-transparent text-normal h-full resize-none w-full focus:ring-0 border-primary-900 focus:border-primary-900`}
           required={required}
           autoComplete="false"
           aria-required={required}

@@ -22,23 +22,23 @@ export default function Page() {
           image={namedPortfolioImages.aliciaField}
           positioning="object-bottom"
         >
-          <div className="absolute min-w-[342px] w-1/3 bg-white/50 z-1 max-h-full overflow-y-auto">
+          <div className="absolute min-w-[342px] w-1/3 bg-primary-50/50 z-1 max-h-full overflow-y-auto">
             <OverviewContent />
           </div>
         </SitePage>
       </div>
       <div className="sm:hidden absolute top-[64px]">
-        <FullWidthImage image={namedPortfolioImages.kidsWithDog} />
+        <FullWidthImage image={namedPortfolioImages.aliciaField} />
         <OverviewContent />
-        <FullWidthImage image={namedPortfolioImages.gcvm} />
+        <FullWidthImage image={namedPortfolioImages.kidsWithDog} />
         <FaqContent />
-        <FullWidthImage image={namedPortfolioImages.kacieDip} />
+        <FullWidthImage image={namedPortfolioImages.lydiaFlowers} />
         <PricingContent />
-        <FullWidthImage image={namedPortfolioImages.ilonaInField} />
+        <FullWidthImage image={namedPortfolioImages.kacieDip} />
         <ContactContent />
         <FullWidthImage image={namedPortfolioImages.hyattDip} />
         <TeamContent />
-        <FullWidthImage image={namedPortfolioImages.lydiaFlowers} />
+        <FullWidthImage image={namedPortfolioImages.ilonaInField} />
         {/* More links*/}
       </div>
     </>

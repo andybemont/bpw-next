@@ -4011,6 +4011,10 @@ const namedPortfolioImages = {
   ringShot: pi240616170506,
   gallagherKiss: pi240620201056,
   ilonaInField: pi241006133110,
+  kidsAtPicnicTable: pi241012183332,
+  buttDancing: pi230916202206,
+  conorAndRenee: pi241019195238,
+  dadJokeSpeech: pi240526183731,
 };
 export { allPortfolioImages, namedPortfolioImages };
 export type { PortfolioImage };

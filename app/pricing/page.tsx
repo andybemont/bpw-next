@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SitePage
-      image={namedPortfolioImages.ilonaInField}
-      positioning="object-bottom"
+      image={namedPortfolioImages.lydiaFlowers}
+      positioning="object-top"
     >
-      <div className="absolute min-w-[342px] w-[40%] right-0 top-0 bg-white/50 z-1 overflow-y-auto">
+      <div className="absolute min-w-[342px] w-1/3 left-0 top-0 bg-primary-50/50 z-1 overflow-y-auto">
         <PricingContent />
       </div>
     </SitePage>

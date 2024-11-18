@@ -3,13 +3,13 @@ import Image from "next/image";
 
 export default function FullBackgroundContainer(props: {
   image?: PortfolioImage;
-  positioning: string;
+  positioning?: string;
   children: React.ReactNode;
 }) {
   const { image, children, positioning } = props;
 
   return (
-    <div className="absolute top-0 left-0 bg-blue-950 w-screen h-screen">
+    <div className="absolute top-0 left-0 bg-primary-50 w-screen h-screen">
       {image && (
         <Image
           src={image.image}

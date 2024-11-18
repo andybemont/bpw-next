@@ -4,7 +4,7 @@ import FullBackgroundContainer from "./full-background-container";
 export default function SitePage(props: {
   image?: PortfolioImage;
   children: React.ReactNode;
-  positioning: string;
+  positioning?: string;
 }) {
   const { image, children, positioning } = props;
   return (

@@ -34,7 +34,7 @@ const MoreLinksMenu = () => {
         onClick={handleToggleClick}
       >
         <div className="grow" />
-        <div title={"Menu"} className="text-blue-950 w-4 h-4 sm:hidden">
+        <div title={"Menu"} className="text-primary-900 w-4 h-4 sm:hidden">
           <Image
             src={menuIcon}
             alt="Menu"
@@ -47,7 +47,7 @@ const MoreLinksMenu = () => {
         <div className="grow" />
       </div>
       {showMenu && (
-        <ul className="absolute w-32 min-w-full top-[24px] sm:top-[32px] text-white bg-blue-950/70 text-center">
+        <ul className="absolute w-32 min-w-full top-[24px] sm:top-[32px] text-primary-50 bg-primary-900/70 text-center">
           {allHeaderLinks.map((link) => {
             return (
               <li

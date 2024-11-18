@@ -9,7 +9,7 @@ export default function RangeInput(props: RangeInputProps) {
   return (
     <BaseInput {...props}>
       <input
-        className="w-36 float-left w-full h-4 accent-blue-950 pt-1"
+        className="w-36 float-left w-full h-4 accent-primary-950 pt-1"
         id={controlId}
         defaultValue={defaultValue}
         type="range"
