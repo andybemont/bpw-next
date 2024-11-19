@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import FaqContent from "../ui/faq-content/faq-content";
-import { namedPortfolioImages } from "../lib/best-ofs";
+import namedPortfolioImages from "../lib/named-portfolio-images";
 import SitePage from "../ui/shared/site-page";
 
 const pageTitle = "Rochester Wedding Photography | FAQ | Bemont Photo";

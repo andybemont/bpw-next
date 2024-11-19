@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import OverviewContent from "./ui/overview-content/overview-content";
 import SitePage from "./ui/shared/site-page";
-import { namedPortfolioImages } from "./lib/best-ofs";
+import namedPortfolioImages from "./lib/named-portfolio-images";
 import FaqContent from "./ui/faq-content/faq-content";
 import PricingContent from "./ui/pricing-content/pricing-content";
 import TeamContent from "./ui/team-content/team-content";

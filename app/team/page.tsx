@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import SitePage from "../ui/shared/site-page";
-import { namedPortfolioImages } from "../lib/best-ofs";
+import namedPortfolioImages from "../lib/named-portfolio-images";
 import TeamContent from "../ui/team-content/team-content";
 
 export const metadata: Metadata = {

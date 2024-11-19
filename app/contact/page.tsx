@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import ContactContent from "../ui/contact-content/contact-content";
-import { namedPortfolioImages } from "../lib/best-ofs";
+import namedPortfolioImages from "../lib/named-portfolio-images";
 import SitePage from "../ui/shared/site-page";
 
 export const metadata: Metadata = {
