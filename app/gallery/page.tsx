@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SitePage>
-      <ul className="mt-[-30px] w-full h-full flex flex-row flex-wrap">
+      <ul className="mt-[-30px] w-full h-full flex flex-row flex-wrap text-primary-950">
         {galleries.map((gallery) => {
           return (
             <li
