@@ -1,4 +1,4 @@
-import { faqContent } from "./faqs";
+import { faqContent } from "../../lib/faqs";
 import PartialPanel from "../shared/partialPanel";
 
 export default function FaqContent() {

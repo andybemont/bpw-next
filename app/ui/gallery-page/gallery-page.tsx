@@ -1,4 +1,4 @@
-import { Gallery, allGalleries } from "../../gallery/galleries";
+import { Gallery, allGalleries } from "../../lib/galleries";
 import { allPortfolioImages } from "../../lib/best-ofs";
 import { mainText } from "@/app/ui/fonts";
 import Image from "next/image";
@@ -46,7 +46,7 @@ export default function GalleryPage(props: {
       {nextGallery && (
         <p className="mt-4 text-2xl">
           Or just{" "}
-          <GLink a={"../gallery/" + nextGallery.link}>
+          <GLink a={"../galleries/" + nextGallery.link}>
             look at another gallery!
           </GLink>
         </p>

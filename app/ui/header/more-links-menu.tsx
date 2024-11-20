@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import menuIcon from "../../../public/menu.svg";
-import { allHeaderLinks } from "./header-content";
+import { allHeaderLinks } from "../../lib/header-content";
 import TextHeaderLink from "./text-header-link";
 
 const MoreLinksMenu = () => {

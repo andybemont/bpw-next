@@ -1,4 +1,4 @@
-import TeamMembers from "./team-members";
+import TeamMembers from "../../lib/team-members";
 import Image from "next/image";
 
 export default function TeamContent() {

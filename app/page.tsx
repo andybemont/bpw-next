@@ -27,17 +27,26 @@ export default function Page() {
       </div>
       <div className="sm:hidden absolute top-[64px]">
         <FullWidthImage image={namedPortfolioImages.aliciaField} />
-        <OverviewContent />
+        <div className="bg-slate-400">
+          <OverviewContent />
+        </div>
         <FullWidthImage image={namedPortfolioImages.kidsWithDog} />
-        <FaqContent />
+        <div className="bg-amber-300/80">
+          <FaqContent />
+        </div>
         <FullWidthImage image={namedPortfolioImages.lydiaFlowers} />
-        <PricingContent />
+        <div className="bg-pink-600/40">
+          <PricingContent />
+        </div>
         <FullWidthImage image={namedPortfolioImages.kacieDip} />
-        <ContactContent />
-        <FullWidthImage image={namedPortfolioImages.hyattDip} />
-        <TeamContent />
-        <FullWidthImage image={namedPortfolioImages.ilonaInField} />
-        {/* More links*/}
+        <div className="bg-sky-500/50">
+          <ContactContent />
+        </div>
+
+        {/* <FullWidthImage image={namedPortfolioImages.TEAM} />
+        <div className="bg-lime-100">
+          <TeamContent />
+        </div> */}
       </div>
     </>
   );

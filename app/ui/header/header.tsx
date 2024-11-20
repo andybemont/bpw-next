@@ -2,7 +2,7 @@ import React from "react";
 import Link from "next/link";
 import logo from "../../../public/logo.webp";
 import Image from "next/image";
-import { allHeaderLinks } from "@/app/ui/header/header-content";
+import { allHeaderLinks } from "@/app/lib/header-content";
 import TextHeaderLink from "./text-header-link";
 import MoreLinksMenu from "./more-links-menu";
 

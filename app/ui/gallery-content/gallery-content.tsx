@@ -1,31 +1,31 @@
 import Image from "next/image";
-import { allPortfolioImages } from "@/app/lib/best-ofs";
+import { allGalleries } from "../../lib/galleries";
+import Link from "next/link";
 
 export default function GalleryContent() {
-  let count = 0;
   return (
-    <div className="w-full max-w-screen mx-auto flex">
-      <div className="grow" />
-      <div>
-        {allPortfolioImages
-          .filter((p) => p.rating > 1)
-          .map((p) => {
-            return (
+    <ul className="w-full h-full flex flex-row flex-wrap justify-center">
+      {allGalleries.map((gallery) => {
+        return (
+          <li
+            key={gallery.link}
+            className={`mx-1 mt-1 p-1 pb-2 w-[392px] border-b-2 border-primary-900 transition-all text-primary-900 hover:text-primary-50 hover:bg-primary-950`}
+          >
+            <Link href={"../galleries/" + gallery.link}>
               <Image
-                key={++count}
-                src={p.image}
-                className="pt-4"
-                alt={p.alt}
+                src={gallery.image.image}
+                alt={gallery.image.alt}
                 width={0}
                 height={0}
                 sizes="100vw"
-                style={{ width: "100vh", height: "auto" }} // optional
-                loading="lazy"
+                style={{ width: "392px", height: "auto" }} // optional
               />
-            );
-          })}
-      </div>
-      <div className="grow" />
-    </div>
+              <h3 className="font-bold text-3xl">{gallery.title}</h3>
+              <h4>{gallery.description}</h4>
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
   );
 }

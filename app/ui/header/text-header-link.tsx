@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HeaderLink } from "@/app/ui/header/header-content";
+import { HeaderLink } from "@/app/lib/header-content";
 
 export default function TextHeaderLink(props: {
   link: HeaderLink;

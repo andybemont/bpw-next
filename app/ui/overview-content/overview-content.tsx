@@ -1,5 +1,5 @@
 import React from "react";
-import reasons from "./reasons";
+import reasons from "../../lib/reasons";
 import PartialPanel from "../shared/partialPanel";
 
 export default function OverviewContent() {
