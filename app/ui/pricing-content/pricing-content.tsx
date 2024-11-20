@@ -7,6 +7,7 @@ import RangeInput from "./range-input";
 import Link from "next/link";
 import DateInput from "./date-input";
 import { isDateBooked } from "../../lib/booked-dates";
+import PartialPanel from "../shared/partialPanel";
 
 const googleMapUrl =
   "https://www.google.com/maps/dir/Rochester,+New+York//@42.8955153,-77.9863505,9.25z/data=!4m9!4m8!1m5!1m1!1s0x89d6b3059614b353:0x5a001ffc4125e61e!2m2!1d-77.6088465!2d43.1565779!1m0!3e0!5m1!1e4?entry=ttu&g_ep=EgoyMDI0MTAyOS4wIKXMDSoASAFQAw%3D%3D";
@@ -53,7 +54,7 @@ export default function PricingContent() {
   }, [distance, duration, engagementSession, photographers, priorityEditing]);
 
   return (
-    <div className="text-primary-900 tracking-wider p-2">
+    <PartialPanel>
       <h3 className="text-right text-5xl">Price Calculator</h3>
       <p className="text-right text-4xl">
         Estimate: ${Number.isNaN(totalCost) ? "" : totalCost}
@@ -166,6 +167,6 @@ export default function PricingContent() {
           </div>
         </form>
       </div>
-    </div>
+    </PartialPanel>
   );
 }

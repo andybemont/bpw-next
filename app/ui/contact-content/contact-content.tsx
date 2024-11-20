@@ -9,6 +9,7 @@ import {
   ReferenceField,
   AvailabilityField,
 } from "./contact-field";
+import PartialPanel from "../shared/partialPanel";
 
 export default function ContactContent() {
   const [submitted, setSubmitted] = useState(false);
@@ -80,7 +81,7 @@ export default function ContactContent() {
   };
 
   return (
-    <div className="mx-auto p-2 h-full w-full flex flex-col text-primary-900">
+    <PartialPanel>
       <div className="m-0">
         <h2 className="text-5xl">Contact Us</h2>
       </div>
@@ -155,6 +156,6 @@ export default function ContactContent() {
           </div>
         </form>
       </div>
-    </div>
+    </PartialPanel>
   );
 }

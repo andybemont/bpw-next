@@ -21,7 +21,7 @@ const faq: HeaderLink = {
   tag: "faq",
   isExternal: false,
   minSizeToShow: "sm",
-  showLinkOnMobile: false,
+  showLinkOnMobile: true,
 };
 const meetTheTeam: HeaderLink = {
   url: "/team",
@@ -29,7 +29,7 @@ const meetTheTeam: HeaderLink = {
   tag: "team",
   isExternal: false,
   minSizeToShow: "md",
-  showLinkOnMobile: false,
+  showLinkOnMobile: true,
 };
 const pricing: HeaderLink = {
   url: "/pricing",
@@ -37,7 +37,7 @@ const pricing: HeaderLink = {
   tag: "pricing",
   isExternal: false,
   minSizeToShow: "sm",
-  showLinkOnMobile: false,
+  showLinkOnMobile: true,
 };
 const contact: HeaderLink = {
   url: "/contact",
@@ -45,7 +45,7 @@ const contact: HeaderLink = {
   tag: "contact",
   isExternal: false,
   minSizeToShow: "sm",
-  showLinkOnMobile: false,
+  showLinkOnMobile: true,
 };
 const gallery: HeaderLink = {
   url: "/gallery",
@@ -53,24 +53,24 @@ const gallery: HeaderLink = {
   tag: "gallery",
   isExternal: false,
   minSizeToShow: "sm",
-  showLinkOnMobile: false,
-};
-const morePictures: HeaderLink = {
-  url: "https://gallery.bemontphoto.com/favorites/",
-  tooltip: "Extended Portfolio",
-  tag: "morePictures",
-  isExternal: true,
-  minSizeToShow: "3xl",
   showLinkOnMobile: true,
 };
-const galleries: HeaderLink = {
-  url: "https://gallery.bemontphoto.com/",
-  tooltip: "Full Galleries",
-  tag: "galleries",
-  isExternal: true,
-  minSizeToShow: "3xl",
-  showLinkOnMobile: true,
-};
+// const morePictures: HeaderLink = {
+//   url: "https://gallery.bemontphoto.com/favorites/",
+//   tooltip: "Extended Portfolio",
+//   tag: "morePictures",
+//   isExternal: true,
+//   minSizeToShow: "3xl",
+//   showLinkOnMobile: true,
+// };
+// const galleries: HeaderLink = {
+//   url: "https://gallery.bemontphoto.com/",
+//   tooltip: "Full Galleries",
+//   tag: "galleries",
+//   isExternal: true,
+//   minSizeToShow: "3xl",
+//   showLinkOnMobile: true,
+// };
 const makeAPayment: HeaderLink = {
   url: "https://www.paypal.me/BemontPhoto",
   tooltip: "Make a Payment",

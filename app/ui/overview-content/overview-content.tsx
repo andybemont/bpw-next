@@ -1,11 +1,12 @@
 import React from "react";
 import reasons from "./reasons";
+import PartialPanel from "../shared/partialPanel";
 
 export default function OverviewContent() {
   var count = 0;
 
   return (
-    <div className="text-primary-900 p-2 tracking-wide max-h-full">
+    <PartialPanel>
       <h3 className="font-title text-4xl font-bold">Wedding Photography</h3>
       <hr className="h-1 mb-2 bg-primary-800 border-0 " />
       <p className="grow pb-4 font-title">
@@ -24,6 +25,6 @@ export default function OverviewContent() {
           </span>
         );
       })}
-    </div>
+    </PartialPanel>
   );
 }

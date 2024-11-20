@@ -12,12 +12,12 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SitePage>
-      <ul className="mt-[-30px] w-full h-full flex flex-row flex-wrap justify-center">
+      <ul className="w-full h-full flex flex-row flex-wrap justify-center">
         {allGalleries.map((gallery) => {
           return (
             <li
               key={gallery.link}
-              className="mx-1 mt-1 p-1 pb-2 w-[392px] border-b-2 border-primary-900 transition-all text-primary-900 hover:text-primary-50 hover:bg-primary-950"
+              className={`mx-1 mt-1 p-1 pb-2 w-[392px] border-b-2 border-primary-900 transition-all text-primary-900 hover:text-primary-50 hover:bg-primary-950`}
             >
               <Link href={"./gallery/" + gallery.link}>
                 <Image

@@ -22,9 +22,7 @@ export default function Page() {
           image={namedPortfolioImages.aliciaField}
           positioning="object-bottom"
         >
-          <div className="absolute min-w-[342px] w-1/3 bg-primary-50/50 z-1 max-h-full overflow-y-auto">
-            <OverviewContent />
-          </div>
+          <OverviewContent />
         </SitePage>
       </div>
       <div className="sm:hidden absolute top-[64px]">

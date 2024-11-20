@@ -12,9 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SitePage image={namedPortfolioImages.ringShot} positioning="object-center">
-      <div className="w-full max-h-full z-1 absolute top-0 overflow-y-auto flex flex-row flex-wrap justify-evenly">
-        <TeamContent />
-      </div>
+      <TeamContent />
     </SitePage>
   );
 }

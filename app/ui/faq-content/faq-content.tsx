@@ -1,10 +1,11 @@
 import { faqContent } from "./faqs";
+import PartialPanel from "../shared/partialPanel";
 
 export default function FaqContent() {
   let count = 0;
 
   return (
-    <div className="text-primary-900 p-2 tracking-wide max-h-full">
+    <PartialPanel>
       <h3 className="font-title text-4xl font-bold">Common Questions</h3>
       <h4 className="text-xl font-title">Everything You Need To Know</h4>
       <hr className="h-1 mb-2 bg-primary-800 border-0 " />
@@ -16,6 +17,6 @@ export default function FaqContent() {
           </h5>
         );
       })}
-    </div>
+    </PartialPanel>
   );
 }

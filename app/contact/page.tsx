@@ -12,9 +12,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SitePage image={namedPortfolioImages.kacieDip} positioning="object-center">
-      <div className="absolute min-w-[342px] w-1/3 bg-primary-50/50 z-1 h-full">
-        <ContactContent />
-      </div>
+      <ContactContent />
     </SitePage>
   );
 }
