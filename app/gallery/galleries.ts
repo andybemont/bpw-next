@@ -7,9 +7,7 @@ export type Gallery = {
   description: string;
   link: string;
   filter: (source: PortfolioImage[]) => PortfolioImage[];
-  textColor?: string;
-  bgColor?: string;
-  accentColor?: string;
+  colorTailwind?: string;
 };
 
 const galleries = {
@@ -20,9 +18,7 @@ const galleries = {
       "Some of Bemont Photo's most memorable wedding pictures since 2018",
     link: "favorite-wedding-photos",
     filter: (images) => images.filter((i) => i.rating > 1),
-    textColor: "blue-50",
-    bgColor: "blue-950",
-    accentColor: "slate-400",
+    colorTailwind: "text-black bg-white border-red-600",
   } as Gallery,
   kids: {
     image: namedPortfolioImages.kidsAtPicnicTable,
@@ -31,9 +27,7 @@ const galleries = {
     link: "kids-at-weddings",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Kids")),
-    textColor: "red-950",
-    bgColor: "red-100",
-    accentColor: "slate-400",
+    colorTailwind: "text-orange-950 bg-orange-200 border-orange-800",
   } as Gallery,
   field: {
     image: namedPortfolioImages.gcvm,
@@ -42,14 +36,16 @@ const galleries = {
     link: "photos-in-fields",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Field")),
+    colorTailwind: "text-amber-900 bg-amber-100 border-amber-900",
   } as Gallery,
   rowdyDancing: {
-    image: namedPortfolioImages.buttDancing,
+    image: namedPortfolioImages.mimiPartying,
     title: "Dance Party",
     description: "When we leave our dignity back at the table",
     link: "dancing-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Rowdy Dancing")),
+    colorTailwind: "text-red-600 bg-neutral-950 border-white",
   } as Gallery,
   animals: {
     image: namedPortfolioImages.kidsWithDog,
@@ -58,6 +54,7 @@ const galleries = {
     link: "animal-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Animals")),
+    colorTailwind: "text-indigo-950 bg-indigo-200 border-indigo-950",
   } as Gallery,
   parentDances: {
     image: namedPortfolioImages.conorAndRenee,
@@ -66,6 +63,7 @@ const galleries = {
     link: "parent-dance-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Parent Dance")),
+    colorTailwind: "text-amber-100 bg-slate-900 border-amber-800",
   } as Gallery,
   rings: {
     image: namedPortfolioImages.ringShot,
@@ -74,6 +72,7 @@ const galleries = {
     link: "wedding-ring-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Rings")),
+    colorTailwind: "text-rose-950 bg-rose-200 border-rose-950",
   } as Gallery,
   speeches: {
     image: namedPortfolioImages.dadJokeSpeech,
@@ -82,6 +81,7 @@ const galleries = {
     link: "wedding-speech-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Speeches")),
+    colorTailwind: "text-orange-100 bg-sky-950 border-orange-100",
   } as Gallery,
   wintergarden: {
     image: namedPortfolioImages.wintergardenFirstDance,
@@ -89,6 +89,7 @@ const galleries = {
     description: "Downtown Rochester, NY",
     link: "wintergarden-wedding-photos",
     filter: (images) => images.filter((i) => i.venue === "Wintergarden"),
+    colorTailwind: "text-lime-950 bg-lime-50 border-lime-950",
   } as Gallery,
   firstDances: {
     image: namedPortfolioImages.amandaFirstDance,
@@ -97,6 +98,7 @@ const galleries = {
     link: "first-dance-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "First Dance")),
+    colorTailwind: "text-yellow-500 bg-zinc-950 border-yellow-500",
   } as Gallery,
   grandFinales: {
     image: namedPortfolioImages.ravenwoodFirstKiss,
@@ -105,6 +107,7 @@ const galleries = {
     link: "first-kiss-and-recessionals",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Grand Finale")),
+    colorTailwind: "text-stone-950 bg-stone-200 border-green-800",
   } as Gallery,
   ravenwood: {
     image: namedPortfolioImages.kenseyParentDance,
@@ -112,6 +115,7 @@ const galleries = {
     description: "Victor, NY",
     link: "ravenwood-wedding-photos",
     filter: (images) => images.filter((i) => i.venue === "Ravenwood"),
+    colorTailwind: "text-amber-950 bg-amber-100 border-amber-950",
   } as Gallery,
   otherDetails: {
     image: namedPortfolioImages.lemonTable,
@@ -120,6 +124,7 @@ const galleries = {
     link: "wedding-decor",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Other Details")),
+    colorTailwind: "text-pink-100 bg-pink-900 border-pink-100",
   } as Gallery,
   flowers: {
     image: namedPortfolioImages.bouquetHandHold,
@@ -128,6 +133,7 @@ const galleries = {
     link: "wedding-flower-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Flowers")),
+    colorTailwind: "text-white bg-green-950 border-white",
   } as Gallery,
   extraCheese: {
     image: namedPortfolioImages.kacieVeilKiss,
@@ -136,6 +142,7 @@ const galleries = {
     link: "romantic-wedding-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Extra Cheese")),
+    colorTailwind: "text-white bg-sky-950 border-white",
   } as Gallery,
   processionals: {
     image: namedPortfolioImages.bubblePoke,
@@ -144,6 +151,7 @@ const galleries = {
     link: "processional-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Processional")),
+    colorTailwind: "text-violet-800 bg-green-50 border-violet-800",
   } as Gallery,
   blackAndWhite: {
     image: namedPortfolioImages.blackAndWhiteKids,
@@ -152,14 +160,16 @@ const galleries = {
     link: "black-and-white-wedding-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Black and White")),
+    colorTailwind: "text-neutral-800 bg-neutral-300 border-neutral-800",
   } as Gallery,
   gettingReady: {
     image: namedPortfolioImages.chelseaGettingReady,
     title: "Getting Ready",
-    description: "No falsies too long",
+    description: "When all your dangerous fasting pays off",
     link: "getting-ready-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Getting Ready")),
+    colorTailwind: "text-stone-200 bg-stone-600 border-emerald-950",
   } as Gallery,
   gallagher: {
     image: namedPortfolioImages.gallagherKiss,
@@ -167,6 +177,7 @@ const galleries = {
     description: "Medina, NY",
     link: "gallagher-wedding-photos",
     filter: (images) => images.filter((i) => i.venue === "The Gallagher"),
+    colorTailwind: "text-slate-300 bg-slate-700 border-slate-950",
   } as Gallery,
   dessert: {
     image: namedPortfolioImages.niceCake,
@@ -175,6 +186,7 @@ const galleries = {
     link: "wedding-desserts",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Dessert")),
+    colorTailwind: "text-orange-900 bg-violet-100 border-orange-900",
   } as Gallery,
   figHollow: {
     image: namedPortfolioImages.figHollowDance,
@@ -182,6 +194,7 @@ const galleries = {
     description: "Palmyra, NY",
     link: "fig-hollow-wedding-photos",
     filter: (images) => images.filter((i) => i.venue === "Fig Hollow"),
+    colorTailwind: "text-black bg-emerald-50 border-emerald-800",
   } as Gallery,
 
   otherCandids: {
@@ -191,6 +204,7 @@ const galleries = {
     link: "candid-wedding-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Other Candids")),
+    colorTailwind: "text-white bg-indigo-950 border-white",
   } as Gallery,
 
   ceremony: {
@@ -200,15 +214,17 @@ const galleries = {
     link: "wedding-ceremony-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Ceremony")),
+    colorTailwind: "text-zinc-200 bg-zinc-950 border-zinc-200",
   } as Gallery,
 
   firstLook: {
     image: namedPortfolioImages.keukaFirstLook,
     title: "First Looks",
-    description: "...and they'd better cry a lot",
+    description: "...they'd better cry a lot",
     link: "first-look-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "First Look")),
+    colorTailwind: "text-red-900 bg-zinc-50 border-red-800",
   } as Gallery,
 
   happyCouple: {
@@ -219,6 +235,7 @@ const galleries = {
     link: "happy-wedding-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Happy Couple")),
+    colorTailwind: "text-teal-50 bg-teal-950 border-teal-50",
   } as Gallery,
 
   lookingAtCamera: {
@@ -229,6 +246,7 @@ const galleries = {
     link: "posed-wedding-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Looking at Camera")),
+    colorTailwind: "text-sky-900 bg-sky-100 border-sky-800",
   } as Gallery,
 
   natural: {
@@ -238,15 +256,17 @@ const galleries = {
     link: "natural-wedding-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Natural Couple")),
+    colorTailwind: "text-lime-950 bg-gray-50 border-lime-500",
   } as Gallery,
 
   silly: {
-    image: namedPortfolioImages.mimiPartying,
+    image: namedPortfolioImages.buttDancing,
     title: "Silly Stuff",
-    description: "These generally aren't dry weddings",
+    description: "They aren't taking this seriously...",
     link: "silly-wedding-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Silly")),
+    colorTailwind: "text-fuchsia-900 bg-fuchsia-100 border-fuchsia-500",
   } as Gallery,
 };
 

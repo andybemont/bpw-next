@@ -35,13 +35,13 @@ export default function GalleryPage(props: {
     <>
       <p>
         We would love to see you and your people in{" "}
-        <GLink a={"../gallery"}>our galleries</GLink>! If you love our pictures
+        <GLink a={"../gallery"}>our galleries</GLink>! If you like our pictures
         and think we might be the right photographers for your wedding day,{" "}
         <GLink a={"../contact"}>get in touch</GLink>! While you're waiting for a
         prompt reply, you can <GLink a={"../team"}>learn more about us</GLink>,{" "}
         <GLink a={"../pricing"}>price out your perfect package</GLink>, and read
-        more about <GLink a={"../"}>why we're so amazing</GLink> (according to
-        us, anyway).
+        more about <GLink a={"../"}>why we're a great choice</GLink> (not that
+        we're biased).
       </p>
       {nextGallery && (
         <p className="mt-4 text-2xl">
@@ -57,13 +57,13 @@ export default function GalleryPage(props: {
   var count = 0;
   return (
     <div
-      className={`absolute top-0 left-0 bg-${gallery.bgColor} text-${gallery.textColor} ${mainText.className} tracking-tighter w-screen`}
+      className={`absolute top-0 left-0 ${gallery.colorTailwind} ${mainText.className} tracking-tighter w-screen`}
     >
       <div className="mt-[96px] w-full flex flex-col justify-around text-center px-1">
         <div className="max-w-[600px] mx-auto px-2">
-          <h3 className="text-5xl pb-2">{gallery.title}</h3>
+          <h3 className="text-5xl pb-2 text-pretty">{gallery.title}</h3>
           <h4
-            className={`text-3xl py-2 border-y-2 border-y-${gallery.accentColor}`}
+            className={`text-3xl py-2 border-y-2 ${gallery.colorTailwind} text-pretty`}
           >
             {gallery.description}
           </h4>
@@ -91,7 +91,7 @@ export default function GalleryPage(props: {
         </ul>
 
         <div
-          className={`max-w-[600px] mx-auto px-2 border-y-2 border-y-${gallery.accentColor} my-4`}
+          className={`max-w-[600px] mx-auto px-2 border-y-2 ${gallery.colorTailwind} my-4`}
         >
           <div className="text-justify my-1">
             <h5>{callToAction}</h5>

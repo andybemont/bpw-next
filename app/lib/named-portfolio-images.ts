@@ -27,7 +27,7 @@ const namedPortfolioImages = {
   kenseyParentDance: bestOfs.pi230722184358,
   wintergardenFirstDance: bestOfs.pi220226201840,
   figHollowDance: bestOfs.pi230812191914,
-  mimiPartying: bestOfs.pi220625202339,
+  mimiPartying: bestOfs.pi220625205254,
   rozGian: bestOfs.pi210904184154,
   abbyWintergarden: bestOfs.pi240526193816,
   beaverFlowers: bestOfs.pi190921142949,
