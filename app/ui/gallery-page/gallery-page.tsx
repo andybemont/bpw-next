@@ -57,12 +57,14 @@ export default function GalleryPage(props: {
   var count = 0;
   return (
     <div
-      className={`absolute top-0 left-0 bg-primary-950 text-primary-100 ${mainText.className} tracking-tighter w-screen`}
+      className={`absolute top-0 left-0 bg-${gallery.bgColor} text-${gallery.textColor} ${mainText.className} tracking-tighter w-screen`}
     >
       <div className="mt-[96px] w-full flex flex-col justify-around text-center px-1">
         <div className="max-w-[600px] mx-auto px-2">
           <h3 className="text-5xl pb-2">{gallery.title}</h3>
-          <h4 className="text-3xl py-2 border-y-2 border-y-primary-500">
+          <h4
+            className={`text-3xl py-2 border-y-2 border-y-${gallery.accentColor}`}
+          >
             {gallery.description}
           </h4>
           <div className="text-justify my-4">
@@ -88,7 +90,9 @@ export default function GalleryPage(props: {
           })}
         </ul>
 
-        <div className="max-w-[600px] mx-auto px-2 border-y-2 border-y-primary-500 my-4">
+        <div
+          className={`max-w-[600px] mx-auto px-2 border-y-2 border-y-${gallery.accentColor} my-4`}
+        >
           <div className="text-justify my-1">
             <h5>{callToAction}</h5>
           </div>

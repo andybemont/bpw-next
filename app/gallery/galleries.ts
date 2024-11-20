@@ -7,6 +7,9 @@ export type Gallery = {
   description: string;
   link: string;
   filter: (source: PortfolioImage[]) => PortfolioImage[];
+  textColor?: string;
+  bgColor?: string;
+  accentColor?: string;
 };
 
 const galleries = {
@@ -17,6 +20,9 @@ const galleries = {
       "Some of Bemont Photo's most memorable wedding pictures since 2018",
     link: "favorite-wedding-photos",
     filter: (images) => images.filter((i) => i.rating > 1),
+    textColor: "blue-50",
+    bgColor: "blue-950",
+    accentColor: "slate-400",
   } as Gallery,
   kids: {
     image: namedPortfolioImages.kidsAtPicnicTable,
@@ -25,6 +31,9 @@ const galleries = {
     link: "kids-at-weddings",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Kids")),
+    textColor: "red-950",
+    bgColor: "red-100",
+    accentColor: "slate-400",
   } as Gallery,
   field: {
     image: namedPortfolioImages.gcvm,
