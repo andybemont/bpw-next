@@ -9,8 +9,7 @@ import MoreLinksMenu from "./more-links-menu";
 export const MenuHeight = "128px";
 
 export default function Header() {
-  const hoverEffect =
-    "transition-all hover:border-primary-950 hover:[background:radial-gradient(75%_75%_at_50%_50%,rgba(255,255,255,1)_0%,rgba(255,255,255,0)_60%)]";
+  const hoverEffect = "transition-all hover:border-primary-950";
 
   return (
     <div className="fixed flex flex-row w-screen h-16 sm:h-[84px] bg-primary-50/90 sm:bg-primary-50/70 z-10 text-primary-900">

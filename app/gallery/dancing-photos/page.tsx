@@ -1,21 +1,12 @@
 import { Metadata } from "next";
-import galleries, { Gallery } from "../galleries";
+import galleries from "../galleries";
 import GalleryContent from "../../ui/gallery-page/gallery-page";
-import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Rochester Wedding Photography | XXXXX | Bemont Photo",
-  description: "XXXXX",
+  title: "Rochester Wedding Photography | Dance Party | Bemont Photo",
+  description: "A collection of wedding photography featuring wild dancing",
 };
 
 export default function Page() {
-  return (
-    <GalleryContent
-      gallery={galleries.rowdyDancing}
-      text=<p>
-        Test content
-        <Link href="./test">with a link</Link>
-      </p>
-    />
-  );
+  return <GalleryContent gallery={galleries.rowdyDancing} />;
 }
