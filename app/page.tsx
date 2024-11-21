@@ -4,10 +4,11 @@ import SitePage from "./ui/shared/site-page";
 import namedPortfolioImages from "./lib/named-portfolio-images";
 import FaqContent from "./ui/faq-content/faq-content";
 import PricingContent from "./ui/pricing-content/pricing-content";
+import GalleryContent from "./ui/gallery-content/gallery-content";
 import TeamContent from "./ui/team-content/team-content";
 import ContactContent from "./ui/contact-content/contact-content";
 import FullWidthImage from "./ui/shared/full-width-image";
-
+import Link from "next/link";
 export const metadata: Metadata = {
   title:
     "Rochester Wedding Photography | Packages and Availability | Bemont Photo",
@@ -42,11 +43,14 @@ export default function Page() {
         <div className="bg-sky-500/50">
           <ContactContent />
         </div>
-
         {/* <FullWidthImage image={namedPortfolioImages.TEAM} />
         <div className="bg-lime-100">
           <TeamContent />
         </div> */}
+        <Link href="./gallery">
+          <h3 className="mt-2 text-center text-3xl">More Pictures!</h3>
+        </Link>
+        <GalleryContent />
       </div>
     </>
   );

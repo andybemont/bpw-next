@@ -20,7 +20,7 @@ export default function GalleryContent() {
                 sizes="100vw"
                 style={{ width: "392px", height: "auto" }} // optional
               />
-              <h3 className="font-bold text-3xl">{gallery.title}</h3>
+              <h3 className="font-bold text-3xl">{gallery.title + " >"}</h3>
               <h4>{gallery.description}</h4>
             </Link>
           </li>
