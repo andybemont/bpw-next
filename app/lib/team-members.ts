@@ -5,10 +5,7 @@ import gillianPic from "../../public/team/gillian.jpg";
 
 export type TeamMember = {
   name: string;
-  title: string;
   email: string;
-  phone: string;
-  photo: StaticImageData;
   likes: string;
   dislikes: string;
 };
@@ -16,33 +13,23 @@ export type TeamMember = {
 const TeamMembers: TeamMember[] = [
   {
     name: "Carly Straight",
-    title:
-      "Wedding Photographer, Principal Photographer for family, engagement, and senior portrait sessions",
     email: "carly@bemontphoto.com",
-    phone: "585-755-7665",
-    photo: carlyPic,
     likes: "Cats, Scary Movies, Every Food, When the Sky is Pretty, Bedtime",
     dislikes:
       "Loud Noises, Losing Sunglasses, Slow Walkers, the Sound of Chewing",
   },
   {
     name: "Andy Bemont",
-    title: "Owner, Principal Wedding Photographer",
     email: "andy@bemontphoto.com",
-    phone: "585-590-0570",
-    photo: andyPic,
     likes:
       "Mario Kart, Pink Floyd, cheeseburgers, cats, mulch, sci-fi, naps, crossbreezes, cars",
     dislikes: "Centipedes, wasps, scorpions, maggots, botflies, eggplant",
   },
   {
     name: "Gillian Bemont",
-    title: "Owner, Second Shooter, Editor",
     email: "gillianbemont@gmail.com",
-    phone: "315-871-9503",
-    photo: gillianPic,
     likes:
-      "Birds, a lake, flowers, just resting her eyes for a bit, bread, singing, kids, every dog, true crime, dry erase markers",
+      "Birds, flowers, just resting her eyes for a bit, bread, a lake, singing, kids, every dog, true crime, dry erase markers",
     dislikes: "Olives, touching flour, cockroaches, chores, surprises",
   },
 ];

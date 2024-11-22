@@ -22,12 +22,13 @@ export default function Page() {
         <SitePage
           image={namedPortfolioImages.aliciaField}
           positioning="object-bottom"
+          priority
         >
           <OverviewContent />
         </SitePage>
       </div>
       <div className="sm:hidden absolute top-[64px]">
-        <FullWidthImage image={namedPortfolioImages.aliciaField} />
+        <FullWidthImage image={namedPortfolioImages.aliciaField} priority />
         <div className="bg-slate-400">
           <OverviewContent />
         </div>
@@ -40,13 +41,13 @@ export default function Page() {
           <PricingContent />
         </div>
         <FullWidthImage image={namedPortfolioImages.kacieDip} />
-        <div className="bg-sky-500/50">
+        <div className="bg-sky-500/30">
           <ContactContent />
         </div>
-        {/* <FullWidthImage image={namedPortfolioImages.TEAM} />
-        <div className="bg-lime-100">
+        <FullWidthImage image={namedPortfolioImages.team} />
+        <div className="bg-red-100">
           <TeamContent />
-        </div> */}
+        </div>
         <Link href="./gallery">
           <h3 className="mt-2 text-center text-3xl">More Pictures!</h3>
         </Link>

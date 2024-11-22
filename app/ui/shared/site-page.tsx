@@ -5,8 +5,9 @@ export default function SitePage(props: {
   image?: PortfolioImage;
   children: React.ReactNode;
   positioning?: string;
+  priority?: boolean;
 }) {
-  const { image, children, positioning } = props;
+  const { image, children, positioning, priority } = props;
   return (
     <>
       <div className="hidden sm:block">
@@ -15,6 +16,7 @@ export default function SitePage(props: {
             <Image
               src={image.image}
               alt={image.alt}
+              priority={priority}
               className={`w-screen h-screen object-cover ${positioning} z-0`}
             />
           )}

@@ -1,6 +1,15 @@
 import * as bestOfs from "./best-ofs";
+import teamPhoto from "../../public/team/photo.jpg";
 
 const namedPortfolioImages = {
+  team: {
+    image: teamPhoto,
+    alt: "The Bemont Photo Team | Rochester Wedding Photography",
+    keywords: [],
+    caption: "",
+    venue: "",
+    rating: 0,
+  },
   hyattDip: bestOfs.pi190526154446,
   gcvm: bestOfs.pi190713180705,
   lydiaFlowers: bestOfs.pi210516145713,
