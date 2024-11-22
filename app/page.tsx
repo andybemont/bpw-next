@@ -10,9 +10,11 @@ import ContactContent from "./ui/contact-content/contact-content";
 import FullWidthImage from "./ui/shared/full-width-image";
 import Link from "next/link";
 export const metadata: Metadata = {
-  title:
-    "Rochester Wedding Photography | Packages and Availability | Bemont Photo",
+  title: "Rochester Wedding Photography | Packages and Availability",
   description: "Great wedding photography team for all of Upstate New York.",
+  alternates: {
+    canonical: "https://www.bemontphoto.com",
+  },
 };
 
 export default function Page() {
@@ -48,9 +50,6 @@ export default function Page() {
         <div className="bg-red-100">
           <TeamContent />
         </div>
-        <Link href="./gallery">
-          <h3 className="mt-2 text-center text-3xl">More Pictures!</h3>
-        </Link>
         <GalleryContent />
       </div>
     </>

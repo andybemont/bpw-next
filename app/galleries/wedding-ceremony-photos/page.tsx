@@ -3,9 +3,12 @@ import galleries from "../../lib/galleries";
 import GalleryContent from "../../ui/gallery-page/gallery-page";
 
 export const metadata: Metadata = {
-  title: "Rochester Wedding Photography | Ceremony | Bemont Photo",
+  title: "Rochester Wedding Photography | Ceremony",
   description:
     "A collection of wedding photography featuring the actual ceremony",
+  alternates: {
+    canonical: "https://www.bemontphoto.com/galleries/wedding-ceremony-photos",
+  },
 };
 
 export default function Page() {

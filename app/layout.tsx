@@ -11,8 +11,8 @@ export const metadata: Metadata = {
       "Wedding Photography for Rochester, Buffalo, and the Finger Lakes",
     url: "https://www.bemontphoto.com",
     images: {
-      url: "/portfolio/BPBO5-1140.jpg",
-      alt: "Wedding Photography by Bemont Photo",
+      url: "/portfolio/bemont-photo-230916191334.jpg",
+      alt: "Rochester Wedding Photography by Bemont Photo",
     },
   },
 };

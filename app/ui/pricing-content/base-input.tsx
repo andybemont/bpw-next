@@ -42,9 +42,9 @@ export default function BaseInput(props: BaseInputProps) {
           <div className="w-36">{children}</div>
         </div>
       </div>
-      <div className="mx-auto mb-2 px-4 text-center text-justify text-sm">
+      <h3 className="mx-auto mb-2 px-4 text-center text-justify text-sm">
         {explanation}
-      </div>
+      </h3>
     </div>
   );
 }

@@ -55,8 +55,11 @@ export default function PricingContent() {
 
   return (
     <PartialPanel>
-      <h3 className="text-right text-5xl">Price Calculator</h3>
-      <p className="text-right text-4xl">
+      <h1 className="text-center text-4xl">Wedding Photography Pricing</h1>
+      <h2 className="text-center text-xl">
+        Check availability and build your perfect package
+      </h2>
+      <p className="text-center text-pink-700 text-4xl">
         Estimate: ${Number.isNaN(totalCost) ? "" : totalCost}
       </p>
       <div className="text-lg w-full">

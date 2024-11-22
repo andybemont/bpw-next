@@ -14,8 +14,7 @@ const galleries = {
   favorites: {
     image: namedPortfolioImages.hyattDip,
     title: "Our Favorites",
-    description:
-      "Some of Bemont Photo's most memorable wedding pictures since 2018",
+    description: "Some of Bemont Photo's most memorable wedding pictures",
     link: "favorite-wedding-photos",
     filter: (images) => images.filter((i) => i.rating > 1),
     colorTailwind: "text-black bg-white border-red-600",

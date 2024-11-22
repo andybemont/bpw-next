@@ -61,15 +61,15 @@ export default function GalleryPage(props: {
     >
       <div className="mt-[96px] w-full flex flex-col justify-around text-center px-1">
         <div className="max-w-[600px] mx-auto px-2">
-          <h3 className="text-5xl pb-2 text-pretty">{gallery.title}</h3>
-          <h4
+          <h1 className="text-5xl pb-2 text-pretty">{gallery.title}</h1>
+          <h2
             className={`text-3xl py-2 border-y-2 ${gallery.colorTailwind} text-pretty`}
           >
             {gallery.description}
-          </h4>
+          </h2>
           <div className="text-justify my-4">
-            {text && <h5>text</h5>}
-            <h5>{callToAction}</h5>
+            {text && <h3>{text}</h3>}
+            <h3>{callToAction}</h3>
           </div>
         </div>
         <ul className=" w-full h-full flex flex-row flex-wrap justify-center">
@@ -85,7 +85,7 @@ export default function GalleryPage(props: {
                   sizes="100vw"
                   style={{ width: "100%", maxWidth: "600px", height: "auto" }} // optional
                 />
-                <h5 className="text-center text-sm">{image.caption}</h5>
+                <h4 className="text-center text-sm">{image.caption}</h4>
               </li>
             );
           })}

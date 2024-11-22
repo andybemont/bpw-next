@@ -82,79 +82,84 @@ export default function ContactContent() {
 
   return (
     <PartialPanel>
-      <div className="m-0">
-        <h2 className="text-5xl">Contact Us</h2>
-      </div>
-      <div className="formContainer grow">
-        <form
-          onChange={handleChange}
-          onSubmit={handleSubmit}
-          className="h-full flex flex-col"
-        >
-          <div className="w-full flex flex-row flex-wrap">
-            <ContactTextField
-              id="name"
-              caption="Name"
-              required
-              register={register}
-            />
-            <ContactTextField
-              id="phone"
-              caption="Phone"
-              required={false}
-              register={register}
-            />
-            <ContactTextField
-              id="email"
-              caption="Email Address"
-              required
-              register={register}
-            />
-            <ReferenceField
-              id="reference"
-              required={false}
-              caption="How Did You Find Us?"
-              register={register}
-            />
-            <AvailabilityField
-              id="date"
-              required={false}
-              caption="When's Your Wedding?"
-              register={register}
-              isDateBooked={dateBooked}
-            />
-          </div>
-          <div className="grow flex flex-col">
-            <ContactTextAreaField
-              id="message"
-              caption="Write a message"
-              required
-              register={register}
-            />
-          </div>
-          <div className="max-h-16">
-            <div aria-disabled="true" className="mx-auto w-36 mt-4">
-              {submitted && !formHasInfo && (
-                <button
-                  className="bg-primary-900 text-primary-50 rounded-3xl w-36 h-12 text-2xl"
-                  disabled
-                >
-                  Thank You!
-                </button>
-              )}
-              {(!submitted || formHasInfo) && (
-                <button
-                  className="bg-primary-900 text-primary-50 rounded-3xl w-36 h-12 text-2xl disabled:bg-gray-600"
-                  disabled={!isValid}
-                  onClick={handleSubmit}
-                >
-                  {submitted && !formHasInfo && "Thank You!"}
-                  {(!submitted || formHasInfo) && "send it!"}
-                </button>
-              )}
+      <div className="bg-white/60 text-orange-700">
+        <div className="m-0 p-2">
+          <h1 className="text-3xl">Contact Your Wedding Photographers</h1>
+          <h2 className="text-xl text-primary-700">
+            Check our availability and get in touch today!
+          </h2>
+        </div>
+        <div className="formContainer grow">
+          <form
+            onChange={handleChange}
+            onSubmit={handleSubmit}
+            className="h-full flex flex-col"
+          >
+            <div className="w-full flex flex-row flex-wrap">
+              <ContactTextField
+                id="name"
+                caption="Name"
+                required
+                register={register}
+              />
+              <ContactTextField
+                id="phone"
+                caption="Phone"
+                required={false}
+                register={register}
+              />
+              <ContactTextField
+                id="email"
+                caption="Email Address"
+                required
+                register={register}
+              />
+              <ReferenceField
+                id="reference"
+                required={false}
+                caption="How Did You Find Us?"
+                register={register}
+              />
+              <AvailabilityField
+                id="date"
+                required={false}
+                caption="When's Your Wedding?"
+                register={register}
+                isDateBooked={dateBooked}
+              />
             </div>
-          </div>
-        </form>
+            <div className="grow flex flex-col">
+              <ContactTextAreaField
+                id="message"
+                caption="Write a message"
+                required
+                register={register}
+              />
+            </div>
+            <div className="max-h-16">
+              <div aria-disabled="true" className="mx-auto w-36 mt-4">
+                {submitted && !formHasInfo && (
+                  <button
+                    className="bg-primary-900 text-primary-50 rounded-3xl w-36 h-12 text-2xl"
+                    disabled
+                  >
+                    Thank You!
+                  </button>
+                )}
+                {(!submitted || formHasInfo) && (
+                  <button
+                    className="bg-primary-900 text-primary-50 rounded-3xl w-36 h-12 text-2xl disabled:bg-gray-600"
+                    disabled={!isValid}
+                    onClick={handleSubmit}
+                  >
+                    {submitted && !formHasInfo && "Thank You!"}
+                    {(!submitted || formHasInfo) && "send it!"}
+                  </button>
+                )}
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     </PartialPanel>
   );

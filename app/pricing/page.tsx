@@ -4,9 +4,12 @@ import namedPortfolioImages from "../lib/named-portfolio-images";
 import SitePage from "../ui/shared/site-page";
 
 export const metadata: Metadata = {
-  title: "Rochester Wedding Photography | Pricing | Bemont Photo",
+  title: "Rochester Wedding Photography | Pricing",
   description:
     "Pricing and packages for Rochester, Buffalo, and Finger Lakes wedding photography",
+  alternates: {
+    canonical: "https://www.bemontphoto.com/pricing",
+  },
 };
 
 export default function Page() {

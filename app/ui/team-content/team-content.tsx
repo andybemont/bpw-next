@@ -7,10 +7,10 @@ export default function TeamContent() {
   return (
     <PartialPanel>
       <div className="text-primary-900 h-full overflow-y-auto rounded-lg p-2">
-        <h3 className="text-5xl text-red-800 text-pretty">
+        <h1 className="text-5xl text-red-800 text-pretty">
           Your wedding photo dream team
-        </h3>
-        <h4 className="text-sm text-justify py-1 border-y-2 border-y-primary-900">
+        </h1>
+        <h2 className="text-sm text-justify py-1 border-y-2 border-y-primary-900">
           <p>
             Here's the story: Andy is married to Gillian (right). Andy learned
             photography to take pictures of their kid... but then of course he
@@ -36,25 +36,25 @@ export default function TeamContent() {
             </Link>{" "}
             if you like what you see!
           </p>
-        </h4>
+        </h2>
         <ul className="my-auto text-pretty flex flex-col leading-snug divide-y divide-red-900">
           {TeamMembers.map((person) => {
             return (
               <li key={++count} className="py-1">
-                <h5>
+                <p>
                   <span className="text-3xl pr-1">{person.name}</span>
                   <span className="text-sm lg:text-base">{person.email})</span>
-                </h5>
-                <h6>
+                </p>
+                <p>
                   <span className="text-xl text-red-900">Likes: </span>
                   <span className="text-sm lg:text-base">{person.likes}</span>
-                </h6>
-                <h6>
+                </p>
+                <p>
                   <span className="text-xl text-red-900">Dislikes: </span>
                   <span className="text-sm lg:text-base">
                     {person.dislikes}
                   </span>
-                </h6>
+                </p>
               </li>
             );
           })}

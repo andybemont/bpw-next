@@ -3,11 +3,14 @@ import FaqContent from "../ui/faq-content/faq-content";
 import namedPortfolioImages from "../lib/named-portfolio-images";
 import SitePage from "../ui/shared/site-page";
 
-const pageTitle = "Rochester Wedding Photography | FAQ | Bemont Photo";
+const pageTitle = "Rochester Wedding Photography | FAQ";
 export const metadata: Metadata = {
   title: pageTitle,
   description:
-    "All the information about Rochester's favorite wedding photographers",
+    "Everything you need to know about Rochester's favorite wedding photographers",
+  alternates: {
+    canonical: "https://www.bemontphoto.com/faq",
+  },
 };
 
 export default function Page() {
