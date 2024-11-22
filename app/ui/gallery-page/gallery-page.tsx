@@ -79,6 +79,7 @@ export default function GalleryPage(props: {
                 <Image
                   src={image.image}
                   alt={image.alt}
+                  priority={count <= 8}
                   width={0}
                   height={0}
                   sizes="100vw"
