@@ -22,14 +22,18 @@ export default function DateInput(props: {
               {...register(controlId)}
             />
           </div>
-          {isDateBooked && (
-            <p className="text-left text-red-800 pt-1 pr-1">
-              Sorry! We're not available on this date.
-            </p>
-          )}
-          {!isDateBooked && (
-            <p className="text-left pt-1 pr-1">We're available!</p>
-          )}
+          <div className="grow text-center rounded-xl  m-1  leading-none">
+            {isDateBooked && (
+              <p className="bg-pink-600 text-primary-50 rounded-xl pt-1">
+                Not available!
+              </p>
+            )}
+            {!isDateBooked && (
+              <p className="bg-white/50 text-pink-600 rounded-xl pt-1 border-2 border-pink-600">
+                We're available!
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </div>
