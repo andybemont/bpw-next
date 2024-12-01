@@ -43,7 +43,7 @@ export default function TeamContent() {
               <li key={++count} className="py-1">
                 <p>
                   <span className="text-3xl pr-1">{person.name}</span>
-                  <span className="text-sm lg:text-base">{person.email})</span>
+                  <span className="text-sm lg:text-base">{person.email}</span>
                 </p>
                 <p>
                   <span className="text-xl text-red-900">Likes: </span>
