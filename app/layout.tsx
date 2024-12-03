@@ -10,6 +10,7 @@ export const metadata: Metadata = {
     description:
       "Wedding Photography for Rochester, Buffalo, and the Finger Lakes",
     url: "https://www.bemontphoto.com",
+    type: "website",
     images: {
       url: "/portfolio/bemont-photo-230916191334.jpg",
       alt: "Rochester Wedding Photography by Bemont Photo",
