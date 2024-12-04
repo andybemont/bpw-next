@@ -1,7 +1,7 @@
 import "@/app/ui/global.css";
 import { titleText } from "@/app/ui/fonts";
 import Header from "./ui/header/header";
-import Metadata from "next";
+import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 
 export const metadata: Metadata = {
