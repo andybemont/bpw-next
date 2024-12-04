@@ -3,6 +3,7 @@ import { titleText } from "@/app/ui/fonts";
 import Header from "./ui/header/header";
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleHelper } from "./ui/google";
 
 export const metadata: Metadata = {
   openGraph: {
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <GoogleTagManager gtmId="AW-855505561" />
+      <GoogleHelper />
       <body className={`${titleText.className} bg-red antialiased`}>
         <main className="relative">
           <Header />
