@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SitePage
-      image={namedPortfolioImages.kidsWithDog}
+      image={namedPortfolioImages.kidsWithDog.big}
       positioning="object-center"
     >
       <FaqContent />

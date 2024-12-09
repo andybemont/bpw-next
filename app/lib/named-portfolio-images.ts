@@ -1,4 +1,5 @@
 import * as bestOfs from "./best-ofs";
+import * as smallBestOfs from "./small-best-ofs";
 import teamPhoto from "../../public/team/photo.jpg";
 
 const namedPortfolioImages = {
@@ -10,14 +11,26 @@ const namedPortfolioImages = {
     venue: "",
     rating: 0,
   },
-  hyattDip: bestOfs.pi190526154446,
-  gcvm: bestOfs.pi190713180705,
-  lydiaFlowers: bestOfs.pi210516145713,
-  kacieDip: bestOfs.pi230520180828,
-  kidsWithDog: bestOfs.pi230701150750,
-  aliciaField: bestOfs.pi230916191334,
-  ringShot: bestOfs.pi240616170506,
-  gallagherKiss: bestOfs.pi221009153130,
+  hyattDip: { big: bestOfs.pi190526154446, small: smallBestOfs.pi190526154446 },
+  gcvm: { big: bestOfs.pi190713180705, small: smallBestOfs.pi190713180705 },
+  lydiaFlowers: {
+    big: bestOfs.pi210516145713,
+    small: smallBestOfs.pi210516145713,
+  },
+  kacieDip: { big: bestOfs.pi230520180828, small: smallBestOfs.pi230520180828 },
+  kidsWithDog: {
+    big: bestOfs.pi230701150750,
+    small: smallBestOfs.pi230701150750,
+  },
+  aliciaField: {
+    big: bestOfs.pi230916191334,
+    small: smallBestOfs.pi230916191334,
+  },
+  ringShot: { big: bestOfs.pi240616170506, small: smallBestOfs.pi240616170506 },
+  gallagherKiss: {
+    big: bestOfs.pi221009153130,
+    small: smallBestOfs.pi221009153130,
+  },
   ilonaInField: bestOfs.pi241006133110,
   kidsAtPicnicTable: bestOfs.pi241012183332,
   buttDancing: bestOfs.pi230916202206,

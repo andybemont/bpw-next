@@ -12,7 +12,7 @@ export type Gallery = {
 
 const galleries = {
   favorites: {
-    image: namedPortfolioImages.hyattDip,
+    image: namedPortfolioImages.hyattDip.small,
     title: "Our Favorites",
     description: "Some of Bemont Photo's most memorable wedding pictures",
     link: "favorite-wedding-photos",
@@ -29,7 +29,7 @@ const galleries = {
     colorTailwind: "text-orange-950 bg-orange-200 border-orange-800",
   } as Gallery,
   field: {
-    image: namedPortfolioImages.gcvm,
+    image: namedPortfolioImages.gcvm.small,
     title: "In The Weeds",
     description: "Top Tip: Get married by a pretty field",
     link: "photos-in-fields",
@@ -47,7 +47,7 @@ const galleries = {
     colorTailwind: "text-red-600 bg-neutral-950 border-white",
   } as Gallery,
   animals: {
-    image: namedPortfolioImages.kidsWithDog,
+    image: namedPortfolioImages.kidsWithDog.small,
     title: "Furry Friends",
     description: "Because animals are people, too",
     link: "animal-photos",
@@ -65,7 +65,7 @@ const galleries = {
     colorTailwind: "text-amber-100 bg-slate-900 border-amber-800",
   } as Gallery,
   rings: {
-    image: namedPortfolioImages.ringShot,
+    image: namedPortfolioImages.ringShot.small,
     title: "Hot Ice",
     description: "Ring shots are actually our favorite part",
     link: "wedding-ring-photos",
@@ -171,7 +171,7 @@ const galleries = {
     colorTailwind: "text-stone-200 bg-stone-600 border-emerald-950",
   } as Gallery,
   gallagher: {
-    image: namedPortfolioImages.gallagherKiss,
+    image: namedPortfolioImages.gallagherKiss.small,
     title: "Featured Venue: The Gallagher",
     description: "Medina, NY",
     link: "gallagher-wedding-photos",

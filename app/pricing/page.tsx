@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <SitePage
-      image={namedPortfolioImages.lydiaFlowers}
+      image={namedPortfolioImages.lydiaFlowers.big}
       positioning="object-top"
     >
       <PricingContent />

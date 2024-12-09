@@ -15,7 +15,7 @@ export default function GalleryContent() {
           return (
             <li
               key={++count}
-              className={`mx-0 sm:mx-1 mt-1 p-1 pb-2 w-[392px] border-b-2 border-primary-900 transition-all text-primary-900 hover:text-primary-50 hover:bg-primary-950`}
+              className={`mx-0 sm:mx-1 mt-1 p-1 pb-2 w-[392px] border-b-2 border-primary-900 transition-all text-primary-900 hover:text-primary-50 hover:bg-primary-950 hover:animate-bounce`}
             >
               <Link href={"../galleries/" + gallery.link}>
                 <Image

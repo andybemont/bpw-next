@@ -22,7 +22,7 @@ export default function Page() {
     <>
       <div className="hidden sm:block">
         <SitePage
-          image={namedPortfolioImages.aliciaField}
+          image={namedPortfolioImages.aliciaField.big}
           positioning="object-bottom"
           priority
         >
@@ -30,19 +30,22 @@ export default function Page() {
         </SitePage>
       </div>
       <div className="sm:hidden absolute top-[64px]">
-        <FullWidthImage image={namedPortfolioImages.aliciaField} priority />
+        <FullWidthImage
+          image={namedPortfolioImages.aliciaField.small}
+          priority
+        />
         <div className="bg-slate-400">
           <OverviewContent />
         </div>
-        <FullWidthImage image={namedPortfolioImages.kidsWithDog} />
+        <FullWidthImage image={namedPortfolioImages.kidsWithDog.small} />
         <div className="bg-amber-300/80">
           <FaqContent />
         </div>
-        <FullWidthImage image={namedPortfolioImages.lydiaFlowers} />
+        <FullWidthImage image={namedPortfolioImages.lydiaFlowers.small} />
         <div className="bg-pink-600/40">
           <PricingContent />
         </div>
-        <FullWidthImage image={namedPortfolioImages.kacieDip} />
+        <FullWidthImage image={namedPortfolioImages.kacieDip.small} />
         <div className="bg-sky-500/30">
           <ContactContent />
         </div>
