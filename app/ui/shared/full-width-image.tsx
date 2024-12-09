@@ -4,21 +4,21 @@ import Link from "next/link";
 
 export default function FullWidthImage(props: {
   image: PortfolioImage;
-  priority?: boolean;
+  eagerLoad?: boolean;
 }) {
-  const { image, priority } = props;
+  const { image, eagerLoad } = props;
 
   return (
     <Link href="./gallery">
       <div className="w-full h-[calc(2.0/3.0*100vw)] bg-primary-600">
         <div className="relative w-full">
           <Image
-            priority={priority}
             src={image.image.src}
             alt={image.alt}
             width={0}
             height={0}
             sizes="100vw"
+            loading={eagerLoad ? "eager" : "lazy"}
             style={{ width: "100vh", height: "auto" }} // optional
           />
         </div>

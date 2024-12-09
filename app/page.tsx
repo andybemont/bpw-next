@@ -24,7 +24,6 @@ export default function Page() {
         <SitePage
           image={namedPortfolioImages.aliciaField.big}
           positioning="object-bottom"
-          priority
         >
           <OverviewContent />
         </SitePage>
@@ -32,7 +31,7 @@ export default function Page() {
       <div className="sm:hidden absolute top-[64px]">
         <FullWidthImage
           image={namedPortfolioImages.aliciaField.small}
-          priority
+          eagerLoad
         />
         <div className="bg-slate-400">
           <OverviewContent />

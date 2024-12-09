@@ -21,10 +21,10 @@ export default function GalleryContent() {
                 <Image
                   src={gallery.image.image}
                   alt={gallery.image.alt}
-                  priority={count <= 8}
                   width={0}
                   height={0}
                   sizes="100vw"
+                  loading={count <= 8 ? "eager" : "lazy"}
                   style={{ width: "392px", height: "auto" }} // optional
                 />
                 <h3 className="font-bold text-3xl">{gallery.title + " >"}</h3>
