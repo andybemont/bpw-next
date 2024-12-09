@@ -29,7 +29,7 @@ export default function DateInput(props: {
               </p>
             )}
             {!isDateBooked && (
-              <p className="bg-white/50 text-pink-600 rounded-xl pt-1 border-2 border-pink-600">
+              <p className="bg-white/50 text-pink-800 rounded-xl pt-1 border-2 border-pink-600">
                 We're available!
               </p>
             )}

@@ -21,7 +21,7 @@ export default function Header() {
         </div>
         <nav>
           <ul id="bottomRowWithIcons" className="flex flex-row items-end">
-            <div className="grow" />
+            <li className="grow" />
             {allHeaderLinks.map((link) => {
               return (
                 <li
@@ -38,7 +38,7 @@ export default function Header() {
             >
               <MoreLinksMenu />
             </li>
-            <div className="grow" />
+            <li className="grow" />
           </ul>
         </nav>
       </div>
