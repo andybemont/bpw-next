@@ -8,10 +8,11 @@ import GalleryContent from "./ui/gallery-content/gallery-content";
 import TeamContent from "./ui/team-content/team-content";
 import ContactContent from "./ui/contact-content/contact-content";
 import FullWidthImage from "./ui/shared/full-width-image";
-import Link from "next/link";
 export const metadata: Metadata = {
-  title: "Rochester Wedding Photography | Packages and Availability",
-  description: "Great wedding photography team for all of Upstate New York.",
+  title:
+    "Rochester Wedding Photography by Bemont Photo | Packages and Availability",
+  description:
+    "A family photography team capturing weddings across Western New York.",
   alternates: {
     canonical: "https://www.bemontphoto.com",
   },

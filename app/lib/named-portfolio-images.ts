@@ -56,5 +56,7 @@ const namedPortfolioImages = {
   keukaFirstLook: bestOfs.pi230701145732,
   jennyCeremony: bestOfs.pi210707151022,
   maryCovell: bestOfs.pi240420154942,
+  danielleAndGreg: bestOfs.pi241102142036,
+  alexAndEnzo: bestOfs.pi230819200011,
 };
 export default namedPortfolioImages;

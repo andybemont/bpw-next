@@ -10,6 +10,40 @@ export type Gallery = {
   colorTailwind?: string;
 };
 
+export type ClientGallery = {
+  image: PortfolioImage;
+  title: string;
+  description: string;
+  url: string;
+};
+
+const clientGalleries = {
+  ilonaAndJake: {
+    image: namedPortfolioImages.ilonaInField,
+    title: "Full Wedding: Ilona & Jake",
+    description: "Just a normal day at the Farm",
+    url: "https://gallery.bemontphoto.com/ilonaandjacob/",
+  } as ClientGallery,
+  kacieAndJim: {
+    image: namedPortfolioImages.kacieDip.big,
+    title: "Full Wedding: Kacie & Jim",
+    description: "A big buffalo blowout",
+    url: "https://gallery.bemontphoto.com/kacieandjim-1/",
+  } as ClientGallery,
+  danielleAndGreg: {
+    image: namedPortfolioImages.danielleAndGreg,
+    title: "Full Wedding: Danielle & Greg",
+    description: "Ten Hours at Ravenwood, but no golf",
+    url: "https://gallery.bemontphoto.com/danielleandgreg/",
+  } as ClientGallery,
+  alexAndEnzo: {
+    image: namedPortfolioImages.alexAndEnzo,
+    title: "Full Wedding: Alex & Enzo",
+    description: "Pearl Street party people",
+    url: "https://gallery.bemontphoto.com/alexenzo/",
+  } as ClientGallery,
+};
+
 const galleries = {
   favorites: {
     image: namedPortfolioImages.hyattDip.small,
@@ -269,22 +303,26 @@ const galleries = {
   } as Gallery,
 };
 
-export const allGalleries: Gallery[] = [
+export const allGalleries: (Gallery | ClientGallery)[] = [
   galleries.favorites,
   galleries.kids,
   galleries.field,
+  clientGalleries.ilonaAndJake,
   galleries.rowdyDancing,
   galleries.animals,
   galleries.parentDances,
+  clientGalleries.kacieAndJim,
   galleries.rings,
   galleries.speeches,
   galleries.wintergarden,
   galleries.firstDances,
   galleries.grandFinales,
+  clientGalleries.alexAndEnzo,
   galleries.ravenwood,
   galleries.otherDetails,
   galleries.flowers,
   galleries.extraCheese,
+  clientGalleries.danielleAndGreg,
   galleries.processionals,
   galleries.blackAndWhite,
   galleries.gettingReady,
