@@ -12,15 +12,17 @@ export default function GalleryPage(props: {
 
   // Figure out the next gallery so we can make a link to it
   var nextGallery: Gallery | null = null;
-  for (var i = 0; i < allGalleries.length; i++) {
-    if (allGalleries[i] === gallery) {
-      if (i + 1 >= allGalleries.length) {
-        nextGallery = allGalleries[0];
-      } else {
-        nextGallery = allGalleries[i + 1];
-      }
+  var nextGalleryIndex = allGalleries.indexOf(gallery) + 1;
+  while (nextGallery === null) {
+    if (nextGalleryIndex >= allGalleries.length) {
+      nextGalleryIndex = 0;
+    }
+    var candidate = allGalleries[nextGalleryIndex] as Gallery;
+    if (candidate && candidate.link) {
+      nextGallery = candidate;
       break;
     }
+    nextGalleryIndex++;
   }
 
   // Get the list of pictures for this gallery, sorted so landscapes are first (lazy but reasonably effective for now)
