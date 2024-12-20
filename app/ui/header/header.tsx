@@ -12,12 +12,12 @@ export default function Header() {
     <div className="fixed flex flex-row w-screen h-16 sm:h-[84px] bg-primary-50/90 sm:bg-primary-50/70 z-10 text-primary-900">
       <div id="everythingLeftOfIcon" className="grow flex flex-col mb-2 p-1 ">
         <div id="topRow" className="flex flex-row align-text-bottom pt-2">
-          <p className="text-xl md:text-4xl font-bold text-left ml-auto">
+          <h1 className="text-xl md:text-4xl font-bold text-left ml-auto">
             Rochester Wedding Photography
-          </p>
-          <p className="text-xl md:text-3xl text-left align-bottom pl-2 md:pt-1 mr-auto">
+          </h1>
+          <h2 className="text-xl md:text-3xl text-left align-bottom pl-2 md:pt-1 mr-auto">
             by Bemont Photo
-          </p>
+          </h2>
         </div>
         <nav>
           <ul id="bottomRowWithIcons" className="flex flex-row items-end">

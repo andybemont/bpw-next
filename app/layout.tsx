@@ -4,6 +4,7 @@ import Header from "./ui/header/header";
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GoogleHelper } from "./ui/google";
+import Footer from "./ui/footer/footer";
 
 export const metadata: Metadata = {
   openGraph: {
@@ -29,11 +30,14 @@ export default function RootLayout({
     <html lang="en">
       <GoogleTagManager gtmId="AW-855505561" />
       <GoogleHelper />
-      <body className={`${titleText.className} bg-red antialiased`}>
-        <main className="relative">
+      <body className={`${titleText.className} antialiased`}>
+        <header>
           <Header />
-          {children}
-        </main>
+        </header>
+        <main className="relative">{children}</main>
+        <footer>
+          <Footer />
+        </footer>
       </body>
     </html>
   );

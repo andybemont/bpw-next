@@ -4,9 +4,8 @@ import namedPortfolioImages from "../lib/named-portfolio-images";
 import SitePage from "../ui/shared/site-page";
 
 export const metadata: Metadata = {
-  title: "Rochester Wedding Photography | Pricing",
-  description:
-    "Pricing and packages for Rochester, Buffalo, and Finger Lakes wedding photography",
+  title: "Wedding Photography Packages and Prices by Bemont Photo",
+  description: "Explore pricing, packages, and availability for Bemont Photo.",
   alternates: {
     canonical: "https://www.bemontphoto.com/pricing",
   },
