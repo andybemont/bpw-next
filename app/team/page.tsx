@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import SitePage from "../ui/shared/site-page";
 import TeamContent from "../ui/team-content/team-content";
 import namedPortfolioImages from "../lib/named-portfolio-images";
+import PageBase from "../ui/page-base";
 
 export const metadata: Metadata = {
   title: "Rochester Wedding Photography | Photographers",
@@ -14,8 +15,10 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <SitePage image={namedPortfolioImages.team} positioning="object-top">
-      <TeamContent />
-    </SitePage>
+    <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="Meet the Team">
+      <SitePage image={namedPortfolioImages.team} positioning="object-top">
+        <TeamContent />
+      </SitePage>
+    </PageBase>
   );
 }

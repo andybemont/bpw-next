@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import PricingContent from "../ui/pricing-content/pricing-content";
 import namedPortfolioImages from "../lib/named-portfolio-images";
 import SitePage from "../ui/shared/site-page";
+import PageBase from "../ui/page-base";
 
 export const metadata: Metadata = {
   title: "Wedding Photography Packages and Prices by Bemont Photo",
@@ -13,11 +14,16 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <SitePage
-      image={namedPortfolioImages.lydiaFlowers.big}
-      positioning="object-top"
+    <PageBase
+      h1Text="Bemont Photo Wedding Photography"
+      h2Text="Pricing, Packages, and Availability"
     >
-      <PricingContent />
-    </SitePage>
+      <SitePage
+        image={namedPortfolioImages.lydiaFlowers.big}
+        positioning="object-top"
+      >
+        <PricingContent />
+      </SitePage>
+    </PageBase>
   );
 }

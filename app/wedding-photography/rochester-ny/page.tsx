@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import HomePageContent from "@/app/ui/home-page/home-page-content";
+import PageBase from "@/app/ui/page-base";
 export const metadata: Metadata = {
   title:
     "Rochester, NY Wedding Photography by Bemont Photo | Packages and Availability",
@@ -11,5 +12,9 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <HomePageContent location="Rochester, NY" />;
+  return (
+    <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="Rochester, NY">
+      <HomePageContent location="Rochester, NY" />
+    </PageBase>
+  );
 }

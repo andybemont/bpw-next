@@ -1,6 +1,8 @@
+import React from "react";
+import Header from "./header/header";
+import Footer from "./footer/footer";
 import { Metadata } from "next";
-import HomePageContent from "./ui/home-page/home-page-content";
-import PageBase from "./ui/page-base";
+
 export const metadata: Metadata = {
   title:
     "Rochester Wedding Photography by Bemont Photo | Packages and Availability",
@@ -11,10 +13,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default function PageBase({
+  h1Text,
+  h2Text,
+  children,
+}: {
+  h1Text: string;
+  h2Text: string;
+  children: React.ReactNode;
+}) {
   return (
-    <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="">
-      <HomePageContent location="Rochester" />
-    </PageBase>
+    <>
+      <Header h1Text={h1Text} h2Text={h2Text} />
+      <main className="relative">{children}</main>
+      <Footer h1Text={h1Text} />
+    </>
   );
 }
