@@ -4,7 +4,7 @@ export const MenuHeight = "128px";
 
 export default function Footer() {
   return (
-    <div className="fixed bottom-0 max-h-4 hover:max-h-fit transition-all flex-wrap justify-center flex flex-row w-screen bg-black/60 z-10 text-white text-xs">
+    <div className="fixed bottom-0 text-center text-balance transition-all flex-wrap justify-center flex flex-row w-screen bg-black/60 z-10 text-white text-xs">
       <h1 className="mr-1">Bemont Photo Wedding Photography</h1>
 
       <p className="mr-1">
