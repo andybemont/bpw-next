@@ -15,7 +15,7 @@ function Label(props: ContactFieldProps) {
   const { caption, id, required } = props;
 
   return (
-    <label htmlFor={id} className="text-xl font-normal">
+    <label htmlFor={id} className="text-sm font-bold">
       {caption + (required ? "*" : "")}
     </label>
   );
@@ -31,7 +31,7 @@ export function ContactTextField(props: ContactFieldProps) {
       <div className={`${noBorderOnFocus} border-b-primary-900 border-b-2`}>
         <input
           id={id}
-          className={`w-full m-1 p-0 bg-transparent text-normal border-transparent  ${noBorderOnFocus}`}
+          className={`w-full mx-1 p-0 bg-transparent text-normal border-transparent  ${noBorderOnFocus}`}
           type="text"
           required={required}
           autoComplete="false"
@@ -114,14 +114,14 @@ export function AvailabilityField(props: ContactFieldProps) {
           defaultValue={"2026-01-01"}
           {...register(id)}
         />
-        <p className="pt-0 pl-2 text-x min-w-[120px] text-left">
+        <p className="text-sm min-w-[120px] text-center pt-1">
           {isDateBooked && (
-            <span className="text-primary-950 px-2 bg-orange-600">
+            <span className="px-2 py-1 text-primary-950 bg-orange-600">
               Not Available
             </span>
           )}
           {!isDateBooked && (
-            <span className="text-primary-950 px-2 bg-green-700/70">
+            <span className="px-2 py-1 text-primary-950 bg-green-700/70">
               Available
             </span>
           )}

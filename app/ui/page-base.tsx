@@ -25,7 +25,9 @@ export default function PageBase({
   return (
     <>
       <Header h1Text={h1Text} h2Text={h2Text} />
-      <main className="relative">{children}</main>
+      <main className="relative">
+        <article>{children}</article>
+      </main>
       <Footer h1Text={h1Text} />
     </>
   );

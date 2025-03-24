@@ -25,10 +25,6 @@
   opacity: 1;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 input[type="range"] {
   -webkit-appearance: none;
   background-color: transparent;

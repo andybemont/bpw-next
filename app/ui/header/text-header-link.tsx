@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { HeaderLink } from "@/app/lib/header-content";
 
-export default function TextHeaderLink(props: {
-  link: HeaderLink;
-  hideBasedOnSize: boolean;
-}) {
-  const { link, hideBasedOnSize } = props;
+export default function TextHeaderLink(props: { link: HeaderLink }) {
+  const { link } = props;
 
   return (
     <Link
@@ -13,7 +10,7 @@ export default function TextHeaderLink(props: {
       href={link.url}
       target={link.url.startsWith("http") ? "_blank" : ""}
     >
-      {link.tooltip}
+      <span className="text-sm px-2">{link.tooltip}</span>
     </Link>
   );
 }

@@ -8,9 +8,9 @@ export default function TeamContent() {
     <PartialPanel>
       <section>
         <div className="text-primary-900 h-full overflow-y-auto rounded-lg p-2">
-          <h2 className="text-5xl text-red-800 text-pretty">
+          <h1 className="text-2xl font-bold text-red-800 text-pretty my-2">
             Your wedding photo dream team
-          </h2>
+          </h1>
           <span className="text-sm text-justify py-1 border-y-2 border-y-primary-900">
             <p>
               Here's the story: Andy is married to Gillian (right). Andy learned
@@ -34,7 +34,7 @@ export default function TeamContent() {
               and{" "}
               <Link href="../contact" className="underline">
                 {" "}
-                get in touch{" "}
+                get in touch
               </Link>{" "}
               if you like what you see!
             </p>
@@ -44,15 +44,21 @@ export default function TeamContent() {
               return (
                 <li key={++count} className="py-1">
                   <p>
-                    <span className="text-3xl pr-1">{person.name}</span>
+                    <span className="text-xl font-bold pr-1">
+                      {person.name}
+                    </span>
                     <span className="text-sm lg:text-base">{person.email}</span>
                   </p>
                   <p>
-                    <span className="text-xl text-red-900">Likes: </span>
+                    <span className="text-lg font-bold text-red-900">
+                      Likes{" "}
+                    </span>
                     <span className="text-sm lg:text-base">{person.likes}</span>
                   </p>
                   <p>
-                    <span className="text-xl text-red-900">Dislikes: </span>
+                    <span className="text-lg font-bold text-red-900">
+                      Dislikes{" "}
+                    </span>
                     <span className="text-sm lg:text-base">
                       {person.dislikes}
                     </span>

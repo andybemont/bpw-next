@@ -3,8 +3,6 @@ type HeaderLink = {
   tooltip: string;
   tag: string;
   isExternal: boolean;
-  minSizeToShow: string;
-  showLinkOnMobile: boolean;
 };
 
 const overview: HeaderLink = {
@@ -12,80 +10,48 @@ const overview: HeaderLink = {
   tooltip: "Wedding Photography",
   tag: "overview",
   isExternal: false,
-  minSizeToShow: "sm",
-  showLinkOnMobile: true,
 };
 const faq: HeaderLink = {
   url: "/faq",
   tooltip: "FAQ",
   tag: "faq",
   isExternal: false,
-  minSizeToShow: "sm",
-  showLinkOnMobile: true,
 };
 const meetTheTeam: HeaderLink = {
   url: "/team",
   tooltip: "The Team",
   tag: "team",
   isExternal: false,
-  minSizeToShow: "md",
-  showLinkOnMobile: true,
 };
 const pricing: HeaderLink = {
   url: "/pricing",
   tooltip: "Pricing",
   tag: "pricing",
   isExternal: false,
-  minSizeToShow: "sm",
-  showLinkOnMobile: true,
 };
 const contact: HeaderLink = {
   url: "/contact",
   tooltip: "Contact",
   tag: "contact",
   isExternal: false,
-  minSizeToShow: "sm",
-  showLinkOnMobile: true,
 };
 const gallery: HeaderLink = {
   url: "/gallery",
   tooltip: "Galleries & Inspo",
   tag: "gallery",
   isExternal: false,
-  minSizeToShow: "sm",
-  showLinkOnMobile: true,
 };
-// const morePictures: HeaderLink = {
-//   url: "https://gallery.bemontphoto.com/favorites/",
-//   tooltip: "Extended Portfolio",
-//   tag: "morePictures",
-//   isExternal: true,
-//   minSizeToShow: "3xl",
-//   showLinkOnMobile: true,
-// };
-// const galleries: HeaderLink = {
-//   url: "https://gallery.bemontphoto.com/",
-//   tooltip: "Full Galleries",
-//   tag: "galleries",
-//   isExternal: true,
-//   minSizeToShow: "3xl",
-//   showLinkOnMobile: true,
-// };
 const makeAPayment: HeaderLink = {
   url: "https://www.paypal.me/BemontPhoto",
   tooltip: "Make a Payment",
   tag: "payment",
   isExternal: true,
-  minSizeToShow: "3xl",
-  showLinkOnMobile: true,
 };
 const instagram: HeaderLink = {
   url: "https://www.instagram.com/thebemontphoto/",
   tooltip: "Instagram",
   tag: "instagram",
   isExternal: true,
-  minSizeToShow: "3xl",
-  showLinkOnMobile: true,
 };
 
 const headerLinks = {
@@ -95,8 +61,6 @@ const headerLinks = {
   contact: contact,
   meetTheTeam: meetTheTeam,
   gallery: gallery,
-  //morePictures: morePictures,
-  //galleries: galleries,
   makeAPayment: makeAPayment,
   instagram: instagram,
 };
@@ -108,8 +72,6 @@ const allHeaderLinks = [
   contact,
   meetTheTeam,
   gallery,
-  //morePictures,
-  //galleries,
   makeAPayment,
   instagram,
 ];
@@ -124,8 +86,6 @@ export {
   contact,
   meetTheTeam,
   gallery,
-  //morePictures,
-  //galleries,
   makeAPayment,
   instagram,
 };

@@ -26,7 +26,7 @@ export default function GalleryContent() {
             return (
               <li
                 key={++count}
-                className={`mx-0 sm:mx-1 mt-1 p-1 pb-2 w-[392px] border-b-2 border-primary-900 transition-all text-primary-900 hover:text-primary-50 hover:bg-primary-950 hover:animate-bounce`}
+                className={`mx-0 sm:mx-1 mt-1 p-1 pb-2 w-[392px] border-b-2 border-primary-900 transition-all text-primary-900 hover:text-primary-50 hover:bg-primary-950`}
               >
                 <Link href={href} target={target}>
                   <Image
@@ -38,7 +38,7 @@ export default function GalleryContent() {
                     loading={count <= 8 ? "eager" : "lazy"}
                     style={{ width: "392px", height: "auto" }} // optional
                   />
-                  <h4 className="font-bold text-3xl">{gallery.title + " >"}</h4>
+                  <h4 className="font-bold text-3xl">{gallery.title}</h4>
                   <h5>{gallery.description}</h5>
                 </Link>
               </li>

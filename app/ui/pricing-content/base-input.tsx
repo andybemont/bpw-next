@@ -30,7 +30,7 @@ export default function BaseInput(props: BaseInputProps) {
     >
       <div className="font-title px-4">
         <div className="flex flex-row">
-          <p className="text-left w-48">
+          <p className="text-left w-48 font-bold">
             <label
               className={`"font-semibold ${onClick ? "cursor-pointer" : ""}`}
               htmlFor={controlId}

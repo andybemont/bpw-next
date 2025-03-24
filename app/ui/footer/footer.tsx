@@ -26,7 +26,7 @@ export default function Footer({ h1Text }: { h1Text: string }) {
           </span>
         </address>
 
-        <p>Copyright &copy; 2024</p>
+        <p>Copyright &copy; 2025</p>
       </div>
     </footer>
   );

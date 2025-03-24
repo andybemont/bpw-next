@@ -16,29 +16,31 @@ export default function Header({
 
   return (
     <header>
-      <div className="fixed flex flex-row w-screen h-16 sm:h-[84px] bg-primary-50/90 sm:bg-primary-50/70 z-10 text-primary-900">
-        <div id="everythingLeftOfIcon" className="grow flex flex-col mb-2 p-1 ">
-          <div id="topRow" className="flex flex-row align-text-bottom pt-2">
-            <h1 className="text-xl md:text-4xl font-bold text-left ml-auto">
+      <div className="fixed flex flex-row w-screen h-[70px] sm:h-[70px] bg-primary-50 sm:bg-primary-50/70 z-10 text-primary-900 border-b border-primary-950 sm:border-b-0">
+        <div id="everythingLeftOfIcon" className="w-full p-1">
+          <div className="w-full sm:flex sm:flex-row">
+            <h1 className="md:text-2xl font-bold text-center sm:ml-auto">
               {h1Text}
             </h1>
-            <h2 className="text-xl md:text-3xl text-left align-bottom pl-2 md:pt-1 mr-auto">
+            <h2 className="text-sm md:text-2xl text-center min-h-2 sm:ml-4 sm:mr-auto">
               {h2Text}
             </h2>
           </div>
           <nav>
             <ul id="bottomRowWithIcons" className="flex flex-row items-end">
               <li className="grow" />
-              {allHeaderLinks.map((link) => {
-                return (
-                  <li
-                    key={link.tag}
-                    className={`grow text-center border-b-2 border-transparent ${hoverEffect} hidden ${link.minSizeToShow}:block`}
-                  >
-                    <TextHeaderLink link={link} hideBasedOnSize />
-                  </li>
-                );
-              })}
+              {allHeaderLinks
+                .filter((link) => !link.isExternal)
+                .map((link) => {
+                  return (
+                    <li
+                      key={link.tag}
+                      className={`grow text-center border-b-2 border-transparent ${hoverEffect} hidden sm:block`}
+                    >
+                      <TextHeaderLink link={link} />
+                    </li>
+                  );
+                })}
               <li
                 key="menu"
                 className={`grow text-center border-b-2 border-transparent ${hoverEffect} pb-0`}

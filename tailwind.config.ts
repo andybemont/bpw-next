@@ -10,8 +10,8 @@ const config: Config = {
   ],
   theme: {
     fontFamily: {
-      title: ["Bebas Neue"],
-      text: ["Josefin_Slab"],
+      title: ["Lato"],
+      text: ["Lato"],
     },
     extend: {
       keyframes: {

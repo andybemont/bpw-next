@@ -18,7 +18,7 @@ export default function SitePage(props: {
               className={`w-screen h-screen object-cover ${positioning} z-0`}
             />
           )}
-          <div className="absolute left-0 top-[84px] m-6 w-[calc(100vw-48px)] h-[calc(100vh-84px-48px)] z-1">
+          <div className="absolute left-0 top-[70px] m-6 w-[calc(100vw-48px)] h-[calc(100vh-70px-48px)] z-1">
             {children}
           </div>
         </div>
