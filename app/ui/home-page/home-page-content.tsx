@@ -11,7 +11,7 @@ import FullWidthImage from "../../ui/shared/full-width-image";
 export default function HomePageContent({ location }: { location: string }) {
   return (
     <>
-      <div className="hidden sm:block">
+      <div className="hidden sm:block" data-nosnippet>
         <SitePage
           image={namedPortfolioImages.aliciaField.big}
           positioning="object-bottom"
@@ -19,7 +19,7 @@ export default function HomePageContent({ location }: { location: string }) {
           <OverviewContent location={location} />
         </SitePage>
       </div>
-      <div className="sm:hidden absolute top-[64px]">
+      <div className="sm:hidden absolute top-[64px]" data-nosnippet>
         <FullWidthImage
           image={namedPortfolioImages.aliciaField.small}
           eagerLoad

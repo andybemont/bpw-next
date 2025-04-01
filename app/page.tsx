@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title:
     "Rochester Wedding Photography by Bemont Photo | Packages and Availability",
   description:
-    "Learn all about the family photography team capturing weddings across Western New York. Explore packages, prices, and availability, and all the other details you need.",
+    "Bemont Photo is a family photography team capturing weddings across Western New York. Explore packages, prices, and availability, and all the other details you need.",
   alternates: {
     canonical: "https://www.bemontphoto.com",
   },

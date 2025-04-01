@@ -19,6 +19,14 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Bemont Photo",
+  alternateName: "Bemont Photo Wedding Photography",
+  url: "https://www.bemontphoto.com",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -28,7 +36,13 @@ export default function RootLayout({
     <html lang="en">
       <GoogleTagManager gtmId="AW-855505561" />
       <GoogleHelper />
-      <body className={`${titleText.className} antialiased`}>{children}</body>
+      <body className={`${titleText.className} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
