@@ -19,7 +19,7 @@ export default function Footer({ h1Text }: { h1Text: string }) {
 
         <address className="not-italic">
           <span className="mr-1">
-            <a href="mailto:andy@bemontphoto.com">andy@bemontphoto.com</a>
+            <a href="mailto:info@bemontphoto.com">info@bemontphoto.com</a>
           </span>
           <span className="mr-1">
             <a href="tel:+158589005570">(585) 590-0570</a>
