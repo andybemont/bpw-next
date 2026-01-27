@@ -36,16 +36,26 @@ export default function Header({
       <div className="fixed inset-x-0 top-0 min-h-[70px] bg-primary-50 md:bg-primary-50/70 z-10 text-primary-900 border-b border-primary-950 md:border-b-0">
         <div className="relative mx-auto w-full max-w-6xl px-4 md:px-6">
           <div id="everythingLeftOfIcon" className="w-full py-2">
-            <div className="relative mx-auto flex w-fit flex-col items-center">
+            <div className="relative mx-auto flex w-full flex-col items-center md:w-fit">
               <div className="text-center">
                 <div className="flex items-center justify-center text-sm font-bold md:text-2xl">
                   {h1Text}
                 </div>
               </div>
               <nav className="w-full">
+                <div className="flex justify-center md:hidden">
+                  <MoreLinksMenu
+                    links={allHeaderLinks.filter(
+                      (link) =>
+                        !["overview", "faq", "pricing", "contact"].includes(
+                          link.tag,
+                        ),
+                    )}
+                  />
+                </div>
                 <ul
                   id="bottomRowWithIcons"
-                  className="flex w-full flex-row items-center justify-between gap-4"
+                  className="hidden md:flex w-full flex-row items-center justify-between gap-4"
                 >
                   {allHeaderLinks
                     .filter((link) =>
@@ -60,7 +70,7 @@ export default function Header({
                             isActive
                               ? "border-primary-950"
                               : "border-transparent"
-                          } ${isActive ? "" : hoverEffect} hidden md:block`}
+                          } ${isActive ? "" : hoverEffect}`}
                         >
                           <TextHeaderLink link={link} />
                         </li>
