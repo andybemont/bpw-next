@@ -25,7 +25,7 @@ export default function OverviewContent({ location }: { location: string }) {
         <p>
           We take the work seriously, but we truly love it. We’re always sidling
           up to each other during wedding days to show off amazing (or
-          hilariously unflattering) shots on the back of the camer. After 200
+          hilariously unflattering) shots on the back of the camera. After 200
           weddings, Andy still feels a real thrill when he finishes editing a
           beautiful wedding and takes a final pass through the gallery. Carly
           still swoons when the reception space is full of her engagement photos
@@ -44,8 +44,8 @@ export default function OverviewContent({ location }: { location: string }) {
           When direction helps, we give it clearly and efficiently. Our editing
           follows the same approach: natural but careful, with true-to-life
           color that won’t go out of style. Our site features pictures from
-          every year we've been in business, because we aren't providing content
-          - we provide a complete story of your day that feels real, flattering,
+          every year we've been in business, because we don't provide content -
+          we provide a complete story of your day that feels real, flattering,
           and lasting.
         </p>
         <p>

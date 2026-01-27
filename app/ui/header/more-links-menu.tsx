@@ -40,7 +40,7 @@ export default function MoreLinksMenu({ links }: MoreLinksMenuProps) {
         <Image src="/menu.svg" alt="Menu" width={22} height={22} />
       </button>
       {showMenu && (
-        <ul className="absolute w-48 min-w-full top-[16px] md:top-[32px] text-primary-50 bg-primary-900/90 text-center">
+        <ul className="absolute left-1/2 w-48 min-w-full -translate-x-1/2 top-[16px] md:left-0 md:translate-x-0 md:top-[32px] text-primary-50 bg-primary-900/90 text-center">
           {links.map((link) => (
             <li
               key={link.tag}
