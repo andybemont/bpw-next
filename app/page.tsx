@@ -11,10 +11,48 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: Promise<{ contact?: string }>;
+}) {
+  const resolvedSearchParams = await searchParams;
+  const autoOpenContact = resolvedSearchParams?.contact === "1";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "PhotographyBusiness",
+    name: "Bemont Photo Wedding Photography",
+    url: "https://www.bemontphoto.com",
+    image:
+      "https://www.bemontphoto.com/portfolio/bemont-photo-230916191334.jpg",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "5 Chalet Circle",
+      addressLocality: "Rochester",
+      addressRegion: "NY",
+      postalCode: "14618",
+      addressCountry: "US",
+    },
+    areaServed: [
+      "Rochester, NY",
+      "Buffalo, NY",
+      "Finger Lakes, NY",
+      "Western New York",
+    ],
+  };
   return (
-    <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="">
-      <HomePageContent location="Rochester" />
-    </PageBase>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <PageBase
+        h1Text="Bemont Photo Wedding Photography"
+        h2Text=""
+        autoOpenContact={autoOpenContact}
+      >
+        <HomePageContent location="Rochester" />
+      </PageBase>
+    </>
   );
 }

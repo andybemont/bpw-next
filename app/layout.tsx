@@ -5,6 +5,7 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import { GoogleHelper } from "./ui/google";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.bemontphoto.com"),
   openGraph: {
     siteName: "Rochester Wedding Photography by Bemont Photo",
     title: "Rochester Wedding Photography by Bemont Photo",

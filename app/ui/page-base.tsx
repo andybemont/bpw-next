@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./header/header";
 import Footer from "./footer/footer";
+import FavoritesCarousel from "./shared/favorites-carousel";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -16,10 +17,14 @@ export const metadata: Metadata = {
 export default function PageBase({
   h1Text,
   h2Text,
+  autoOpenContact,
+  showFavoritesCarousel = true,
   children,
 }: {
   h1Text: string;
   h2Text: string;
+  autoOpenContact?: boolean;
+  showFavoritesCarousel?: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -28,7 +33,8 @@ export default function PageBase({
       <main className="relative">
         <article>{children}</article>
       </main>
-      <Footer h1Text={h1Text} />
+      {showFavoritesCarousel ? <FavoritesCarousel /> : null}
+      <Footer h1Text={h1Text} autoOpenContact={autoOpenContact} />
     </>
   );
 }

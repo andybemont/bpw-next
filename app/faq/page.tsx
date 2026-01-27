@@ -1,5 +1,8 @@
 import { Metadata } from "next";
-import FaqContent from "../ui/faq-content/faq-content";
+import FaqContent, {
+  faqItems,
+  infrequentlyAskedItems,
+} from "../ui/faq-content/faq-content";
 import namedPortfolioImages from "../lib/named-portfolio-images";
 import SitePage from "../ui/shared/site-page";
 import PageBase from "../ui/page-base";
@@ -14,9 +17,28 @@ export const metadata: Metadata = {
   },
 };
 
+const faqStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: [...faqItems, ...infrequentlyAskedItems].map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer.join("\n\n"),
+    },
+  })),
+};
+
 export default function Page() {
   return (
-    <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="FAQ">
+    <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqStructuredData),
+        }}
+      />
       <SitePage
         image={namedPortfolioImages.kidsWithDog.big}
         positioning="object-center"

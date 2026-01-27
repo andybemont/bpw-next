@@ -1,9 +1,10 @@
 import { Gallery, allGalleries } from "../../lib/galleries";
 import { allPortfolioImages } from "../../lib/best-ofs";
-import { mainText } from "@/app/ui/fonts";
-import Image from "next/image";
-import GLink from "./g-link";
+import Link from "next/link";
 import PageBase from "../page-base";
+import SitePage from "../shared/site-page";
+import FavoritesCarousel from "../shared/favorites-carousel";
+import CheckAvailabilityCta from "../shared/check-availability-cta";
 
 export default function GalleryPage(props: {
   gallery: Gallery;
@@ -26,96 +27,117 @@ export default function GalleryPage(props: {
     nextGalleryIndex++;
   }
 
+  // Figure out the previous gallery so we can make a link to it
+  var previousGallery: Gallery | null = null;
+  var previousGalleryIndex = allGalleries.indexOf(gallery) - 1;
+  while (previousGallery === null) {
+    if (previousGalleryIndex < 0) {
+      previousGalleryIndex = allGalleries.length - 1;
+    }
+    var candidate = allGalleries[previousGalleryIndex] as Gallery;
+    if (candidate && candidate.link) {
+      previousGallery = candidate;
+      break;
+    }
+    previousGalleryIndex--;
+  }
+
   // Get the list of pictures for this gallery, sorted so landscapes are first (lazy but reasonably effective for now)
   var pictureList = gallery.filter(allPortfolioImages);
   pictureList = pictureList.sort(
     (p1, p2) =>
-      p1.image.height / p1.image.width - p2.image.height / p2.image.width
+      p1.image.height / p1.image.width - p2.image.height / p2.image.width,
   );
 
-  // We're doing this twice, so save it
-  const callToAction = (
-    <>
-      <p>
-        We would love to see you and your people in{" "}
-        <GLink a={"../gallery"}>our galleries</GLink>! If you like our pictures
-        and think we might be the right photographers for your wedding day,{" "}
-        <GLink a={"../contact"}>get in touch</GLink>! While you're waiting for a
-        prompt reply, you can <GLink a={"../team"}>learn more about us</GLink>,{" "}
-        <GLink a={"../pricing"}>price out your perfect package</GLink>, and read
-        more about <GLink a={"../"}>why we're a great choice</GLink> (not that
-        we're biased).
-      </p>
-      {nextGallery && (
-        <p className="mt-4 text-2xl">
-          Or just{" "}
-          <GLink a={"../galleries/" + nextGallery.link}>
-            look at another gallery!
-          </GLink>
-        </p>
-      )}
-    </>
-  );
-
-  var count = 0;
   return (
     <PageBase
       h1Text="Bemont Photo Wedding Photography"
       h2Text="Galleries & Inspo"
+      showFavoritesCarousel={false}
     >
-      <div
-        className={`absolute top-0 left-0 ${gallery.colorTailwind} ${mainText.className} tracking-tighter w-screen`}
-      >
-        <div className="mt-[96px] w-full flex flex-col justify-around text-center px-1">
-          <section>
-            <div className="max-w-[600px] mx-auto px-2">
-              <h2 className="text-5xl pb-2 text-pretty">{gallery.title}</h2>
-              <h3
-                className={`text-3xl py-2 border-y-2 ${gallery.colorTailwind} text-pretty`}
-              >
-                {gallery.description}
-              </h3>
-              <div className="text-justify my-4">
-                {text && <p>{text}</p>}
-                {callToAction}
+      <SitePage fullWidth>
+        <div className="space-y-10">
+          <header className="space-y-3">
+            <div className="relative mx-auto flex w-fit flex-col items-center">
+              <div className="relative flex items-center justify-center">
+                {previousGallery && (
+                  <Link
+                    href={`../galleries/${previousGallery.link}`}
+                    className="absolute right-full mr-16 inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-900/40 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
+                    aria-label={`Previous: ${previousGallery.title}`}
+                  >
+                    <svg
+                      className="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                  </Link>
+                )}
+                <h2 className="text-4xl sm:text-5xl">{gallery.title}</h2>
+                {nextGallery && (
+                  <Link
+                    href={`../galleries/${nextGallery.link}`}
+                    className="absolute left-full ml-16 inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-900/40 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
+                    aria-label={`Next: ${nextGallery.title}`}
+                  >
+                    <svg
+                      className="h-4 w-4"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M9 18l6-6-6-6" />
+                    </svg>
+                  </Link>
+                )}
               </div>
             </div>
-          </section>
+            <p className="text-center text-lg text-primary-700 sm:text-xl">
+              {gallery.description}
+            </p>
+          </header>
+
+          <div className="space-y-4 text-base text-primary-900">
+            {text && <p>{text}</p>}
+          </div>
+
+          <CheckAvailabilityCta className="pt-1" />
 
           <section>
-            <ul className=" w-full h-full flex flex-row flex-wrap justify-center">
-              {pictureList.map((image) => {
-                return (
-                  <li key={++count} className="mx-1 mt-1 py-1 min-w-[392px]">
-                    <Image
-                      src={image.image}
-                      alt={image.alt}
-                      loading={count <= 8 ? "eager" : "lazy"}
-                      width={0}
-                      height={0}
-                      sizes="100vw"
-                      style={{
-                        width: "100%",
-                        maxWidth: "600px",
-                        height: "auto",
-                      }} // optional
-                    />
-                    <p className="text-center text-sm">{image.caption}</p>
-                  </li>
-                );
-              })}
-            </ul>
+            <FavoritesCarousel images={pictureList} shuffle={false} />
           </section>
 
-          <section>
-            <div
-              className={`max-w-[600px] mx-auto px-2 border-y-2 ${gallery.colorTailwind} my-4`}
-            >
-              <div className="text-justify my-1">{callToAction}</div>
+          <div className="pt-1">
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {[
+                { label: "FAQ", href: "/faq" },
+                { label: "Pricing", href: "/pricing" },
+                { label: "The Team", href: "/team" },
+                { label: "Who We’re For", href: "/who-were-for" },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex w-[200px] items-center justify-center rounded-full border border-primary-900/40 px-4 py-2 text-sm font-semibold text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
+                >
+                  {link.label}
+                </Link>
+              ))}
             </div>
-          </section>
+          </div>
         </div>
-      </div>
+      </SitePage>
     </PageBase>
   );
 }

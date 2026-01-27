@@ -26,12 +26,12 @@ const noBorderOnFocus = "focus:ring-0 focus:border-transparent";
 export function ContactTextField(props: ContactFieldProps) {
   const { id, required, register } = props;
   return (
-    <div className={`grow pt-2 px-2 w-1/4 min-w-[190px]`}>
+    <div className="pt-2">
       <Label {...props} />
       <div className={`${noBorderOnFocus} border-b-primary-900 border-b-2`}>
         <input
           id={id}
-          className={`w-full mx-1 p-0 bg-transparent text-normal border-transparent  ${noBorderOnFocus}`}
+          className={`w-full px-1 py-1 bg-transparent text-normal border-transparent ${noBorderOnFocus}`}
           type="text"
           required={required}
           autoComplete="false"
@@ -50,12 +50,12 @@ export function ContactTextField(props: ContactFieldProps) {
 export function ReferenceField(props: ContactFieldProps) {
   const { id, required, register } = props;
   return (
-    <div className={`grow pt-2 px-2 w-1/4 min-w-[190px]`}>
+    <div className="pt-2">
       <Label {...props} />
       <div className={``}>
         <select
           id={id}
-          className={`bg-transparent p-0 text-normal w-full border-primary-900 focus:border-primary-900 focus:ring-0`}
+          className={`bg-transparent py-1 text-normal w-full border-primary-900 focus:border-primary-900 focus:ring-0`}
           required={required}
           autoComplete="false"
           aria-required={required}
@@ -66,6 +66,7 @@ export function ReferenceField(props: ContactFieldProps) {
         >
           <option value=""></option>
           <option value="Social Media">Social Media</option>
+          <option value="Zola">Zola</option>
           <option value="The Knot">The Knot</option>
           <option value="Wedding Wire">Wedding Wire</option>
           <option value="Google/Web Search">Google/Web</option>
@@ -81,12 +82,12 @@ export function ContactTextAreaField(props: ContactFieldProps) {
   const { id, required, register } = props;
 
   return (
-    <div className={`h-[calc(100%-20px)] pt-2 px-2`}>
+    <div className="pt-2">
       <Label {...props} />
-      <div className={`${noBorderOnFocus} w-full h-full p-0 m-0`}>
+      <div className={`${noBorderOnFocus} w-full p-0 m-0`}>
         <textarea
           id={id}
-          className={`bg-transparent text-normal h-full resize-none w-full focus:ring-0 border-primary-900 focus:border-primary-900`}
+          className={`bg-transparent text-normal min-h-[140px] resize-y w-full focus:ring-0 border-primary-900 focus:border-primary-900`}
           required={required}
           autoComplete="false"
           aria-required={required}
@@ -101,10 +102,10 @@ export function ContactTextAreaField(props: ContactFieldProps) {
 }
 
 export function AvailabilityField(props: ContactFieldProps) {
-  const { id, register, isDateBooked } = props;
+  const { id, register, isDateBooked, required } = props;
 
   return (
-    <div className={`grow pt-2 px-2 w-1/4 min-w-[190px]`}>
+    <div className="pt-2">
       <Label {...props} />
       <div className={`flex flex-row`}>
         <input
@@ -112,7 +113,10 @@ export function AvailabilityField(props: ContactFieldProps) {
           id={id}
           type="date"
           defaultValue={"2026-01-01"}
-          {...register(id)}
+          required={required}
+          {...register(id, {
+            required: required ? "This is required" : undefined,
+          })}
         />
         <p className="text-sm min-w-[120px] text-center pt-1">
           {isDateBooked && (

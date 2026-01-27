@@ -21,6 +21,7 @@ export default function Page() {
       <SitePage
         image={namedPortfolioImages.lydiaFlowers.big}
         positioning="object-top"
+        heroAlign="center"
       >
         <PricingContent />
       </SitePage>

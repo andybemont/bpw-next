@@ -23,6 +23,12 @@ const meetTheTeam: HeaderLink = {
   tag: "team",
   isExternal: false,
 };
+const whoWereFor: HeaderLink = {
+  url: "/who-were-for",
+  tooltip: "Who We’re For",
+  tag: "who-were-for",
+  isExternal: false,
+};
 const pricing: HeaderLink = {
   url: "/pricing",
   tooltip: "Pricing",
@@ -60,6 +66,7 @@ const headerLinks = {
   pricing: pricing,
   contact: contact,
   meetTheTeam: meetTheTeam,
+  whoWereFor: whoWereFor,
   gallery: gallery,
   makeAPayment: makeAPayment,
   instagram: instagram,
@@ -68,6 +75,7 @@ const headerLinks = {
 const allHeaderLinks = [
   overview,
   faq,
+  whoWereFor,
   pricing,
   contact,
   meetTheTeam,
@@ -82,6 +90,7 @@ export {
   allHeaderLinks,
   overview,
   faq,
+  whoWereFor,
   pricing,
   contact,
   meetTheTeam,
