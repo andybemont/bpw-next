@@ -3,6 +3,8 @@ import { titleText } from "@/app/ui/fonts";
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GoogleHelper } from "./ui/google";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.bemontphoto.com"),
@@ -43,6 +45,8 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
