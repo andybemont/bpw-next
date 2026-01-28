@@ -40,7 +40,7 @@ export default function Page() {
         }}
       />
       <SitePage
-        image={namedPortfolioImages.kidsWithDog.big}
+        image={namedPortfolioImages.kidsWithDog}
         positioning="object-center"
       >
         <FaqContent />

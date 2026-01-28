@@ -1,10 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-};
+  images: {
+    // Let modern browsers get AVIF, everyone else gets WebP
+    formats: ["image/avif", "image/webp"],
+    // Optional: bump cache if you deploy infrequently and filenames are hashed.
+    // minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
+  },
 
-module.exports = {
   async redirects() {
     return [
       {

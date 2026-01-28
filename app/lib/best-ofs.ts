@@ -38,8 +38,6 @@ import i190705202243 from "../../public/portfolio/bemont-photo-190705202243.jpg"
 import i210707151022 from "../../public/portfolio/bemont-photo-210707151022.jpg";
 import i210707155744 from "../../public/portfolio/bemont-photo-210707155744.jpg";
 import i210717210645 from "../../public/portfolio/bemont-photo-210717210645.jpg";
-import i220226201840 from "../../public/portfolio/bemont-photo-220226201840.jpg";
-import i221009201500 from "../../public/portfolio/bemont-photo-221009201500.jpg";
 import i230520162614 from "../../public/portfolio/bemont-photo-230520162614.jpg";
 import i230609214144 from "../../public/portfolio/bemont-photo-230609214144.jpg";
 import i230701145732 from "../../public/portfolio/bemont-photo-230701145732.jpg";
@@ -83,8 +81,6 @@ import i210926204050 from "../../public/portfolio/bemont-photo-210926204050.jpg"
 import i211009220800 from "../../public/portfolio/bemont-photo-211009220800.jpg";
 import i220625210919 from "../../public/portfolio/bemont-photo-220625210919.jpg";
 import i220827201754 from "../../public/portfolio/bemont-photo-220827201754.jpg";
-import i221009151329 from "../../public/portfolio/bemont-photo-221009151329.jpg";
-import i221009171350 from "../../public/portfolio/bemont-photo-221009171350.jpg";
 import i230203180144 from "../../public/portfolio/bemont-photo-230203180144.jpg";
 import i230520140320 from "../../public/portfolio/bemont-photo-230520140320.jpg";
 import i230520160759 from "../../public/portfolio/bemont-photo-230520160759.jpg";
@@ -200,7 +196,6 @@ import i210926204624 from "../../public/portfolio/bemont-photo-210926204624.jpg"
 import i211003192743 from "../../public/portfolio/bemont-photo-211003192743.jpg";
 import i211009175124 from "../../public/portfolio/bemont-photo-211009175124.jpg";
 import i211016132528 from "../../public/portfolio/bemont-photo-211016132528.jpg";
-import i220226111547 from "../../public/portfolio/bemont-photo-220226111547.jpg";
 import i220625171227 from "../../public/portfolio/bemont-photo-220625171227.jpg";
 import i220625171823 from "../../public/portfolio/bemont-photo-220625171823.jpg";
 import i220723123603 from "../../public/portfolio/bemont-photo-220723123603.jpg";
@@ -780,26 +775,6 @@ export const pi210717210645: PortfolioImage = {
   rating: 3,
 };
 
-export const pi220226201840: PortfolioImage = {
-  image: i220226201840,
-  alt: "First Dance at Wintergarden in Rochester, NY | Rochester Wedding Photography",
-  keywords: ["First Dance"],
-  caption:
-    "Jessica and Steve at Wintergarden in Rochester, NY | 85 mm ¹⁄₂₀₀ at f/1.8",
-  venue: "Wintergarden",
-  rating: 3,
-};
-
-export const pi221009201500: PortfolioImage = {
-  image: i221009201500,
-  alt: "Rings at The Gallagher in Medina, NY | Western New York Wedding Photography",
-  keywords: ["Rings"],
-  caption:
-    "Alex and Anna at The Gallagher in Medina, NY | 105 mm ¹⁄₂₀₀ at f/9.0",
-  venue: "The Gallagher",
-  rating: 3,
-};
-
 export const pi230520162614: PortfolioImage = {
   image: i230520162614,
   alt: "Couple at Buffalo Botanical Gardens in Buffalo, NY | Buffalo Wedding Photography",
@@ -1208,26 +1183,6 @@ export const pi220827201754: PortfolioImage = {
   caption:
     "Maria and Joey at Shadow Hill in Webster, NY | 50 mm ¹⁄₂₀₀ at f/1.8",
   venue: "Shadow Hill",
-  rating: 2,
-};
-
-export const pi221009151329: PortfolioImage = {
-  image: i221009151329,
-  alt: "Couple at The Gallagher in Medina, NY | Western New York Wedding Photography",
-  keywords: ["Looking at Camera"],
-  caption:
-    "Alex and Anna at The Gallagher in Medina, NY | 85 mm ¹⁄₂₀₀₀ at f/1.8",
-  venue: "The Gallagher",
-  rating: 2,
-};
-
-export const pi221009171350: PortfolioImage = {
-  image: i221009171350,
-  alt: "Decorated Table at The Gallagher in Medina, NY | Western New York Wedding Photography",
-  keywords: ["Other Details"],
-  caption:
-    "Alex and Anna at The Gallagher in Medina, NY | 50 mm ¹⁄₂₀₀ at f/1.8",
-  venue: "The Gallagher",
   rating: 2,
 };
 
@@ -2340,16 +2295,6 @@ export const pi211016132528: PortfolioImage = {
   keywords: ["Silly"],
   caption: "Courtney and Brendon in Canandaigua, NY | 85 mm ¹⁄₅₀₀ at f/1.8",
   venue: "n/a",
-  rating: 1,
-};
-
-export const pi220226111547: PortfolioImage = {
-  image: i220226111547,
-  alt: "Beautiful Room at Wintergarden in Rochester, NY | Rochester Wedding Photography",
-  keywords: ["Other Details"],
-  caption:
-    "Jessica and Steve at Wintergarden in Rochester, NY | 50 mm ¹⁄₄₀₀₀ at f/1.8",
-  venue: "Wintergarden",
   rating: 1,
 };
 
@@ -4250,8 +4195,6 @@ export const allPortfolioImages: PortfolioImage[] = [
   pi210707151022,
   pi210707155744,
   pi210717210645,
-  pi220226201840,
-  pi221009201500,
   pi230520162614,
   pi230609214144,
   pi230701145732,
@@ -4295,8 +4238,6 @@ export const allPortfolioImages: PortfolioImage[] = [
   pi211009220800,
   pi220625210919,
   pi220827201754,
-  pi221009151329,
-  pi221009171350,
   pi230203180144,
   pi230520140320,
   pi230520160759,
@@ -4412,7 +4353,6 @@ export const allPortfolioImages: PortfolioImage[] = [
   pi211003192743,
   pi211009175124,
   pi211016132528,
-  pi220226111547,
   pi220625171227,
   pi220625171823,
   pi220723123603,

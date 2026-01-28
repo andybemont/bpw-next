@@ -24,7 +24,7 @@ const clientGalleries = {
     url: "https://gallery.bemontphoto.com/ilonaandjacob/",
   } as ClientGallery,
   kacieAndJim: {
-    image: namedPortfolioImages.kacieDip.big,
+    image: namedPortfolioImages.kacieDip,
     title: "Full Wedding: Kacie & Jim",
     description: "A big buffalo blowout",
     url: "https://gallery.bemontphoto.com/kacieandjim-1/",
@@ -45,7 +45,7 @@ const clientGalleries = {
 
 const galleries = {
   favorites: {
-    image: namedPortfolioImages.hyattDip.small,
+    image: namedPortfolioImages.hyattDip,
     title: "Our Favorites",
     description: "Some of Bemont Photo's most memorable wedding pictures",
     link: "favorite-wedding-photos",
@@ -60,7 +60,7 @@ const galleries = {
       images.filter((i) => i.keywords.find((k) => k === "Kids")),
   } as Gallery,
   field: {
-    image: namedPortfolioImages.gcvm.small,
+    image: namedPortfolioImages.gcvm,
     title: "In The Weeds",
     description: "Top Tip: Get married by a pretty field",
     link: "photos-in-fields",
@@ -76,7 +76,7 @@ const galleries = {
       images.filter((i) => i.keywords.find((k) => k === "Rowdy Dancing")),
   } as Gallery,
   animals: {
-    image: namedPortfolioImages.kidsWithDog.small,
+    image: namedPortfolioImages.kidsWithDog,
     title: "Furry Friends",
     description: "Because animals are people, too",
     link: "animal-photos",
@@ -92,7 +92,7 @@ const galleries = {
       images.filter((i) => i.keywords.find((k) => k === "Parent Dance")),
   } as Gallery,
   rings: {
-    image: namedPortfolioImages.ringShot.small,
+    image: namedPortfolioImages.ringShot,
     title: "Hot Ice",
     description: "Ring shots are actually our favorite part",
     link: "wedding-ring-photos",
@@ -106,13 +106,6 @@ const galleries = {
     link: "wedding-speech-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Speeches")),
-  } as Gallery,
-  wintergarden: {
-    image: namedPortfolioImages.wintergardenFirstDance,
-    title: "Featured Venue: The Wintergarden",
-    description: "Downtown Rochester, NY",
-    link: "wintergarden-wedding-photos",
-    filter: (images) => images.filter((i) => i.venue === "Wintergarden"),
   } as Gallery,
   firstDances: {
     image: namedPortfolioImages.amandaFirstDance,
@@ -184,13 +177,6 @@ const galleries = {
     link: "getting-ready-photos",
     filter: (images) =>
       images.filter((i) => i.keywords.find((k) => k === "Getting Ready")),
-  } as Gallery,
-  gallagher: {
-    image: namedPortfolioImages.gallagherKiss.small,
-    title: "Featured Venue: The Gallagher",
-    description: "Medina, NY",
-    link: "gallagher-wedding-photos",
-    filter: (images) => images.filter((i) => i.venue === "The Gallagher"),
   } as Gallery,
   dessert: {
     image: namedPortfolioImages.niceCake,
@@ -285,7 +271,6 @@ export const allGalleries: (Gallery | ClientGallery)[] = [
   clientGalleries.kacieAndJim,
   galleries.rings,
   galleries.speeches,
-  galleries.wintergarden,
   galleries.firstDances,
   galleries.grandFinales,
   clientGalleries.alexAndEnzo,
@@ -297,7 +282,6 @@ export const allGalleries: (Gallery | ClientGallery)[] = [
   galleries.processionals,
   galleries.blackAndWhite,
   galleries.gettingReady,
-  galleries.gallagher,
   galleries.dessert,
   galleries.figHollow,
   galleries.otherCandids,

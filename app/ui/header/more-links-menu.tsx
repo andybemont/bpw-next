@@ -11,21 +11,31 @@ type MoreLinksMenuProps = {
 export default function MoreLinksMenu({ links }: MoreLinksMenuProps) {
   const [showMenu, setShowMenu] = useState(false);
 
-  const handleToggleClick = () => {
+  const handleToggleClick = (event: React.MouseEvent) => {
+    event.stopPropagation();
     setShowMenu((prev) => !prev);
   };
 
   const handleOutsideClick = (event: MouseEvent) => {
     const target = event?.target as HTMLElement;
-    if (!document.getElementById("menuContainer")?.contains(target)) {
+    const menuContainer = document.getElementById("menuContainer");
+    const menuList = document.getElementById("menuList");
+    if (
+      menuContainer &&
+      !menuContainer.contains(target) &&
+      menuList &&
+      !menuList.contains(target)
+    ) {
       setShowMenu(false);
     }
   };
 
   useEffect(() => {
-    window.addEventListener("click", handleOutsideClick);
-    return () => window.removeEventListener("click", handleOutsideClick);
-  }, []);
+    if (showMenu) {
+      window.addEventListener("click", handleOutsideClick);
+      return () => window.removeEventListener("click", handleOutsideClick);
+    }
+  }, [showMenu]);
 
   return (
     <div className="relative flex flex-col items-center justify-center">
@@ -40,7 +50,10 @@ export default function MoreLinksMenu({ links }: MoreLinksMenuProps) {
         <Image src="/menu.svg" alt="Menu" width={22} height={22} />
       </button>
       {showMenu && (
-        <ul className="absolute left-1/2 w-48 min-w-full -translate-x-1/2 top-[16px] md:left-0 md:translate-x-0 md:top-[32px] text-primary-50 bg-primary-900/90 text-center">
+        <ul 
+          id="menuList"
+          className="absolute left-1/2 w-48 min-w-full -translate-x-1/2 top-[16px] md:left-0 md:translate-x-0 md:top-[32px] text-primary-50 bg-primary-900/90 text-center"
+        >
           {links.map((link) => (
             <li
               key={link.tag}

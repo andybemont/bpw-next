@@ -17,7 +17,7 @@ export default function Page() {
   return (
     <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="">
       <SitePage
-        image={namedPortfolioImages.kacieDip.big}
+        image={namedPortfolioImages.kacieDip}
         positioning="object-center"
       >
         <WhoWereForContent />

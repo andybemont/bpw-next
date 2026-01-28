@@ -112,8 +112,6 @@ export default function GalleryPage(props: {
             {text && <p>{text}</p>}
           </div>
 
-          <CheckAvailabilityCta className="pt-1" />
-
           <section>
             <FavoritesCarousel images={pictureList} shuffle={false} />
           </section>

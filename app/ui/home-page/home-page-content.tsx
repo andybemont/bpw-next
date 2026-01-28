@@ -6,7 +6,7 @@ export default function HomePageContent({ location }: { location: string }) {
   return (
     <div className="space-y-16">
       <SitePage
-        image={namedPortfolioImages.aliciaField.big}
+        image={namedPortfolioImages.aliciaField}
         positioning="object-top"
       >
         <OverviewContent location={location} />

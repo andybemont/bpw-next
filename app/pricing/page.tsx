@@ -19,7 +19,7 @@ export default function Page() {
       h2Text="Pricing, Packages, and Availability"
     >
       <SitePage
-        image={namedPortfolioImages.lydiaFlowers.big}
+        image={namedPortfolioImages.lydiaFlowers}
         positioning="object-top"
         heroAlign="center"
       >
