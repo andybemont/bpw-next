@@ -245,9 +245,9 @@ function FaqSection({ heading, items }: { heading: string; items: FaqItem[] }) {
       <h2 className="text-2xl sm:text-3xl font-semibold border-b border-primary-300/70 pb-2">
         {heading}
       </h2>
-      <div className="space-y-4">
+      <div className="space-y-5">
         {items.map((item) => (
-          <div key={item.question} className="space-y-1.5">
+          <div key={item.question} className="space-y-1">
             <h3 className="text-base font-semibold">{item.question}</h3>
             <div className="space-y-1.5 text-base leading-relaxed text-primary-800">
               {item.answer.map((paragraph) => (

@@ -48,9 +48,9 @@ export default function WhoWereForContent() {
         A good fit matters.
       </h2>
 
-      <div className="grid gap-6 sm:gap-5 md:grid-cols-2">
+      <div className="space-y-5">
         {pairs.map((pair) => (
-          <div key={pair.forText} className="space-y-1.5">
+          <div key={pair.forText} className="space-y-0.5">
             <p className="text-base font-semibold text-primary-900">
               {pair.forText}
             </p>
