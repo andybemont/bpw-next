@@ -102,15 +102,13 @@ function buildInquiryHtml(data: ContactFormInput) {
 }
 
 function buildAutoReplyText(name: string) {
-  const firstName = name.trim().split(/\s+/)[0] || name;
-  return `Hi ${firstName},
+  return `Hi there!
 
-Thanks for reaching out to Bemont Photo! We received your message and try to respond within a day.
+Thanks for reaching out to Bemont Photo! We received your message and will respond quickly. 
 
-If your wedding date is coming up soon or you have a quick question, you're also welcome to text us from the contact page on our site.
-
-— Andy & Carly
-Bemont Photo Wedding Photography
+Looking forward to talking more!
+Andy & Carly
+Bemont Photo
 https://www.bemontphoto.com`;
 }
 
