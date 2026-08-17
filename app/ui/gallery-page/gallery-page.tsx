@@ -4,6 +4,7 @@ import Link from "next/link";
 import PageBase from "../page-base";
 import SitePage from "../shared/site-page";
 import FavoritesCarousel from "../shared/favorites-carousel";
+import PageAnalytics from "../analytics/page-analytics";
 
 function findAdjacentGallery(
   gallery: Gallery,
@@ -44,6 +45,7 @@ export default function GalleryPage(props: {
       h2Text="Galleries & Inspo"
       showFavoritesCarousel={false}
     >
+      <PageAnalytics event="gallery_view" gallerySlug={gallery.link} />
       <SitePage fullWidth>
         <div className="space-y-10">
           <header className="space-y-3">

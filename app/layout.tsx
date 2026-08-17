@@ -2,19 +2,16 @@ import "@/app/ui/global.css";
 import { lato } from "@/app/ui/fonts";
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
-import { GoogleHelper } from "./ui/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import AnalyticsBootstrap from "./ui/analytics/analytics-bootstrap";
 import {
   DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
   DEFAULT_OG_IMAGE_ALT,
   SITE_URL,
 } from "@/app/lib/seo";
-import {
-  JsonLd,
-  websiteStructuredData,
-} from "@/app/lib/structured-data";
+import { JsonLd, websiteStructuredData } from "@/app/lib/structured-data";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -68,7 +65,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${lato.className} antialiased`}>
         <GoogleTagManager gtmId="AW-855505561" />
-        <GoogleHelper />
+        <AnalyticsBootstrap />
         <JsonLd data={websiteStructuredData} />
         {children}
         <Analytics />

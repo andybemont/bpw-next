@@ -6,14 +6,14 @@ export const metadata = buildPageMetadata({
   title:
     "Buffalo, NY Wedding Photography by Bemont Photo | Packages and Availability",
   description:
-    "Buffalo wedding photographers capturing candid, natural wedding day stories across Western New York. Packages from $4,200 with Bemont Photo.",
+    "Buffalo wedding photographers for city, waterfront, and industrial celebrations. Rochester-based team with travel included. Packages from $4,200.",
   path: "wedding-photography/buffalo-ny",
 });
 
 export default function Page() {
   return (
     <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="Buffalo, NY">
-      <HomePageContent location="Buffalo, NY" />
+      <HomePageContent locationKey="buffalo" />
     </PageBase>
   );
 }

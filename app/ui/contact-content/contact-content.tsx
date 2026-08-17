@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import {
   AvailabilityStatus,
   getAvailabilityStatus,
 } from "@/app/lib/availability";
+import { trackEvent } from "@/app/lib/analytics";
 
 type ContactFormValues = {
   website: string;
@@ -24,6 +25,7 @@ export default function ContactContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [availabilityStatus, setAvailabilityStatus] =
     useState<AvailabilityStatus | null>(null);
+  const hasTrackedStart = useRef(false);
 
   const {
     register,
@@ -59,16 +61,22 @@ export default function ContactContent() {
       );
       reset();
       setSubmitted(true);
+      trackEvent("contact_form_submit_success");
     } catch {
       setSubmitError(
         "Something went wrong sending your message. Please try again or email us directly.",
       );
+      trackEvent("contact_form_submit_error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleChange = () => {
+    if (!hasTrackedStart.current) {
+      hasTrackedStart.current = true;
+      trackEvent("contact_form_start");
+    }
     const currentValues = getValues();
     setSubmitted(false);
     setSubmitError(null);

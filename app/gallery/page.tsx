@@ -6,6 +6,7 @@ import {
   JsonLd,
   breadcrumbStructuredData,
 } from "@/app/lib/structured-data";
+import PageAnalytics from "../ui/analytics/page-analytics";
 
 export const metadata = buildPageMetadata({
   title: "Wedding Photo Galleries & Inspiration | Bemont Photo",
@@ -27,6 +28,7 @@ export default function Page() {
           { name: "Galleries", path: "gallery" },
         ])}
       />
+      <PageAnalytics event="gallery_index_view" />
       <SitePage fullWidth>
         <GalleryContent />
       </SitePage>

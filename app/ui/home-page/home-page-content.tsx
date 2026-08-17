@@ -1,15 +1,18 @@
 import OverviewContent from "../../ui/overview-content/overview-content";
 import SitePage from "../../ui/shared/site-page";
-import namedPortfolioImages from "../../lib/named-portfolio-images";
+import { getLocationContent, LocationKey } from "../../lib/location-content";
 
-export default function HomePageContent({ location }: { location: string }) {
+export default function HomePageContent({
+  locationKey,
+}: {
+  locationKey: LocationKey;
+}) {
+  const location = getLocationContent(locationKey);
+
   return (
     <div className="space-y-16">
-      <SitePage
-        image={namedPortfolioImages.aliciaField}
-        positioning="object-top"
-      >
-        <OverviewContent location={location} />
+      <SitePage image={location.heroImage} positioning="object-top">
+        <OverviewContent locationKey={locationKey} />
       </SitePage>
     </div>
   );

@@ -4,6 +4,7 @@ import SitePage from "../ui/shared/site-page";
 import PageBase from "../ui/page-base";
 import { buildPageMetadata } from "@/app/lib/seo";
 import { JsonLd, pricingStructuredData } from "@/app/lib/structured-data";
+import PageAnalytics from "../ui/analytics/page-analytics";
 
 export const metadata = buildPageMetadata({
   title: "Wedding Photography Packages and Prices | Bemont Photo",
@@ -19,6 +20,7 @@ export default function Page() {
       h2Text="Pricing, Packages, and Availability"
     >
       <JsonLd data={pricingStructuredData} />
+      <PageAnalytics event="pricing_view" />
       <SitePage
         image={namedPortfolioImages.lydiaFlowers}
         positioning="object-top"

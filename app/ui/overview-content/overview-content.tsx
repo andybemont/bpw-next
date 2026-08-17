@@ -1,20 +1,34 @@
-import React from "react";
+import Link from "next/link";
 import CheckAvailabilityCta from "../shared/check-availability-cta";
+import {
+  getLocationContent,
+  LocationKey,
+  sharedPricingLine,
+} from "@/app/lib/location-content";
 
-export default function OverviewContent({ location }: { location: string }) {
+export default function OverviewContent({
+  locationKey,
+}: {
+  locationKey: LocationKey;
+}) {
+  const location = getLocationContent(locationKey);
+
   return (
     <section className="space-y-6 text-primary-900">
       <div className="space-y-3">
         <h1 className="text-sm font-medium text-primary-700">
-          {location} Wedding Photography by Bemont Photo
+          {location.h1Location} Wedding Photography by Bemont Photo
         </h1>
         <p className="text-2xl sm:text-3xl font-semibold text-pretty">
-          Wedding photography for people who want beautiful photos of an
-          effortless day
+          {location.tagline}
         </p>
       </div>
 
       <div className="space-y-4 text-base leading-relaxed">
+        {location.localParagraphs.map((paragraph) => (
+          <p key={paragraph.slice(0, 40)}>{paragraph}</p>
+        ))}
+
         <p>
           We’re a Rochester-based team for couples who want their day
           photographed without it being run like a photo shoot. We pay
@@ -44,21 +58,41 @@ export default function OverviewContent({ location }: { location: string }) {
           When direction helps, we give it clearly and efficiently. Our editing
           follows the same approach: natural but careful, with true-to-life
           color that won’t go out of style. Our site features pictures from
-          every year we've been in business, because we don't provide content -
-          we provide a complete story of your day that feels real, flattering,
-          and lasting.
+          every year we&apos;ve been in business, because we don&apos;t provide
+          content—we provide a complete story of your day that feels real,
+          flattering, and lasting.
         </p>
-        <p>
-          Wedding photography is $4,200 for most weddings. That includes wedding
-          day coverage from two photographers, an engagement session, an online
-          gallery of high-resolution images, and all the help you need to ensure
-          a day that’s about fun, not work.
-        </p>
-        <p>
-          Based in Rochester. Happily serving couples throughout the Finger
-          Lakes, Buffalo, and Western New York.
-        </p>
-        <CheckAvailabilityCta className="pt-4" />
+        <p>{sharedPricingLine}</p>
+        <p>{location.closingLine}</p>
+
+        {locationKey === "western-ny" && (
+          <p>
+            Looking for something more specific?{" "}
+            <Link
+              href="/wedding-photography/rochester-ny"
+              className="underline decoration-primary-300/80 underline-offset-4"
+            >
+              Rochester
+            </Link>
+            ,{" "}
+            <Link
+              href="/wedding-photography/buffalo-ny"
+              className="underline decoration-primary-300/80 underline-offset-4"
+            >
+              Buffalo
+            </Link>
+            , and{" "}
+            <Link
+              href="/wedding-photography/finger-lakes"
+              className="underline decoration-primary-300/80 underline-offset-4"
+            >
+              Finger Lakes
+            </Link>{" "}
+            each have their own page with more detail.
+          </p>
+        )}
+
+        <CheckAvailabilityCta className="pt-4" source={`location_${locationKey}`} />
       </div>
     </section>
   );

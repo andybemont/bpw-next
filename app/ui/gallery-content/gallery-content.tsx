@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import {
   allGalleries,
@@ -7,6 +9,7 @@ import {
 } from "../../lib/galleries";
 import Link from "next/link";
 import CheckAvailabilityCta from "../shared/check-availability-cta";
+import { trackEvent } from "@/app/lib/analytics";
 
 export default function GalleryContent() {
   return (
@@ -32,6 +35,14 @@ export default function GalleryContent() {
                   href={href}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noreferrer" : undefined}
+                  onClick={
+                    isExternal
+                      ? () =>
+                          trackEvent("full_wedding_link_click", {
+                            gallery: gallery.title,
+                          })
+                      : undefined
+                  }
                 >
                   <div className="relative aspect-[4/3] w-full overflow-hidden">
                     <Image

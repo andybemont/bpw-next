@@ -6,14 +6,14 @@ export const metadata = buildPageMetadata({
   title:
     "Finger Lakes Wedding Photography by Bemont Photo | Packages and Availability",
   description:
-    "Finger Lakes wedding photographers for relaxed, candid coverage at vineyards, lakefront venues, and celebrations across the region. Packages from $4,200.",
+    "Finger Lakes wedding photographers for wineries, lakefront venues, and barn weddings from Canandaigua to Skaneateles. Packages from $4,200.",
   path: "wedding-photography/finger-lakes",
 });
 
 export default function Page() {
   return (
     <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="Finger Lakes">
-      <HomePageContent location="Finger Lakes" />
+      <HomePageContent locationKey="finger-lakes" />
     </PageBase>
   );
 }

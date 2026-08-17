@@ -51,7 +51,7 @@ export default function Footer({ h1Text }: { h1Text: string }) {
                 <button
                   className="inline-flex items-center gap-2"
                   type="button"
-                  onClick={openContact}
+                  onClick={() => openContact("footer_availability")}
                 >
                   <svg
                     className="h-5 w-5"
@@ -68,7 +68,7 @@ export default function Footer({ h1Text }: { h1Text: string }) {
                 <button
                   className="inline-flex items-center gap-2"
                   type="button"
-                  onClick={openContact}
+                  onClick={() => openContact("footer_contact")}
                 >
                   <svg
                     className="h-5 w-5"
@@ -80,6 +80,11 @@ export default function Footer({ h1Text }: { h1Text: string }) {
                   </svg>
                   <span>Get In Touch</span>
                 </button>
+              </div>
+              <div>
+                <a className="inline-flex items-center gap-2" href="/privacy">
+                  Privacy
+                </a>
               </div>
               <div>
                 <a

@@ -45,16 +45,26 @@ export default function FavoritesCarousel({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasBeenFullscreen, setHasBeenFullscreen] = useState(false);
   const [isAutoAdvancePaused, setIsAutoAdvancePaused] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const resumeTimerRef = useRef<number | null>(null);
   const openerRef = useRef<HTMLButtonElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updatePreference = () =>
+      setPrefersReducedMotion(mediaQuery.matches);
+    updatePreference();
+    mediaQuery.addEventListener("change", updatePreference);
+    return () => mediaQuery.removeEventListener("change", updatePreference);
+  }, []);
 
   useEffect(() => {
     if (!baseImages.length) {
       return;
     }
 
-    if (!shuffle) {
+    if (!shuffle || prefersReducedMotion) {
       setShuffledImages(baseImages);
       setIndex(0);
       return;
@@ -68,10 +78,15 @@ export default function FavoritesCarousel({
 
     setShuffledImages(copy);
     setIndex(copy.length ? Math.floor(Math.random() * copy.length) : 0);
-  }, [baseImages, shuffle]);
+  }, [baseImages, shuffle, prefersReducedMotion]);
 
   useEffect(() => {
-    if (shuffledImages.length <= 1 || isFullscreen || isAutoAdvancePaused) {
+    if (
+      shuffledImages.length <= 1 ||
+      isFullscreen ||
+      isAutoAdvancePaused ||
+      prefersReducedMotion
+    ) {
       return;
     }
 
@@ -80,7 +95,7 @@ export default function FavoritesCarousel({
     }, SLIDE_INTERVAL_MS);
 
     return () => window.clearInterval(timer);
-  }, [shuffledImages.length, isFullscreen, isAutoAdvancePaused]);
+  }, [shuffledImages.length, isFullscreen, isAutoAdvancePaused, prefersReducedMotion]);
 
   const pauseAutoplayTemporarily = useCallback(() => {
     setIsAutoAdvancePaused(true);

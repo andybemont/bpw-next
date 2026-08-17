@@ -100,7 +100,7 @@ export default function Header({
                   title="Get In Touch"
                   aria-label="Get In Touch"
                   className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-900/30 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
-                  onClick={openContact}
+                  onClick={() => openContact("header_email")}
                 >
                   <svg
                     className="h-4 w-4"
@@ -118,7 +118,7 @@ export default function Header({
                   title="Check Availability"
                   aria-label="Check Availability"
                   className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-900/30 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
-                  onClick={openContact}
+                  onClick={() => openContact("header_availability")}
                 >
                   <svg
                     className="h-4 w-4"

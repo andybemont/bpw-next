@@ -9,6 +9,7 @@ const staticRoutes: Array<{ path: string; priority: number }> = [
   { path: "gallery", priority: 0.8 },
   { path: "team", priority: 0.7 },
   { path: "who-were-for", priority: 0.6 },
+  { path: "privacy", priority: 0.3 },
   { path: "wedding-photography/rochester-ny", priority: 0.9 },
   { path: "wedding-photography/buffalo-ny", priority: 0.8 },
   { path: "wedding-photography/finger-lakes", priority: 0.8 },
