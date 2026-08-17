@@ -1,8 +1,10 @@
 "use client";
 
-import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { trackEvent } from "@/app/lib/analytics";
+import ContactTurnstile, {
+  type ContactTurnstileHandle,
+} from "./contact-turnstile";
 
 type TextState = "verifying" | "ready" | "error";
 
@@ -13,17 +15,9 @@ export default function ContactTextContent({ active }: { active: boolean }) {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [turnstileKey, setTurnstileKey] = useState(0);
 
-  const turnstileRef = useRef<TurnstileInstance>(null);
+  const turnstileRef = useRef<ContactTurnstileHandle>(null);
+  const hasFetched = useRef(false);
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
-
-  const resetTurnstile = useCallback(() => {
-    turnstileRef.current?.reset();
-    setTurnstileKey((current) => current + 1);
-    setTextState("verifying");
-    setErrorMessage(null);
-    setSmsHref(null);
-    setPhoneDisplay(null);
-  }, []);
 
   const fetchTextLink = useCallback(async (turnstileToken: string) => {
     setTextState("verifying");
@@ -61,8 +55,12 @@ export default function ContactTextContent({ active }: { active: boolean }) {
     }
   }, []);
 
-  const handleTurnstileSuccess = useCallback(
+  const handleTurnstileReady = useCallback(
     (token: string) => {
+      if (hasFetched.current) {
+        return;
+      }
+      hasFetched.current = true;
       trackEvent("contact_text_unlock_start");
       void fetchTextLink(token);
     },
@@ -76,15 +74,23 @@ export default function ContactTextContent({ active }: { active: boolean }) {
     );
   }, []);
 
-  const handleWidgetLoad = useCallback(() => {
-    turnstileRef.current?.execute();
+  const resetTurnstile = useCallback(() => {
+    hasFetched.current = false;
+    turnstileRef.current?.reset();
+    setTurnstileKey((current) => current + 1);
+    setTextState("verifying");
+    setErrorMessage(null);
+    setSmsHref(null);
+    setPhoneDisplay(null);
   }, []);
 
   useEffect(() => {
     if (!active) {
+      hasFetched.current = false;
       return;
     }
     if (!turnstileSiteKey) {
+      hasFetched.current = true;
       trackEvent("contact_text_unlock_start");
       void fetchTextLink("dev-bypass");
     }
@@ -151,22 +157,12 @@ export default function ContactTextContent({ active }: { active: boolean }) {
       )}
 
       {turnstileSiteKey ? (
-        <div className="sr-only" aria-hidden="true">
-          <Turnstile
-            key={turnstileKey}
-            ref={turnstileRef}
-            siteKey={turnstileSiteKey}
-            onWidgetLoad={handleWidgetLoad}
-            onSuccess={handleTurnstileSuccess}
-            onError={handleTurnstileError}
-            onTimeout={handleTurnstileError}
-            onExpire={handleTurnstileError}
-            options={{
-              size: "invisible",
-              execution: "execute",
-            }}
-          />
-        </div>
+        <ContactTurnstile
+          ref={turnstileRef}
+          widgetKey={turnstileKey}
+          onReady={handleTurnstileReady}
+          onError={handleTurnstileError}
+        />
       ) : null}
     </section>
   );

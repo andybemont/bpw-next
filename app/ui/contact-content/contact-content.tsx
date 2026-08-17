@@ -1,6 +1,5 @@
 "use client";
 
-import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { useEffect, useRef, useState } from "react";
 import {
   AvailabilityStatus,
@@ -8,6 +7,9 @@ import {
 } from "@/app/lib/availability";
 import { REFERENCE_OPTIONS } from "@/app/lib/contact-schema";
 import { getAnalyticsContext, trackEvent } from "@/app/lib/analytics";
+import ContactTurnstile, {
+  type ContactTurnstileHandle,
+} from "./contact-turnstile";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -24,7 +26,7 @@ export default function ContactContent() {
 
   const formLoadedAt = useRef(Date.now());
   const hasTrackedStart = useRef(false);
-  const turnstileRef = useRef<TurnstileInstance>(null);
+  const turnstileRef = useRef<ContactTurnstileHandle>(null);
 
   const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
@@ -71,12 +73,7 @@ export default function ContactContent() {
     let turnstileToken = "dev-bypass";
     if (turnstileSiteKey) {
       try {
-        turnstileRef.current?.execute();
-        const token = await turnstileRef.current?.getResponsePromise();
-        if (!token) {
-          throw new Error("missing-token");
-        }
-        turnstileToken = token;
+        turnstileToken = await turnstileRef.current!.getToken();
       } catch {
         setFormState("error");
         setSubmitError(
@@ -139,7 +136,7 @@ export default function ContactContent() {
     } catch {
       setFormState("error");
       setSubmitError(
-        "Network error — please check your connection and try again, or text us from the link above.",
+        "Network error — please check your connection and try again, or switch to the Text tab.",
       );
       resetTurnstile();
       trackEvent("contact_form_submit_error");
@@ -353,6 +350,15 @@ export default function ContactContent() {
           )}
         </div>
 
+        {turnstileSiteKey ? (
+          <ContactTurnstile ref={turnstileRef} widgetKey={turnstileKey} />
+        ) : process.env.NODE_ENV !== "production" ? (
+          <p className="text-xs text-primary-600">
+            Turnstile disabled in local dev (set NEXT_PUBLIC_TURNSTILE_SITE_KEY
+            to enable).
+          </p>
+        ) : null}
+
         <div className="pt-2 pb-[env(safe-area-inset-bottom)]">
           <button
             type="submit"
@@ -362,25 +368,6 @@ export default function ContactContent() {
             {formState === "submitting" ? "Sending…" : "Send It!"}
           </button>
         </div>
-
-        {turnstileSiteKey ? (
-          <div className="sr-only" aria-hidden="true">
-            <Turnstile
-              key={turnstileKey}
-              ref={turnstileRef}
-              siteKey={turnstileSiteKey}
-              options={{
-                size: "invisible",
-                execution: "execute",
-              }}
-            />
-          </div>
-        ) : process.env.NODE_ENV !== "production" ? (
-          <p className="text-xs text-primary-600">
-            Turnstile disabled in local dev (set NEXT_PUBLIC_TURNSTILE_SITE_KEY
-            to enable).
-          </p>
-        ) : null}
       </form>
     </section>
   );
