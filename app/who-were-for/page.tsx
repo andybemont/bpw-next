@@ -1,17 +1,19 @@
-import { Metadata } from "next";
 import PageBase from "../ui/page-base";
 import SitePage from "../ui/shared/site-page";
 import namedPortfolioImages from "../lib/named-portfolio-images";
 import WhoWereForContent from "../ui/who-were-for-content/who-were-for-content";
+import { buildPageMetadata } from "@/app/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Who We’re For (and Not For) | Bemont Photo",
+export const metadata = buildPageMetadata({
+  title: "Who We're For (and Not For) | Bemont Photo",
   description:
-    "A clear, honest look at who Bemont Photo is best suited for and who we may not be the right fit for.",
-  alternates: {
-    canonical: "https://www.bemontphoto.com/who-were-for",
-  },
-};
+    "An honest guide to whether Bemont Photo is the right Rochester wedding photographer for your style, priorities, and personality.",
+  path: "who-were-for",
+  ogImage: namedPortfolioImages.kacieDip.image.src,
+  ogImageAlt: namedPortfolioImages.kacieDip.alt,
+  ogImageWidth: namedPortfolioImages.kacieDip.image.width,
+  ogImageHeight: namedPortfolioImages.kacieDip.image.height,
+});
 
 export default function Page() {
   return (

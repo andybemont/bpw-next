@@ -12,10 +12,10 @@ export default function GalleryContent() {
   return (
     <section>
       <div className="w-full">
-        <h2 className="text-center text-5xl">Wedding Photo Galleries</h2>
-        <h3 className="text-center text-2xl">
+        <h1 className="text-center text-5xl">Wedding Photo Galleries</h1>
+        <p className="text-center text-2xl">
           Some of our favorite shots since 2018
-        </h3>
+        </p>
         <ul className="mt-8 grid w-full gap-5 grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))]">
           {allGalleries.map((gallery) => {
             const isExternal = isClientGallery(gallery);
@@ -43,9 +43,9 @@ export default function GalleryContent() {
                     />
                   </div>
                   <div className="space-y-2 px-4 py-4">
-                    <h4 className="text-xl font-semibold sm:text-2xl">
+                    <h3 className="text-xl font-semibold sm:text-2xl">
                       {gallery.title}
-                    </h4>
+                    </h3>
                     <p className="text-sm text-primary-700 group-hover:text-primary-100">
                       {gallery.description}
                     </p>

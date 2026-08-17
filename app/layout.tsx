@@ -5,29 +5,58 @@ import { GoogleTagManager } from "@next/third-parties/google";
 import { GoogleHelper } from "./ui/google";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import {
+  DEFAULT_DESCRIPTION,
+  DEFAULT_OG_IMAGE,
+  DEFAULT_OG_IMAGE_ALT,
+  SITE_URL,
+} from "@/app/lib/seo";
+import {
+  JsonLd,
+  websiteStructuredData,
+} from "@/app/lib/structured-data";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.bemontphoto.com"),
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Rochester Wedding Photography by Bemont Photo",
+    template: "%s",
+  },
+  description: DEFAULT_DESCRIPTION,
+  applicationName: "Bemont Photo",
+  category: "Wedding Photography",
   openGraph: {
-    siteName: "Rochester Wedding Photography by Bemont Photo",
-    title: "Rochester Wedding Photography by Bemont Photo",
-    description:
-      "Wedding Photography for Rochester, Buffalo, and the Finger Lakes",
-    url: "https://www.bemontphoto.com",
+    siteName: "Bemont Photo Wedding Photography",
+    locale: "en_US",
     type: "website",
-    images: {
-      url: "/portfolio/bemont-photo-230916191334.jpg",
-      alt: "Rochester Wedding Photography by Bemont Photo",
+    url: SITE_URL,
+    title: "Rochester Wedding Photography by Bemont Photo",
+    description: DEFAULT_DESCRIPTION,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE,
+        alt: DEFAULT_OG_IMAGE_ALT,
+        width: 1920,
+        height: 1280,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Rochester Wedding Photography by Bemont Photo",
+    description: DEFAULT_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
-};
-
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  name: "Bemont Photo",
-  alternateName: "Bemont Photo Wedding Photography",
-  url: "https://www.bemontphoto.com",
 };
 
 export default function RootLayout({
@@ -40,10 +69,7 @@ export default function RootLayout({
       <body className={`${lato.className} antialiased`}>
         <GoogleTagManager gtmId="AW-855505561" />
         <GoogleHelper />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={websiteStructuredData} />
         {children}
         <Analytics />
         <SpeedInsights />

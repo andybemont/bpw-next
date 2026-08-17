@@ -1,15 +1,14 @@
-import { Metadata } from "next";
 import HomePageContent from "@/app/ui/home-page/home-page-content";
 import PageBase from "@/app/ui/page-base";
-export const metadata: Metadata = {
+import { buildPageMetadata } from "@/app/lib/seo";
+
+export const metadata = buildPageMetadata({
   title:
     "Buffalo, NY Wedding Photography by Bemont Photo | Packages and Availability",
   description:
-    "Learn all about the family photography team capturing weddings in Buffalo, NY. Explore packages, prices, and availability, and all the other details you need.",
-  alternates: {
-    canonical: "https://www.bemontphoto.com/wedding-photography/buffalo-ny",
-  },
-};
+    "Buffalo wedding photographers capturing candid, natural wedding day stories across Western New York. Packages from $4,200 with Bemont Photo.",
+  path: "wedding-photography/buffalo-ny",
+});
 
 export default function Page() {
   return (

@@ -264,8 +264,16 @@ function FaqSection({ heading, items }: { heading: string; items: FaqItem[] }) {
 export default function FaqContent() {
   return (
     <section className="space-y-6 text-primary-900">
+      <div className="space-y-3">
+        <h1 className="text-sm font-medium text-primary-700">
+          Wedding Photography FAQ
+        </h1>
+        <p className="text-2xl sm:text-3xl font-semibold text-pretty">
+          Everything you might be wondering
+        </p>
+      </div>
       <FaqSection
-        heading="Everything you might be wondering"
+        heading="Common questions"
         items={faqItems}
       />
       <FaqSection

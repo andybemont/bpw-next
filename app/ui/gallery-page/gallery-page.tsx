@@ -69,7 +69,7 @@ export default function GalleryPage(props: {
                     </svg>
                   </Link>
                 )}
-                <h2 className="text-4xl sm:text-5xl">{gallery.title}</h2>
+                <h1 className="text-4xl sm:text-5xl">{gallery.title}</h1>
                 {nextGallery && (
                   <Link
                     href={`/galleries/${nextGallery.link}`}

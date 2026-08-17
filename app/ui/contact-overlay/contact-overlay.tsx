@@ -2,6 +2,11 @@
 
 import { useEffect } from "react";
 import ContactContent from "../contact-content/contact-content";
+import businessInfo from "@/app/lib/business-info";
+
+const smsHref = `${businessInfo.smsTel}?body=${encodeURIComponent(
+  "Hi! We're interested in Bemont Photo for our wedding. Our date is ",
+)}`;
 
 export default function ContactOverlay({
   isOpen,
@@ -47,6 +52,15 @@ export default function ContactOverlay({
               </h2>
               <p className="text-sm text-primary-700">
                 We try to respond to all inquiries within a day
+              </p>
+              <p className="mt-2 text-sm text-primary-700">
+                Prefer to text?{" "}
+                <a
+                  href={smsHref}
+                  className="font-medium underline decoration-primary-300/80 underline-offset-4"
+                >
+                  Send us a message
+                </a>
               </p>
             </div>
             <button

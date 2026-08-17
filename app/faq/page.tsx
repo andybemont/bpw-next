@@ -1,4 +1,3 @@
-import { Metadata } from "next";
 import FaqContent, {
   faqItems,
   infrequentlyAskedItems,
@@ -6,16 +5,15 @@ import FaqContent, {
 import namedPortfolioImages from "../lib/named-portfolio-images";
 import SitePage from "../ui/shared/site-page";
 import PageBase from "../ui/page-base";
+import { buildPageMetadata } from "@/app/lib/seo";
+import { JsonLd } from "@/app/lib/structured-data";
 
-const pageTitle = "Rochester Wedding Photography | FAQ";
-export const metadata: Metadata = {
-  title: pageTitle,
+export const metadata = buildPageMetadata({
+  title: "Rochester Wedding Photography FAQ | Bemont Photo",
   description:
-    "Everything you need to know about Rochester's favorite wedding photographers",
-  alternates: {
-    canonical: "https://www.bemontphoto.com/faq",
-  },
-};
+    "Answers about wedding photography pricing, coverage, timelines, delivery, and working with Bemont Photo in Rochester and Western New York.",
+  path: "faq",
+});
 
 const faqStructuredData = {
   "@context": "https://schema.org",
@@ -33,12 +31,7 @@ const faqStructuredData = {
 export default function Page() {
   return (
     <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(faqStructuredData),
-        }}
-      />
+      <JsonLd data={faqStructuredData} />
       <SitePage
         image={namedPortfolioImages.kidsWithDog}
         positioning="object-center"

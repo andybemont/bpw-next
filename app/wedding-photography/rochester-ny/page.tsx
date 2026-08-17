@@ -1,15 +1,14 @@
-import { Metadata } from "next";
 import HomePageContent from "@/app/ui/home-page/home-page-content";
 import PageBase from "@/app/ui/page-base";
-export const metadata: Metadata = {
+import { buildPageMetadata } from "@/app/lib/seo";
+
+export const metadata = buildPageMetadata({
   title:
     "Rochester, NY Wedding Photography by Bemont Photo | Packages and Availability",
   description:
-    "Learn all about the family photography team capturing weddings in Rochester, NY. Explore packages, prices, and availability, and all the other details you need.",
-  alternates: {
-    canonical: "https://www.bemontphoto.com/wedding-photography/rochester-ny",
-  },
-};
+    "Rochester wedding photographers for candid, natural coverage across Western New York. View packages from $4,200 and check Bemont Photo availability.",
+  path: "wedding-photography/rochester-ny",
+});
 
 export default function Page() {
   return (

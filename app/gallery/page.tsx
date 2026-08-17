@@ -1,15 +1,18 @@
-import { Metadata } from "next";
 import SitePage from "../ui/shared/site-page";
 import GalleryContent from "../ui/gallery-content/gallery-content";
 import PageBase from "../ui/page-base";
+import { buildPageMetadata } from "@/app/lib/seo";
+import {
+  JsonLd,
+  breadcrumbStructuredData,
+} from "@/app/lib/structured-data";
 
-export const metadata: Metadata = {
-  title: "Rochester Wedding Photography | Galleries and Inspo",
-  description: "Bemont Photo's Favorite Wedding Photos",
-  alternates: {
-    canonical: "https://www.bemontphoto.com/gallery",
-  },
-};
+export const metadata = buildPageMetadata({
+  title: "Wedding Photo Galleries & Inspiration | Bemont Photo",
+  description:
+    "Browse Rochester wedding photography galleries: candid moments, first dances, venues, kids, details, and favorite images from Bemont Photo.",
+  path: "gallery",
+});
 
 export default function Page() {
   return (
@@ -18,6 +21,12 @@ export default function Page() {
       h2Text="Galleries & Inspo"
       showFavoritesCarousel={false}
     >
+      <JsonLd
+        data={breadcrumbStructuredData([
+          { name: "Home", path: "" },
+          { name: "Galleries", path: "gallery" },
+        ])}
+      />
       <SitePage fullWidth>
         <GalleryContent />
       </SitePage>
