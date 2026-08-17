@@ -1,17 +1,13 @@
 import type { Config } from "tailwindcss";
-
-const colors = require("tailwindcss/colors");
+import forms from "@tailwindcss/forms";
+import colors from "tailwindcss/colors";
 
 const config: Config = {
-  content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     fontFamily: {
-      title: ["Lato"],
-      text: ["Lato"],
+      title: ["Lato", "sans-serif"],
+      text: ["Lato", "sans-serif"],
     },
     extend: {
       keyframes: {
@@ -33,6 +29,11 @@ const config: Config = {
             "animation-timing-function": "cubic-bezier(0.8, 0, 1, 1);",
           },
         },
+        shimmer: {
+          "100%": {
+            transform: "translateX(100%)",
+          },
+        },
       },
       animation: {
         slide: "slide 2s 1",
@@ -50,14 +51,8 @@ const config: Config = {
         },
       },
     },
-    keyframes: {
-      shimmer: {
-        "100%": {
-          transform: "translateX(100%)",
-        },
-      },
-    },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [forms],
 };
+
 export default config;

@@ -2,17 +2,7 @@ import React from "react";
 import Header from "./header/header";
 import Footer from "./footer/footer";
 import FavoritesCarousel from "./shared/favorites-carousel";
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title:
-    "Rochester Wedding Photography by Bemont Photo | Packages and Availability",
-  description:
-    "Learn all about the family photography team capturing weddings across Western New York. Explore packages, prices, and availability, and all the other details you need.",
-  alternates: {
-    canonical: "https://www.bemontphoto.com",
-  },
-};
+import { ContactProvider } from "./contact/contact-provider";
 
 export default function PageBase({
   h1Text,
@@ -28,13 +18,13 @@ export default function PageBase({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <ContactProvider autoOpen={autoOpenContact}>
       <Header h1Text={h1Text} h2Text={h2Text} />
       <main className="relative">
         <article>{children}</article>
       </main>
       {showFavoritesCarousel ? <FavoritesCarousel /> : null}
-      <Footer h1Text={h1Text} autoOpenContact={autoOpenContact} />
-    </>
+      <Footer h1Text={h1Text} />
+    </ContactProvider>
   );
 }

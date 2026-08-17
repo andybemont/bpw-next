@@ -1,53 +1,42 @@
-import { Gallery, allGalleries } from "../../lib/galleries";
-import { allPortfolioImages } from "../../lib/best-ofs";
+import { Gallery, allGalleries, isClientGallery } from "../../lib/galleries";
+import { allPortfolioImages } from "../../lib/portfolio";
 import Link from "next/link";
 import PageBase from "../page-base";
 import SitePage from "../shared/site-page";
 import FavoritesCarousel from "../shared/favorites-carousel";
-import CheckAvailabilityCta from "../shared/check-availability-cta";
+
+function findAdjacentGallery(
+  gallery: Gallery,
+  direction: "next" | "previous",
+): Gallery | null {
+  const navigable = allGalleries.filter(
+    (entry): entry is Gallery => !isClientGallery(entry),
+  );
+  const currentIndex = navigable.findIndex((entry) => entry.link === gallery.link);
+  if (currentIndex === -1) {
+    return null;
+  }
+
+  const step = direction === "next" ? 1 : -1;
+  const adjacentIndex =
+    (currentIndex + step + navigable.length) % navigable.length;
+  return navigable[adjacentIndex];
+}
 
 export default function GalleryPage(props: {
   gallery: Gallery;
   text?: string;
 }) {
   const { gallery, text } = props;
+  const previousGallery = findAdjacentGallery(gallery, "previous");
+  const nextGallery = findAdjacentGallery(gallery, "next");
 
-  // Figure out the next gallery so we can make a link to it
-  var nextGallery: Gallery | null = null;
-  var nextGalleryIndex = allGalleries.indexOf(gallery) + 1;
-  while (nextGallery === null) {
-    if (nextGalleryIndex >= allGalleries.length) {
-      nextGalleryIndex = 0;
-    }
-    var candidate = allGalleries[nextGalleryIndex] as Gallery;
-    if (candidate && candidate.link) {
-      nextGallery = candidate;
-      break;
-    }
-    nextGalleryIndex++;
-  }
-
-  // Figure out the previous gallery so we can make a link to it
-  var previousGallery: Gallery | null = null;
-  var previousGalleryIndex = allGalleries.indexOf(gallery) - 1;
-  while (previousGallery === null) {
-    if (previousGalleryIndex < 0) {
-      previousGalleryIndex = allGalleries.length - 1;
-    }
-    var candidate = allGalleries[previousGalleryIndex] as Gallery;
-    if (candidate && candidate.link) {
-      previousGallery = candidate;
-      break;
-    }
-    previousGalleryIndex--;
-  }
-
-  // Get the list of pictures for this gallery, sorted so landscapes are first (lazy but reasonably effective for now)
-  var pictureList = gallery.filter(allPortfolioImages);
-  pictureList = pictureList.sort(
-    (p1, p2) =>
-      p1.image.height / p1.image.width - p2.image.height / p2.image.width,
-  );
+  const pictureList = gallery
+    .filter(allPortfolioImages)
+    .sort(
+      (p1, p2) =>
+        p1.image.height / p1.image.width - p2.image.height / p2.image.width,
+    );
 
   return (
     <PageBase
@@ -62,7 +51,7 @@ export default function GalleryPage(props: {
               <div className="relative flex items-center justify-center">
                 {previousGallery && (
                   <Link
-                    href={`../galleries/${previousGallery.link}`}
+                    href={`/galleries/${previousGallery.link}`}
                     className="absolute right-full mr-16 inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-900/40 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
                     aria-label={`Previous: ${previousGallery.title}`}
                   >
@@ -83,7 +72,7 @@ export default function GalleryPage(props: {
                 <h2 className="text-4xl sm:text-5xl">{gallery.title}</h2>
                 {nextGallery && (
                   <Link
-                    href={`../galleries/${nextGallery.link}`}
+                    href={`/galleries/${nextGallery.link}`}
                     className="absolute left-full ml-16 inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-900/40 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
                     aria-label={`Next: ${nextGallery.title}`}
                   >
@@ -108,9 +97,11 @@ export default function GalleryPage(props: {
             </p>
           </header>
 
-          <div className="space-y-4 text-base text-primary-900">
-            {text && <p>{text}</p>}
-          </div>
+          {text && (
+            <div className="space-y-4 text-base text-primary-900">
+              <p>{text}</p>
+            </div>
+          )}
 
           <section>
             <FavoritesCarousel images={pictureList} shuffle={false} />

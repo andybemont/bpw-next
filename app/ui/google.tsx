@@ -9,6 +9,7 @@ export function GoogleHelper() {
       event: "conversion",
       value: { send_to: "AW-855505561/iqHECPTS-IQBEJn195cD" },
     });
-  });
-  return <></>;
+  }, []);
+
+  return null;
 }

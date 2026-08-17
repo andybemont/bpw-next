@@ -1,5 +1,5 @@
 import "@/app/ui/global.css";
-import { titleText } from "@/app/ui/fonts";
+import { lato } from "@/app/ui/fonts";
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { GoogleHelper } from "./ui/google";
@@ -37,9 +37,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <GoogleTagManager gtmId="AW-855505561" />
-      <GoogleHelper />
-      <body className={`${titleText.className} antialiased`}>
+      <body className={`${lato.className} antialiased`}>
+        <GoogleTagManager gtmId="AW-855505561" />
+        <GoogleHelper />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

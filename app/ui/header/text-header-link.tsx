@@ -8,11 +8,11 @@ export default function TextHeaderLink(props: { link: HeaderLink }) {
   const { link } = props;
   const pathname = usePathname();
   const isExternal = link.url.startsWith("http");
-  const isActive = !isExternal
-    ? link.url === "/"
-      ? pathname === "/"
-      : pathname.startsWith(link.url)
-    : false;
+  const isActive =
+    !isExternal &&
+    (link.url === "/"
+      ? pathname === "/" || pathname.startsWith("/wedding-photography")
+      : pathname.startsWith(link.url));
   const linkClass = "text-sm px-2";
 
   if (isActive) {
@@ -24,7 +24,7 @@ export default function TextHeaderLink(props: { link: HeaderLink }) {
   }
 
   return (
-    <Link key={link.tag} href={link.url} target={isExternal ? "_blank" : ""}>
+    <Link href={link.url} target={isExternal ? "_blank" : undefined}>
       <span className={linkClass}>{link.tooltip}</span>
     </Link>
   );

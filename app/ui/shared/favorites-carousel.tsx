@@ -1,20 +1,25 @@
 "use client";
 
 import Image from "next/image";
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import galleries from "@/app/lib/galleries";
-import { allPortfolioImages, PortfolioImage } from "@/app/lib/best-ofs";
+import { allPortfolioImages, PortfolioImage } from "@/app/lib/portfolio";
 import namedPortfolioImages from "@/app/lib/named-portfolio-images";
 
 const SLIDE_INTERVAL_MS = 6500;
 const MANUAL_PAUSE_MS = 30_000;
 
+const EXCLUDED_FAVORITE_IDS = new Set([
+  namedPortfolioImages.aliciaField.id,
+  namedPortfolioImages.kidsWithDog.id,
+  namedPortfolioImages.kacieDip.id,
+  namedPortfolioImages.lydiaFlowers.id,
+]);
+
 type FavoritesCarouselProps = {
   images?: PortfolioImage[];
   shuffle?: boolean;
-  /** Only use priority if this carousel is above the fold */
   priorityActiveImage?: boolean;
-  /** If true, manual navigation pauses autoplay forever */
   pauseForeverOnManual?: boolean;
 };
 
@@ -25,20 +30,13 @@ export default function FavoritesCarousel({
   pauseForeverOnManual = false,
 }: FavoritesCarouselProps) {
   const baseImages = useMemo(() => {
-    if (images?.length) return images;
-
-    // NOTE: This exclusion relies on object identity (same object references).
-    // If that ever changes, switch to excluding by a stable key (id/filename/slug).
-    const excluded = new Set([
-      namedPortfolioImages.aliciaField,
-      namedPortfolioImages.kidsWithDog,
-      namedPortfolioImages.kacieDip,
-      namedPortfolioImages.lydiaFlowers,
-    ]);
+    if (images?.length) {
+      return images;
+    }
 
     return galleries.favorites
       .filter(allPortfolioImages)
-      .filter((image) => !excluded.has(image))
+      .filter((image) => !EXCLUDED_FAVORITE_IDS.has(image.id))
       .filter((image) => image.image.width >= image.image.height);
   }, [images]);
 
@@ -46,17 +44,15 @@ export default function FavoritesCarousel({
   const [index, setIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [hasBeenFullscreen, setHasBeenFullscreen] = useState(false);
-
-  // Autoplay pause management
   const [isAutoAdvancePaused, setIsAutoAdvancePaused] = useState(false);
   const resumeTimerRef = useRef<number | null>(null);
-
-  // Focus management for modal
   const openerRef = useRef<HTMLButtonElement | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
-    if (!baseImages.length) return;
+    if (!baseImages.length) {
+      return;
+    }
 
     if (!shuffle) {
       setShuffledImages(baseImages);
@@ -74,7 +70,6 @@ export default function FavoritesCarousel({
     setIndex(copy.length ? Math.floor(Math.random() * copy.length) : 0);
   }, [baseImages, shuffle]);
 
-  // Autoplay
   useEffect(() => {
     if (shuffledImages.length <= 1 || isFullscreen || isAutoAdvancePaused) {
       return;
@@ -87,50 +82,12 @@ export default function FavoritesCarousel({
     return () => window.clearInterval(timer);
   }, [shuffledImages.length, isFullscreen, isAutoAdvancePaused]);
 
-  // Escape-to-close fullscreen, plus focus on open
-  useEffect(() => {
-    if (!isFullscreen) return;
-
-    setHasBeenFullscreen(true);
-
-    // Focus the close button so keyboard users land somewhere sensible.
-    window.setTimeout(() => closeButtonRef.current?.focus(), 0);
-
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsFullscreen(false);
-      if (e.key === "ArrowLeft") goPrevious(true);
-      if (e.key === "ArrowRight") goNext(true);
-    };
-
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isFullscreen]);
-
-  // Restore focus to opener when modal closes
-  useEffect(() => {
-    if (isFullscreen || !hasBeenFullscreen) return;
-    openerRef.current?.focus();
-  }, [isFullscreen, hasBeenFullscreen]);
-
-  // Clear any resume timers on unmount
-  useEffect(() => {
-    return () => {
-      if (resumeTimerRef.current) window.clearTimeout(resumeTimerRef.current);
-    };
-  }, []);
-
-  if (!shuffledImages.length) return null;
-
-  const activeImage = shuffledImages[index];
-  const previousImage =
-    shuffledImages[(index - 1 + shuffledImages.length) % shuffledImages.length];
-  const nextImage = shuffledImages[(index + 1) % shuffledImages.length];
-
-  const pauseAutoplayTemporarily = () => {
+  const pauseAutoplayTemporarily = useCallback(() => {
     setIsAutoAdvancePaused(true);
 
-    if (pauseForeverOnManual) return;
+    if (pauseForeverOnManual) {
+      return;
+    }
 
     if (resumeTimerRef.current) {
       window.clearTimeout(resumeTimerRef.current);
@@ -139,20 +96,78 @@ export default function FavoritesCarousel({
       setIsAutoAdvancePaused(false);
       resumeTimerRef.current = null;
     }, MANUAL_PAUSE_MS);
-  };
+  }, [pauseForeverOnManual]);
 
-  const goNext = (manual?: boolean) => {
-    if (manual) pauseAutoplayTemporarily();
-    setIndex((current) => (current + 1) % shuffledImages.length);
-  };
+  const goNext = useCallback(
+    (manual?: boolean) => {
+      if (manual) {
+        pauseAutoplayTemporarily();
+      }
+      setIndex((current) => (current + 1) % shuffledImages.length);
+    },
+    [pauseAutoplayTemporarily, shuffledImages.length],
+  );
 
-  const goPrevious = (manual?: boolean) => {
-    if (manual) pauseAutoplayTemporarily();
-    setIndex(
-      (current) =>
-        (current - 1 + shuffledImages.length) % shuffledImages.length,
-    );
-  };
+  const goPrevious = useCallback(
+    (manual?: boolean) => {
+      if (manual) {
+        pauseAutoplayTemporarily();
+      }
+      setIndex(
+        (current) =>
+          (current - 1 + shuffledImages.length) % shuffledImages.length,
+      );
+    },
+    [pauseAutoplayTemporarily, shuffledImages.length],
+  );
+
+  useEffect(() => {
+    if (!isFullscreen) {
+      return;
+    }
+
+    setHasBeenFullscreen(true);
+    window.setTimeout(() => closeButtonRef.current?.focus(), 0);
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsFullscreen(false);
+      }
+      if (event.key === "ArrowLeft") {
+        goPrevious(true);
+      }
+      if (event.key === "ArrowRight") {
+        goNext(true);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isFullscreen, goNext, goPrevious]);
+
+  useEffect(() => {
+    if (isFullscreen || !hasBeenFullscreen) {
+      return;
+    }
+    openerRef.current?.focus();
+  }, [isFullscreen, hasBeenFullscreen]);
+
+  useEffect(() => {
+    return () => {
+      if (resumeTimerRef.current) {
+        window.clearTimeout(resumeTimerRef.current);
+      }
+    };
+  }, []);
+
+  if (!shuffledImages.length) {
+    return null;
+  }
+
+  const activeImage = shuffledImages[index];
+  const previousImage =
+    shuffledImages[(index - 1 + shuffledImages.length) % shuffledImages.length];
+  const nextImage = shuffledImages[(index + 1) % shuffledImages.length];
 
   return (
     <section className="bg-white overflow-x-hidden">
@@ -171,7 +186,7 @@ export default function FavoritesCarousel({
                   }}
                 >
                   <Image
-                    src={previousImage.image}
+                    src={previousImage.image.src}
                     alt={previousImage.alt}
                     fill
                     sizes="(max-width: 1024px) 40vw, 560px"
@@ -192,12 +207,11 @@ export default function FavoritesCarousel({
                 }}
               >
                 <Image
-                  src={activeImage.image}
+                  src={activeImage.image.src}
                   alt={activeImage.alt}
                   fill
                   sizes="(max-width: 768px) 100vw, 800px"
                   className="object-contain"
-                  // Only make the *visible* active image priority (and only if caller says it’s above the fold).
                   priority={priorityActiveImage}
                 />
               </button>
@@ -213,7 +227,7 @@ export default function FavoritesCarousel({
                   }}
                 >
                   <Image
-                    src={nextImage.image}
+                    src={nextImage.image.src}
                     alt={nextImage.alt}
                     fill
                     sizes="(max-width: 1024px) 40vw, 560px"
@@ -231,7 +245,7 @@ export default function FavoritesCarousel({
                   className="pointer-events-auto absolute left-0 top-0 z-20 flex h-full w-16 items-center justify-center text-primary-900/80 transition hover:text-primary-900 focus-visible:text-primary-900"
                 >
                   <span className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-white/90 via-white/60 to-transparent" />
-                  <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/70 shadow-sm transition hover:bg-white hover:shadow-md hover:ring-1 hover:ring-primary-900/20">
+                  <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/70 shadow-sm transition hover:bg-white hover:ring-1 hover:ring-primary-900/20">
                     <svg
                       className="h-6 w-6"
                       viewBox="0 0 24 24"
@@ -254,7 +268,7 @@ export default function FavoritesCarousel({
                   className="pointer-events-auto absolute right-0 top-0 z-20 flex h-full w-16 items-center justify-center text-primary-900/80 transition hover:text-primary-900 focus-visible:text-primary-900"
                 >
                   <span className="absolute inset-y-0 right-0 w-full bg-gradient-to-l from-white/90 via-white/60 to-transparent" />
-                  <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/70 shadow-sm transition hover:bg-white hover:shadow-md hover:ring-1 hover:ring-primary-900/20">
+                  <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/70 shadow-sm transition hover:bg-white hover:ring-1 hover:ring-primary-900/20">
                     <svg
                       className="h-6 w-6"
                       viewBox="0 0 24 24"
@@ -363,13 +377,11 @@ export default function FavoritesCarousel({
           <div className="absolute inset-0 z-0 flex items-center justify-center px-6 pointer-events-none">
             <div className="relative h-full w-full max-w-6xl">
               <Image
-                src={activeImage.image}
+                src={activeImage.image.src}
                 alt={activeImage.alt}
                 fill
-                // More accurate than 100vw given max-w-6xl (1152px) on very large screens.
                 sizes="(min-width: 1536px) 1152px, 100vw"
                 className="object-contain"
-                // IMPORTANT: no priority here (overlay should not preload)
               />
             </div>
           </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import ContactContent from "../contact-content/contact-content";
 
 export default function ContactOverlay({
@@ -9,6 +10,21 @@ export default function ContactOverlay({
   isOpen: boolean;
   onClose: () => void;
 }) {
+  useEffect(() => {
+    if (!isOpen) {
+      return;
+    }
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) {
     return null;
   }
@@ -20,15 +36,21 @@ export default function ContactOverlay({
         <div
           className="absolute right-0 top-0 h-full w-full sm:w-[72vw] lg:w-[60vw] bg-primary-50 text-primary-900 shadow-2xl overflow-y-auto"
           onClick={(event) => event.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="contact-overlay-title"
         >
           <div className="sticky top-0 bg-primary-50/95 backdrop-blur border-b border-primary-200 px-6 py-4 flex items-start justify-between">
             <div>
-              <h2 className="text-2xl font-semibold">Contact & Availability</h2>
+              <h2 id="contact-overlay-title" className="text-2xl font-semibold">
+                Contact & Availability
+              </h2>
               <p className="text-sm text-primary-700">
                 We try to respond to all inquiries within a day
               </p>
             </div>
             <button
+              type="button"
               className="text-sm uppercase tracking-widest text-primary-700"
               onClick={onClose}
               aria-label="Close contact form"

@@ -1,6 +1,6 @@
 "use client";
 
-import { PortfolioImage } from "@/app/lib/best-ofs";
+import { PortfolioImage } from "@/app/lib/portfolio";
 import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
@@ -62,13 +62,14 @@ export default function SitePage(props: {
   }, [resolvedAlign]);
 
   const contentAlignClass = useMemo(() => "sm:mx-auto", []);
+
   return (
     <section className={`relative w-full ${image ? "" : "pt-[128px]"}`}>
       {image && (
         <div className="w-full bg-white">
           <div className="block md:hidden">
             <Image
-              src={image.image}
+              src={image.image.src}
               alt={image.alt}
               width={image.image.width}
               height={image.image.height}
@@ -84,7 +85,7 @@ export default function SitePage(props: {
               className={`flex w-full h-full ${heroAlignClass}`}
             >
               <Image
-                src={image.image}
+                src={image.image.src}
                 alt={image.alt}
                 width={image.image.width}
                 height={image.image.height}
