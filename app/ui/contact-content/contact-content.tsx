@@ -1,118 +1,225 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
-import emailjs from "@emailjs/browser";
+import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
+import { useEffect, useRef, useState } from "react";
 import {
   AvailabilityStatus,
   getAvailabilityStatus,
 } from "@/app/lib/availability";
-import { trackEvent } from "@/app/lib/analytics";
+import { REFERENCE_OPTIONS } from "@/app/lib/contact-schema";
+import { getAnalyticsContext, trackEvent } from "@/app/lib/analytics";
 
-type ContactFormValues = {
-  website: string;
-  date: string;
-  name: string;
-  email: string;
-  phone: string;
-  reference: string;
-  message: string;
-};
+type FormState = "idle" | "submitting" | "success" | "error";
+
+const inputClassName =
+  "w-full rounded-md border border-primary-200 bg-white px-3 py-2.5 text-base focus:border-primary-900 focus:outline-none focus:ring-1 focus:ring-primary-900/20";
 
 export default function ContactContent() {
-  const [submitted, setSubmitted] = useState(false);
+  const [formState, setFormState] = useState<FormState>("idle");
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [availabilityStatus, setAvailabilityStatus] =
     useState<AvailabilityStatus | null>(null);
+  const [turnstileKey, setTurnstileKey] = useState(0);
+
+  const formLoadedAt = useRef(Date.now());
   const hasTrackedStart = useRef(false);
+  const turnstileRef = useRef<TurnstileInstance>(null);
 
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    reset,
-    formState: { isValid, isDirty },
-  } = useForm<ContactFormValues>();
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? "";
 
-  const onSubmit = async (values: ContactFormValues) => {
-    if (values.website) {
-      return;
-    }
+  useEffect(() => {
+    formLoadedAt.current = Date.now();
+  }, []);
 
-    setSubmitError(null);
-    setIsSubmitting(true);
-
-    try {
-      await emailjs.send(
-        process.env.NEXT_PUBLIC_REACT_APP_EMAILJS_SERVICE_ID || "",
-        process.env.NEXT_PUBLIC_REACT_APP_EMAILJS_TEMPLATE_ID || "",
-        {
-          name: values.name,
-          phone: values.phone,
-          email: values.email,
-          message: values.message,
-          date: values.date,
-          reference: values.reference,
-        },
-        {
-          publicKey: process.env.NEXT_PUBLIC_REACT_APP_EMAILJS_PUBLIC_KEY || "",
-        },
-      );
-      reset();
-      setSubmitted(true);
-      trackEvent("contact_form_submit_success");
-    } catch {
-      setSubmitError(
-        "Something went wrong sending your message. Please try again or email us directly.",
-      );
-      trackEvent("contact_form_submit_error");
-    } finally {
-      setIsSubmitting(false);
-    }
+  const resetTurnstile = () => {
+    turnstileRef.current?.reset();
+    setTurnstileKey((current) => current + 1);
   };
 
-  const handleChange = () => {
+  const handleFieldChange = (event: React.FormEvent<HTMLFormElement>) => {
     if (!hasTrackedStart.current) {
       hasTrackedStart.current = true;
       trackEvent("contact_form_start");
     }
-    const currentValues = getValues();
-    setSubmitted(false);
+
+    if (formState === "success") {
+      setFormState("idle");
+    }
     setSubmitError(null);
-    setAvailabilityStatus(getAvailabilityStatus(currentValues.date));
+    setFieldErrors({});
+
+    const form = event.currentTarget;
+    const dateInput = form.elements.namedItem("date") as HTMLInputElement | null;
+    if (dateInput) {
+      setAvailabilityStatus(getAvailabilityStatus(dateInput.value));
+    }
   };
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitError(null);
+    setFieldErrors({});
+
+    const form = event.currentTarget;
+    if (!form.reportValidity()) {
+      return;
+    }
+
+    setFormState("submitting");
+
+    let turnstileToken = "dev-bypass";
+    if (turnstileSiteKey) {
+      try {
+        turnstileRef.current?.execute();
+        const token = await turnstileRef.current?.getResponsePromise();
+        if (!token) {
+          throw new Error("missing-token");
+        }
+        turnstileToken = token;
+      } catch {
+        setFormState("error");
+        setSubmitError(
+          "We couldn't verify you're human. Please try again in a moment.",
+        );
+        resetTurnstile();
+        trackEvent("contact_form_submit_error");
+        return;
+      }
+    }
+
+    const formData = new FormData(form);
+    const payload = {
+      name: String(formData.get("name") ?? ""),
+      email: String(formData.get("email") ?? ""),
+      phone: String(formData.get("phone") ?? ""),
+      date: String(formData.get("date") ?? ""),
+      reference: String(formData.get("reference") ?? ""),
+      message: String(formData.get("message") ?? ""),
+      website: String(formData.get("website") ?? ""),
+      turnstileToken,
+      formLoadedAt: formLoadedAt.current,
+      analyticsContext: getAnalyticsContext() ?? undefined,
+    };
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      const result = (await response.json()) as {
+        ok: boolean;
+        message?: string;
+        fieldErrors?: Record<string, string>;
+      };
+
+      if (!response.ok || !result.ok) {
+        setFormState("error");
+        setSubmitError(
+          result.message ??
+            "Something went wrong sending your message. Please try again.",
+        );
+        if (result.fieldErrors) {
+          setFieldErrors(result.fieldErrors);
+        }
+        resetTurnstile();
+        trackEvent("contact_form_submit_error");
+        return;
+      }
+
+      setFormState("success");
+      form.reset();
+      setAvailabilityStatus(null);
+      resetTurnstile();
+      formLoadedAt.current = Date.now();
+      hasTrackedStart.current = false;
+      trackEvent("contact_form_submit_success");
+    } catch {
+      setFormState("error");
+      setSubmitError(
+        "Network error — please check your connection and try again, or text us from the link above.",
+      );
+      resetTurnstile();
+      trackEvent("contact_form_submit_error");
+    }
+  };
+
+  if (formState === "success") {
+    return (
+      <section className="space-y-4 text-left">
+        <div
+          className="rounded-lg border border-green-700/30 bg-green-50 px-4 py-5"
+          role="status"
+        >
+          <p className="text-lg font-semibold text-primary-900">
+            Thank you — we got your message!
+          </p>
+          <p className="mt-2 text-base text-primary-800">
+            We try to respond within a day. You should also receive a quick
+            confirmation email (check spam if you don&apos;t see it).
+          </p>
+        </div>
+        <button
+          type="button"
+          className="text-sm font-medium text-primary-700 underline underline-offset-4"
+          onClick={() => setFormState("idle")}
+        >
+          Send another message
+        </button>
+      </section>
+    );
+  }
+
+  const hasFieldErrors = Object.keys(fieldErrors).length > 0;
 
   return (
     <section className="space-y-6 text-left">
       <form
-        onChange={handleChange}
-        onSubmit={handleSubmit(onSubmit)}
+        onChange={handleFieldChange}
+        onSubmit={handleSubmit}
         className="space-y-4 text-left"
+        noValidate
       >
         <div className="hidden" aria-hidden="true">
           <label htmlFor="website">Website</label>
           <input
             id="website"
+            name="website"
             type="text"
             tabIndex={-1}
             autoComplete="off"
-            {...register("website")}
           />
         </div>
+
+        {(submitError || hasFieldErrors) && (
+          <div
+            className="rounded-lg border border-red-700/30 bg-red-50 px-4 py-3 text-sm text-red-800"
+            role="alert"
+          >
+            {submitError ??
+              "Please fix the highlighted fields below and try again."}
+          </div>
+        )}
 
         <div className="space-y-1">
           <label className="text-sm font-medium" htmlFor="date">
             When&apos;s Your Wedding?
-            <span className="ml-1 text-primary-600">*</span>
+            <span className="ml-1 text-primary-600" aria-hidden="true">
+              *
+            </span>
           </label>
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
             <input
               id="date"
-              className="w-full sm:w-[12rem] rounded-md border border-primary-200 bg-white px-3 py-2 text-sm focus:border-primary-900 focus:outline-none"
+              name="date"
+              className={`${inputClassName} sm:w-[12rem] ${fieldErrors.date ? "border-red-500" : ""}`}
               type="date"
               required
-              {...register("date", { required: true })}
+              autoComplete="off"
+              aria-invalid={Boolean(fieldErrors.date)}
+              aria-describedby="date-hint"
             />
             {availabilityStatus && (
               <span className="text-xs font-medium">
@@ -124,52 +231,85 @@ export default function ContactContent() {
               </span>
             )}
           </div>
-          <p className="text-xs text-primary-700 min-h-[1.5rem]">
-            {availabilityStatus
-              ? (availabilityStatus.note ??
-                "We're so sorry! Please get in touch if you have flexibility or have general questions.")
-              : "Enter a date to see if we're available."}
+          <p
+            id="date-hint"
+            className={`text-sm min-h-[1.5rem] ${fieldErrors.date ? "text-red-700" : "text-primary-700"}`}
+          >
+            {fieldErrors.date ??
+              (availabilityStatus
+                ? (availabilityStatus.note ??
+                  "We're so sorry! Please get in touch if you have flexibility or have general questions.")
+                : "Enter a date to see if we're available.")}
           </p>
         </div>
 
         <div className="space-y-1">
           <label className="text-sm font-medium" htmlFor="name">
             Name
-            <span className="ml-1 text-primary-600">*</span>
+            <span className="ml-1 text-primary-600" aria-hidden="true">
+              *
+            </span>
           </label>
           <input
             id="name"
-            className="w-full rounded-md border border-primary-200 bg-white px-3 py-2 text-sm focus:border-primary-900 focus:outline-none"
+            name="name"
+            className={`${inputClassName} ${fieldErrors.name ? "border-red-500" : ""}`}
             type="text"
             required
-            {...register("name", { required: true })}
+            autoComplete="name"
+            aria-invalid={Boolean(fieldErrors.name)}
+            aria-describedby={fieldErrors.name ? "name-error" : undefined}
           />
+          {fieldErrors.name && (
+            <p id="name-error" className="text-sm text-red-700" role="alert">
+              {fieldErrors.name}
+            </p>
+          )}
         </div>
 
         <div className="space-y-1">
           <label className="text-sm font-medium" htmlFor="email">
             Email Address
-            <span className="ml-1 text-primary-600">*</span>
+            <span className="ml-1 text-primary-600" aria-hidden="true">
+              *
+            </span>
           </label>
           <input
             id="email"
-            className="w-full rounded-md border border-primary-200 bg-white px-3 py-2 text-sm focus:border-primary-900 focus:outline-none"
+            name="email"
+            className={`${inputClassName} ${fieldErrors.email ? "border-red-500" : ""}`}
             type="email"
             required
-            {...register("email", { required: true })}
+            autoComplete="email"
+            inputMode="email"
+            aria-invalid={Boolean(fieldErrors.email)}
+            aria-describedby={fieldErrors.email ? "email-error" : undefined}
           />
+          {fieldErrors.email && (
+            <p id="email-error" className="text-sm text-red-700" role="alert">
+              {fieldErrors.email}
+            </p>
+          )}
         </div>
 
         <div className="space-y-1">
           <label className="text-sm font-medium" htmlFor="phone">
-            Phone
+            Phone <span className="font-normal text-primary-600">(optional)</span>
           </label>
           <input
             id="phone"
-            className="w-full rounded-md border border-primary-200 bg-white px-3 py-2 text-sm focus:border-primary-900 focus:outline-none"
+            name="phone"
+            className={`${inputClassName} ${fieldErrors.phone ? "border-red-500" : ""}`}
             type="tel"
-            {...register("phone")}
+            autoComplete="tel"
+            inputMode="tel"
+            aria-invalid={Boolean(fieldErrors.phone)}
           />
+          {fieldErrors.phone && (
+            <p className="text-sm text-red-700" role="alert">
+              {fieldErrors.phone}
+            </p>
+          )}
         </div>
 
         <div className="space-y-1">
@@ -178,52 +318,69 @@ export default function ContactContent() {
           </label>
           <select
             id="reference"
-            className="w-full rounded-md border border-primary-200 bg-white px-3 py-2 text-sm focus:border-primary-900 focus:outline-none"
-            {...register("reference")}
+            name="reference"
+            className={inputClassName}
+            defaultValue=""
           >
             <option value=""></option>
-            <option value="Social Media">Social Media</option>
-            <option value="Zola">Zola</option>
-            <option value="The Knot">The Knot</option>
-            <option value="Wedding Wire">Wedding Wire</option>
-            <option value="Google/Web Search">Google/Web</option>
-            <option value="Word of Mouth">Word of Mouth</option>
-            <option value="Other">Other</option>
+            {REFERENCE_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
           </select>
         </div>
 
         <div className="space-y-1">
           <label className="text-sm font-medium" htmlFor="message">
             Write a message
-            <span className="ml-1 text-primary-600">*</span>
+            <span className="ml-1 text-primary-600" aria-hidden="true">
+              *
+            </span>
           </label>
           <textarea
             id="message"
-            className="w-full min-h-[160px] rounded-md border border-primary-200 bg-white px-3 py-2 text-sm focus:border-primary-900 focus:outline-none"
+            name="message"
+            className={`${inputClassName} min-h-[160px] resize-y ${fieldErrors.message ? "border-red-500" : ""}`}
             required
-            {...register("message", { required: true })}
+            aria-invalid={Boolean(fieldErrors.message)}
+            aria-describedby={fieldErrors.message ? "message-error" : undefined}
           />
+          {fieldErrors.message && (
+            <p id="message-error" className="text-sm text-red-700" role="alert">
+              {fieldErrors.message}
+            </p>
+          )}
         </div>
 
-        {submitError && (
-          <p className="text-sm text-red-700" role="alert">
-            {submitError}
-          </p>
-        )}
-
-        <div className="pt-2">
+        <div className="pt-2 pb-[env(safe-area-inset-bottom)]">
           <button
             type="submit"
-            className="bg-primary-900 text-primary-50 rounded-md w-full sm:w-40 h-11 text-base disabled:bg-gray-600"
-            disabled={!isValid || isSubmitting || (submitted && !isDirty)}
+            className="bg-primary-900 text-primary-50 rounded-md w-full sm:w-44 min-h-[44px] text-base font-medium disabled:cursor-not-allowed disabled:opacity-60"
+            disabled={formState === "submitting"}
           >
-            {isSubmitting
-              ? "Sending..."
-              : submitted && !isDirty
-                ? "Thank You!"
-                : "Send It!"}
+            {formState === "submitting" ? "Sending…" : "Send It!"}
           </button>
         </div>
+
+        {turnstileSiteKey ? (
+          <div className="sr-only" aria-hidden="true">
+            <Turnstile
+              key={turnstileKey}
+              ref={turnstileRef}
+              siteKey={turnstileSiteKey}
+              options={{
+                size: "invisible",
+                execution: "execute",
+              }}
+            />
+          </div>
+        ) : process.env.NODE_ENV !== "production" ? (
+          <p className="text-xs text-primary-600">
+            Turnstile disabled in local dev (set NEXT_PUBLIC_TURNSTILE_SITE_KEY
+            to enable).
+          </p>
+        ) : null}
       </form>
     </section>
   );

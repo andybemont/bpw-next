@@ -12,6 +12,10 @@ export type AnalyticsEvent =
   | "contact_form_start"
   | "contact_form_submit_success"
   | "contact_form_submit_error"
+  | "contact_mode_switch"
+  | "contact_text_unlock_start"
+  | "contact_text_link_unlocked"
+  | "contact_text_link_click"
   | "gallery_index_view"
   | "gallery_view"
   | "full_wedding_link_click";
@@ -26,6 +30,10 @@ type AnalyticsContext = {
   utmTerm?: string;
   firstVisitAt: string;
 };
+
+export function getAnalyticsContext(): AnalyticsContext | null {
+  return readContext();
+}
 
 function readContext(): AnalyticsContext | null {
   if (typeof window === "undefined") {

@@ -35,9 +35,13 @@ export default function Page() {
               <p>
                 When you submit the contact form, we receive the information you
                 enter—such as your name, email, wedding date, and message—and
-                use it to respond to your inquiry. Messages are delivered
-                through our email service provider. We do not sell contact
+                use it to respond to your inquiry. Messages are delivered by
+                email through our hosting provider. We do not sell contact
                 information.
+              </p>
+              <p>
+                Submissions are protected by Cloudflare Turnstile to reduce spam.
+                A confirmation email is sent automatically when you inquire.
               </p>
             </section>
 
@@ -59,7 +63,7 @@ export default function Page() {
                 The site may store basic session information (such as how you
                 arrived or marketing tags in the URL) to understand where
                 inquiries come from. Your browser may also store ordinary cookies
-                related to analytics providers.
+                related to analytics providers and Turnstile verification.
               </p>
             </section>
 

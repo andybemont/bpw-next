@@ -37,13 +37,23 @@ public/portfolio/     Wedding photo assets
 
 ## Environment variables
 
-Contact form delivery uses EmailJS. Set these in `.env.local`:
+The contact form posts to a server-side API route and sends email through [Resend](https://resend.com), with [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/) for spam protection. Copy `.env.example` to `.env.local` and fill in:
 
 ```
-NEXT_PUBLIC_REACT_APP_EMAILJS_SERVICE_ID=
-NEXT_PUBLIC_REACT_APP_EMAILJS_TEMPLATE_ID=
-NEXT_PUBLIC_REACT_APP_EMAILJS_PUBLIC_KEY=
+RESEND_API_KEY=
+CONTACT_TO_EMAIL=          # Where inquiries are delivered
+CONTACT_FROM_EMAIL=        # Verified sender in Resend (e.g. "Bemont Photo <hello@bemontphoto.com>")
+NEXT_PUBLIC_TURNSTILE_SITE_KEY=
+TURNSTILE_SECRET_KEY=
 ```
+
+**Setup checklist**
+
+1. Create a Resend account, verify your domain, and generate an API key.
+2. Create a Turnstile widget in Cloudflare (managed / invisible mode works well on mobile).
+3. Add the variables above in Vercel project settings for production.
+
+Turnstile is optional in local dev; production requires both Turnstile keys.
 
 ## Portfolio maintenance
 
