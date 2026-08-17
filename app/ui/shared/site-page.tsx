@@ -64,17 +64,17 @@ export default function SitePage(props: {
   const contentAlignClass = useMemo(() => "sm:mx-auto", []);
 
   return (
-    <section className={`relative w-full ${image ? "" : "pt-[128px]"}`}>
+    <section className={`relative w-full ${image ? "" : "pt-[72px] md:pt-[128px]"}`}>
       {image && (
         <div className="w-full bg-white">
-          <div className="block md:hidden">
+          <div className="relative block h-[58svh] min-h-[240px] max-h-[520px] w-full overflow-hidden md:hidden">
             <Image
               src={image.image.src}
               alt={image.alt}
-              width={image.image.width}
-              height={image.image.height}
+              fill
+              priority
               sizes="100vw"
-              className={`w-full h-auto ${positioning || heroObjectClass}`}
+              className={`object-cover ${positioning || heroObjectClass}`}
             />
           </div>
           <div

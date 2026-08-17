@@ -6,13 +6,13 @@ export default function PricingContent() {
     <section className="space-y-8 text-primary-900">
       <div className="space-y-2">
         <h1 className="text-sm font-medium text-primary-700">Pricing</h1>
-        <p className="text-2xl sm:text-3xl font-semibold text-pretty">
+        <p className="max-w-prose text-2xl font-semibold text-pretty sm:text-3xl">
           Wedding Photography is $4,200. Our single package covers everything
           needed for most weddings.
         </p>
       </div>
 
-      <div className="space-y-6">
+      <div className="space-y-8 [&>div]:space-y-2 [&>div:not(:first-child)]:border-t [&>div:not(:first-child)]:border-primary-200/70 [&>div:not(:first-child)]:pt-6">
         <div className="space-y-2">
           <h2 className="text-base font-semibold">
             8 hours of wedding day coverage
@@ -131,7 +131,7 @@ export default function PricingContent() {
           </li>
         </ul>
       </div>
-      <CheckAvailabilityCta className="pt-2" />
+      <CheckAvailabilityCta className="pt-4" fullWidthOnMobile />
     </section>
   );
 }

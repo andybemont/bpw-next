@@ -122,7 +122,7 @@ export default function ContactOverlay({
 
               <button
                 type="button"
-                className="shrink-0 text-sm uppercase tracking-widest text-primary-700"
+                className="inline-flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center px-2 text-sm uppercase tracking-widest text-primary-700"
                 onClick={onClose}
                 aria-label="Close contact form"
               >

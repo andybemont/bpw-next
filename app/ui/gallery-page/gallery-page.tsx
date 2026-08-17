@@ -5,6 +5,8 @@ import PageBase from "../page-base";
 import SitePage from "../shared/site-page";
 import FavoritesCarousel from "../shared/favorites-carousel";
 import PageAnalytics from "../analytics/page-analytics";
+import GalleryAdjacentNav from "../shared/gallery-adjacent-nav";
+import CheckAvailabilityCta from "../shared/check-availability-cta";
 
 function findAdjacentGallery(
   gallery: Gallery,
@@ -47,60 +49,18 @@ export default function GalleryPage(props: {
     >
       <PageAnalytics event="gallery_view" gallerySlug={gallery.link} />
       <SitePage fullWidth>
-        <div className="space-y-10">
+        <div className="space-y-10 px-5 sm:px-6">
           <header className="space-y-3">
-            <div className="relative mx-auto flex w-fit flex-col items-center">
-              <div className="relative flex items-center justify-center">
-                {previousGallery && (
-                  <Link
-                    href={`/galleries/${previousGallery.link}`}
-                    className="absolute right-full mr-16 inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-900/40 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
-                    aria-label={`Previous: ${previousGallery.title}`}
-                  >
-                    <svg
-                      className="h-4 w-4"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path d="M15 18l-6-6 6-6" />
-                    </svg>
-                  </Link>
-                )}
-                <h1 className="text-4xl sm:text-5xl">{gallery.title}</h1>
-                {nextGallery && (
-                  <Link
-                    href={`/galleries/${nextGallery.link}`}
-                    className="absolute left-full ml-16 inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-900/40 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
-                    aria-label={`Next: ${nextGallery.title}`}
-                  >
-                    <svg
-                      className="h-4 w-4"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      aria-hidden="true"
-                    >
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                  </Link>
-                )}
-              </div>
-            </div>
-            <p className="text-center text-lg text-primary-700 sm:text-xl">
+            <h1 className="text-center text-3xl sm:text-4xl md:text-5xl">
+              {gallery.title}
+            </h1>
+            <p className="mx-auto max-w-2xl text-center text-base text-primary-700 sm:text-lg md:text-xl">
               {gallery.description}
             </p>
           </header>
 
           {text && (
-            <div className="space-y-4 text-base text-primary-900">
+            <div className="mx-auto max-w-3xl space-y-4 text-base leading-relaxed text-primary-900">
               <p>{text}</p>
             </div>
           )}
@@ -108,6 +68,17 @@ export default function GalleryPage(props: {
           <section>
             <FavoritesCarousel images={pictureList} shuffle={false} />
           </section>
+
+          <GalleryAdjacentNav
+            previousGallery={previousGallery}
+            nextGallery={nextGallery}
+          />
+
+          <CheckAvailabilityCta
+            className="pt-2"
+            source={`gallery_${gallery.link}`}
+            fullWidthOnMobile
+          />
 
           <div className="pt-1">
             <div className="flex flex-wrap items-center justify-center gap-3">
@@ -120,7 +91,7 @@ export default function GalleryPage(props: {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="inline-flex w-[200px] items-center justify-center rounded-full border border-primary-900/40 px-4 py-2 text-sm font-semibold text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
+                  className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border border-primary-900/40 px-4 py-2.5 text-sm font-semibold text-primary-900 transition hover:border-primary-900 hover:bg-primary-50 sm:w-[200px]"
                 >
                   {link.label}
                 </Link>

@@ -20,10 +20,14 @@ export default function PageBase({
   return (
     <ContactProvider autoOpen={autoOpenContact}>
       <Header h1Text={h1Text} h2Text={h2Text} />
-      <main className="relative">
+      <main className="relative overflow-x-hidden">
         <article>{children}</article>
       </main>
-      {showFavoritesCarousel ? <FavoritesCarousel /> : null}
+      {showFavoritesCarousel ? (
+        <div className="hidden md:block">
+          <FavoritesCarousel />
+        </div>
+      ) : null}
       <Footer h1Text={h1Text} />
     </ContactProvider>
   );

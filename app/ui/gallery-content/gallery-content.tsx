@@ -13,10 +13,12 @@ import { trackEvent } from "@/app/lib/analytics";
 
 export default function GalleryContent() {
   return (
-    <section>
+    <section className="px-5 sm:px-6">
       <div className="w-full">
-        <h1 className="text-center text-5xl">Wedding Photo Galleries</h1>
-        <p className="text-center text-2xl">
+        <h1 className="text-center text-3xl sm:text-4xl md:text-5xl">
+          Wedding Photo Galleries
+        </h1>
+        <p className="text-center text-xl sm:text-2xl">
           Some of our favorite shots since 2018
         </p>
         <ul className="mt-8 grid w-full gap-5 grid-cols-1 sm:grid-cols-[repeat(auto-fit,minmax(280px,1fr))]">
@@ -66,7 +68,7 @@ export default function GalleryContent() {
             );
           })}
         </ul>
-        <CheckAvailabilityCta className="pt-8" />
+        <CheckAvailabilityCta className="pt-8" fullWidthOnMobile />
       </div>
     </section>
   );

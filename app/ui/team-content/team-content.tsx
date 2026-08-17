@@ -36,7 +36,7 @@ export default function TeamContent() {
             Your wedding photo dream team
           </p>
         </div>
-        <div className="space-y-3 border-y border-primary-200/70 py-3">
+        <div className="max-w-prose space-y-3 border-y border-primary-200/70 py-4">
           <p>
             Here’s the story: Andy is married to Gillian (on the right). Andy
             learned photography to take pictures of their kid… but he’s a
@@ -71,10 +71,10 @@ export default function TeamContent() {
           </p>
         </div>
       </div>
-      <ul className="text-pretty flex flex-col leading-snug divide-y divide-primary-200">
+      <ul className="flex max-w-prose flex-col divide-y divide-primary-200 leading-snug text-pretty">
         {teamMembers.map((person) => {
           return (
-            <li key={++count} className="py-4">
+            <li key={++count} className="py-5">
               <p>
                 <span className="text-xl font-semibold pr-1">
                   {person.name}
@@ -88,7 +88,7 @@ export default function TeamContent() {
           );
         })}
       </ul>
-      <CheckAvailabilityCta className="pt-2" />
+      <CheckAvailabilityCta className="pt-4" fullWidthOnMobile />
     </section>
   );
 }

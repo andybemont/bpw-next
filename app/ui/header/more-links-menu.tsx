@@ -40,19 +40,20 @@ export default function MoreLinksMenu({ links }: MoreLinksMenuProps) {
   return (
     <div className="relative flex flex-col items-center justify-center">
       <button
-        className="flex items-center text-sm font-semibold text-primary-900 transition hover:text-primary-950"
+        className="inline-flex h-11 w-11 items-center justify-center text-primary-900 transition hover:text-primary-950"
         key="menu"
         id="menuContainer"
         onClick={handleToggleClick}
         aria-haspopup="menu"
         aria-expanded={showMenu}
+        aria-label="Open menu"
       >
-        <Image src="/menu.svg" alt="Menu" width={22} height={22} />
+        <Image src="/menu.svg" alt="" width={22} height={22} aria-hidden="true" />
       </button>
       {showMenu && (
-        <ul 
+        <ul
           id="menuList"
-          className="absolute left-1/2 w-48 min-w-full -translate-x-1/2 top-[16px] md:left-0 md:translate-x-0 md:top-[32px] text-primary-50 bg-primary-900/90 text-center"
+          className="absolute left-0 top-full z-20 mt-2 w-52 rounded-md bg-primary-900/95 py-1 text-left text-primary-50 shadow-lg md:left-0 md:top-[32px]"
         >
           {links.map((link) => (
             <li

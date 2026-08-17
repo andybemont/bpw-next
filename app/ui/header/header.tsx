@@ -1,7 +1,10 @@
 "use client";
 
 import React, { useMemo } from "react";
-import { allHeaderLinks } from "@/app/lib/header-content";
+import {
+  allHeaderLinks,
+  mobileMenuLinks,
+} from "@/app/lib/header-content";
 import TextHeaderLink from "./text-header-link";
 import MoreLinksMenu from "./more-links-menu";
 import { useContact } from "../contact/contact-provider";
@@ -31,34 +34,52 @@ export default function Header({
 
   return (
     <header>
-      <div className="fixed inset-x-0 top-0 min-h-[70px] bg-primary-50 md:bg-primary-50/70 z-10 text-primary-900 border-b border-primary-950 md:border-b-0">
-        <div className="relative mx-auto w-full max-w-6xl px-4 md:px-6">
+      <div className="fixed inset-x-0 top-0 z-10 border-b border-primary-950 bg-primary-50 pt-[env(safe-area-inset-top)] md:border-b-0 md:bg-primary-50/70">
+        {/* Mobile header */}
+        <div className="mx-auto w-full max-w-6xl px-4 md:hidden">
+          <div className="grid min-h-[56px] grid-cols-[44px_minmax(0,1fr)_44px] items-center gap-2 py-2">
+            <MoreLinksMenu links={mobileMenuLinks} />
+            <div className="min-w-0 text-center">
+              <div className="truncate text-sm font-bold">{h1Text}</div>
+              {h2Text ? (
+                <p className="truncate text-xs text-primary-700">{h2Text}</p>
+              ) : null}
+            </div>
+            <button
+              type="button"
+              title="Check Availability"
+              aria-label="Check Availability"
+              className="inline-flex h-11 w-11 items-center justify-center justify-self-end rounded-full border border-primary-900/30 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
+              onClick={() => openContact("header_availability")}
+            >
+              <svg
+                className="h-4 w-4"
+                aria-hidden="true"
+                fill="currentColor"
+                viewBox="0 0 448 512"
+              >
+                <path d="M128 0c13.3 0 24 10.7 24 24V64H296V24c0-13.3 10.7-24 24-24s24 10.7 24 24V64h40c35.3 0 64 28.7 64 64v16 48V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V192 144 128C0 92.7 28.7 64 64 64h40V24c0-13.3 10.7-24 24-24zM400 192H48V448c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V192zM329 297L217 409c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47 95-95c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Desktop header */}
+        <div className="relative mx-auto hidden w-full max-w-6xl px-6 md:block">
           <div id="everythingLeftOfIcon" className="w-full py-2">
-            <div className="relative mx-auto flex w-full flex-col items-center md:w-fit">
+            <div className="relative mx-auto flex w-fit flex-col items-center">
               <div className="text-center">
-                <div className="flex items-center justify-center text-sm font-bold md:text-2xl">
+                <div className="flex items-center justify-center text-2xl font-bold">
                   {h1Text}
                 </div>
                 {h2Text ? (
-                  <p className="mt-0.5 text-xs text-primary-700 md:text-sm">
-                    {h2Text}
-                  </p>
+                  <p className="mt-0.5 text-sm text-primary-700">{h2Text}</p>
                 ) : null}
               </div>
               <nav className="w-full">
-                <div className="flex justify-center md:hidden">
-                  <MoreLinksMenu
-                    links={allHeaderLinks.filter(
-                      (link) =>
-                        !["overview", "faq", "pricing", "contact"].includes(
-                          link.tag,
-                        ),
-                    )}
-                  />
-                </div>
                 <ul
                   id="bottomRowWithIcons"
-                  className="hidden md:flex w-full flex-row items-center justify-between gap-4"
+                  className="flex w-full flex-row items-center justify-between gap-4"
                 >
                   {allHeaderLinks
                     .filter((link) =>
@@ -99,7 +120,7 @@ export default function Header({
                   type="button"
                   title="Get In Touch"
                   aria-label="Get In Touch"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-900/30 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary-900/30 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
                   onClick={() => openContact("header_email")}
                 >
                   <svg
@@ -117,7 +138,7 @@ export default function Header({
                   type="button"
                   title="Check Availability"
                   aria-label="Check Availability"
-                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-primary-900/30 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary-900/30 text-primary-900 transition hover:border-primary-900 hover:bg-primary-50"
                   onClick={() => openContact("header_availability")}
                 >
                   <svg

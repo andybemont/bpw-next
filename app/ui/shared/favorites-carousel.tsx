@@ -216,7 +216,7 @@ export default function FavoritesCarousel({
                 ref={openerRef}
                 onClick={() => setIsFullscreen(true)}
                 aria-label="Open full screen gallery"
-                className="relative mx-auto h-[300px] w-auto max-w-[800px] flex-none overflow-hidden rounded-2xl sm:h-[420px] md:h-[520px]"
+                className="relative mx-auto h-[280px] w-full max-w-[800px] flex-none overflow-hidden rounded-2xl sm:h-[420px] md:h-[520px]"
                 style={{
                   aspectRatio: `${activeImage.image.width} / ${activeImage.image.height}`,
                 }}
@@ -252,12 +252,12 @@ export default function FavoritesCarousel({
                 </button>
               </div>
 
-              <div className="pointer-events-none absolute inset-y-0 left-1/2 w-screen -translate-x-1/2">
+              <div className="pointer-events-none absolute inset-y-0 left-1/2 w-full max-w-[100vw] -translate-x-1/2">
                 <button
                   type="button"
                   onClick={() => goPrevious(true)}
                   aria-label="Previous image"
-                  className="pointer-events-auto absolute left-0 top-0 z-20 flex h-full w-16 items-center justify-center text-primary-900/80 transition hover:text-primary-900 focus-visible:text-primary-900"
+                  className="pointer-events-auto absolute left-0 top-0 z-20 flex h-full min-w-[44px] w-11 items-center justify-center text-primary-900/80 transition hover:text-primary-900 focus-visible:text-primary-900 sm:w-16"
                 >
                   <span className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-white/90 via-white/60 to-transparent" />
                   <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/70 shadow-sm transition hover:bg-white hover:ring-1 hover:ring-primary-900/20">
@@ -280,7 +280,7 @@ export default function FavoritesCarousel({
                   type="button"
                   onClick={() => goNext(true)}
                   aria-label="Next image"
-                  className="pointer-events-auto absolute right-0 top-0 z-20 flex h-full w-16 items-center justify-center text-primary-900/80 transition hover:text-primary-900 focus-visible:text-primary-900"
+                  className="pointer-events-auto absolute right-0 top-0 z-20 flex h-full min-w-[44px] w-11 items-center justify-center text-primary-900/80 transition hover:text-primary-900 focus-visible:text-primary-900 sm:w-16"
                 >
                   <span className="absolute inset-y-0 right-0 w-full bg-gradient-to-l from-white/90 via-white/60 to-transparent" />
                   <span className="relative flex h-10 w-10 items-center justify-center rounded-full bg-white/70 shadow-sm transition hover:bg-white hover:ring-1 hover:ring-primary-900/20">

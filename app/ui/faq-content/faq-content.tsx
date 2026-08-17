@@ -182,7 +182,15 @@ export const infrequentlyAskedItems: FaqItem[] = [
   },
 ];
 
-function FaqSection({ heading, items }: { heading: string; items: FaqItem[] }) {
+function FaqSection({
+  heading,
+  items,
+  id,
+}: {
+  heading: string;
+  items: FaqItem[];
+  id: string;
+}) {
   const renderParagraph = (paragraph: string) => {
     if (
       paragraph ===
@@ -241,7 +249,7 @@ function FaqSection({ heading, items }: { heading: string; items: FaqItem[] }) {
   };
 
   return (
-    <section className="space-y-4">
+    <section id={id} className="space-y-4 scroll-mt-24">
       <h2 className="text-2xl sm:text-3xl font-semibold border-b border-primary-300/70 pb-2">
         {heading}
       </h2>
@@ -272,15 +280,37 @@ export default function FaqContent() {
           Everything you might be wondering
         </p>
       </div>
+      <nav
+        className="flex flex-wrap gap-x-3 gap-y-2 border-b border-primary-200/70 pb-4 text-sm font-medium text-primary-800"
+        aria-label="FAQ sections"
+      >
+        <a
+          href="#faq-common"
+          className="underline decoration-primary-300/80 underline-offset-4"
+        >
+          Common questions
+        </a>
+        <span className="text-primary-400" aria-hidden="true">
+          ·
+        </span>
+        <a
+          href="#faq-infrequent"
+          className="underline decoration-primary-300/80 underline-offset-4"
+        >
+          Infrequently asked
+        </a>
+      </nav>
       <FaqSection
+        id="faq-common"
         heading="Common questions"
         items={faqItems}
       />
       <FaqSection
+        id="faq-infrequent"
         heading="Infrequently Asked Questions"
         items={infrequentlyAskedItems}
       />
-      <CheckAvailabilityCta className="pt-2" />
+      <CheckAvailabilityCta className="pt-4" fullWidthOnMobile />
     </section>
   );
 }

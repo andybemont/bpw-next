@@ -49,8 +49,11 @@ export default function WhoWereForContent() {
       </h2>
 
       <div className="space-y-5">
-        {pairs.map((pair) => (
-          <div key={pair.forText} className="space-y-0.5">
+        {pairs.map((pair, index) => (
+          <div
+            key={pair.forText}
+            className={`space-y-1 ${index < pairs.length - 1 ? "border-b border-primary-200/70 pb-5" : ""}`}
+          >
             <p className="text-base font-semibold text-primary-900">
               {pair.forText}
             </p>
@@ -60,7 +63,7 @@ export default function WhoWereForContent() {
           </div>
         ))}
       </div>
-      <CheckAvailabilityCta className="pt-2" />
+      <CheckAvailabilityCta className="pt-4" fullWidthOnMobile />
     </section>
   );
 }

@@ -84,10 +84,24 @@ const allHeaderLinks = [
   instagram,
 ];
 
+/** Mobile hamburger order: galleries and high-intent pages first. */
+const mobileMenuLinks = [
+  gallery,
+  pricing,
+  faq,
+  meetTheTeam,
+  whoWereFor,
+  overview,
+  contact,
+  makeAPayment,
+  instagram,
+];
+
 export {
   type HeaderLink,
   headerLinks,
   allHeaderLinks,
+  mobileMenuLinks,
   overview,
   faq,
   whoWereFor,
