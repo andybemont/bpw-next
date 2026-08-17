@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply font-body;
+  }
+
+  h2,
+  h3,
+  h1.text-3xl,
+  h1.text-4xl,
+  h1.text-5xl,
+  p.text-2xl,
+  p.text-3xl {
+    @apply font-display;
+  }
+
+  .font-display {
+    font-family: var(--font-display), Georgia, serif;
+  }
+}
+
 html,
 body {
   overflow-x: hidden;

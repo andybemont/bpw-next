@@ -6,8 +6,10 @@ const config: Config = {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     fontFamily: {
-      title: ["Lato", "sans-serif"],
-      text: ["Lato", "sans-serif"],
+      display: ["var(--font-display)", "Georgia", "serif"],
+      body: ["var(--font-body)", "system-ui", "sans-serif"],
+      title: ["var(--font-display)", "Georgia", "serif"],
+      text: ["var(--font-body)", "system-ui", "sans-serif"],
     },
     extend: {
       keyframes: {

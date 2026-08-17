@@ -43,6 +43,7 @@ export default async function Page({
         h1Text="Bemont Photo Wedding Photography"
         h2Text=""
         autoOpenContact={autoOpenContact}
+        showFavoritesCarousel={false}
       >
         <HomePageContent locationKey="rochester" />
       </PageBase>

@@ -1,5 +1,5 @@
 import "@/app/ui/global.css";
-import { lato } from "@/app/ui/fonts";
+import { getFontSystemClassName } from "@/app/ui/fonts";
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
@@ -62,8 +62,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={`${lato.className} antialiased`}>
+    <html lang="en" className={getFontSystemClassName()}>
+      <body className="font-body antialiased">
         <GoogleTagManager gtmId="AW-855505561" />
         <AnalyticsBootstrap />
         <JsonLd data={websiteStructuredData} />

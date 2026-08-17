@@ -12,7 +12,11 @@ export const metadata = buildPageMetadata({
 
 export default function Page() {
   return (
-    <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="Western New York">
+    <PageBase
+      h1Text="Bemont Photo Wedding Photography"
+      h2Text="Western New York"
+      showFavoritesCarousel={false}
+    >
       <HomePageContent locationKey="western-ny" />
     </PageBase>
   );

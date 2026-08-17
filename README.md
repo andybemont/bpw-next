@@ -45,7 +45,18 @@ CONTACT_TO_EMAIL=          # Where inquiries are delivered
 CONTACT_FROM_EMAIL=        # Verified sender in Resend (e.g. "Bemont Photo <hello@bemontphoto.com>")
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
+NEXT_PUBLIC_FONT_SYSTEM=a    # Typography: a | b | c (requires rebuild)
 ```
+
+**Typography (`NEXT_PUBLIC_FONT_SYSTEM`)**
+
+| Value | Display | Body |
+|-------|---------|------|
+| `a` (default) | Fraunces | Source Sans 3 |
+| `b` | Manrope | IBM Plex Sans |
+| `c` | Newsreader | IBM Plex Sans |
+
+Set in `.env.local` or Vercel env vars, then rebuild. Fonts are centralized via CSS variables (`--font-display`, `--font-body`) in `app/ui/fonts/`.
 
 **Setup checklist**
 
