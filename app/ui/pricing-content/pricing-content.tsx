@@ -1,137 +1,57 @@
 import Link from "next/link";
 import CheckAvailabilityCta from "../shared/check-availability-cta";
 
+const inclusions = [
+  ["Eight hours", "Enough to tell the complete story of most weddings—from the useful part of getting ready through a properly underway dance floor. Extra time is available when the day genuinely needs it."],
+  ["Two photographers", "More candid moments, both sides of the story, and the flexibility to be in two places without making the timeline perform gymnastics."],
+  ["An engagement session", "Relaxed practice before the wedding and a chance for us to learn how you fit together. Optional, useful, and incidentally a source of excellent pictures."],
+  ["Planning that earns its keep", "Timeline help, practical answers, and a final sanity check from people who have watched more than 200 wedding days actually unfold."],
+  ["A complete high-resolution gallery", "Carefully edited photographs, full personal printing rights, easy sharing and downloads, plus professional print ordering when you want it."],
+  ["Fast, natural editing", "Sneak peeks within a few days and the full gallery within 30 days—usually sooner. True-to-life color, no outsourced editing, no trend filter with an expiration date."],
+];
+
 export default function PricingContent() {
   return (
-    <section className="space-y-8 text-primary-900">
-      <div className="space-y-2">
-        <h1 className="text-sm font-medium text-primary-700">Pricing</h1>
-        <p className="max-w-prose text-2xl font-semibold text-pretty sm:text-3xl">
-          Wedding Photography is $4,200. Our single package covers everything
-          needed for most weddings.
-        </p>
+    <section className="text-primary-900">
+      <div className="grid border-y border-primary-300/60 sm:grid-cols-2 lg:grid-cols-3">
+        {inclusions.map(([title, description], index) => (
+          <article key={title} className={`border-primary-300/50 py-10 sm:px-8 sm:py-12 ${index % 2 === 0 ? "sm:border-r" : ""} ${index % 3 !== 2 ? "lg:border-r" : "lg:border-r-0"} ${index >= 3 ? "border-t" : index >= 2 ? "sm:border-t lg:border-t-0" : "border-t sm:border-t-0"}`}>
+            <p className="mb-5 text-xs font-medium tracking-[0.16em] text-[#66858a]">0{index + 1}</p>
+            <h2 className="font-display text-3xl font-medium leading-tight">{title}</h2>
+            <p className="mt-4 text-base leading-7 text-primary-700">{description}</p>
+          </article>
+        ))}
       </div>
 
-      <div className="space-y-8 [&>div]:space-y-2 [&>div:not(:first-child)]:border-t [&>div:not(:first-child)]:border-primary-200/70 [&>div:not(:first-child)]:pt-6">
-        <div className="space-y-2">
-          <h2 className="text-base font-semibold">
-            8 hours of wedding day coverage
-          </h2>
-          <p className="text-base leading-relaxed text-primary-800">
-            This covers the story for most weddings. We’ll get the portraits and
-            family formals, as well as all the candid moments that tell the real
-            story of your day. Extended coverage is available.
-          </p>
+      <div className="grid gap-12 py-16 sm:py-24 lg:grid-cols-[0.65fr_1.35fr] lg:gap-24">
+        <div>
+          <p className="text-xs font-medium uppercase tracking-[0.22em] text-[#a85235]">The useful fine print</p>
+          <h2 className="mt-5 font-display text-4xl font-medium leading-tight sm:text-5xl">No tiny type required.</h2>
         </div>
-        <div className="space-y-2">
-          <h2 className="text-base font-semibold">Two photographers</h2>
-          <p className="text-base leading-relaxed text-primary-800">
-            We work as a{" "}
-            <Link
-              href="/team"
-              className="underline decoration-primary-300/80 underline-offset-4"
-            >
-              team
-            </Link>
-            . That means more candids, more angles on the big moments, and more
-            flexibility because one of us can be with each of you when it
-            matters.
-          </p>
-        </div>
-        <div className="space-y-2">
-          <h2 className="text-base font-semibold">Engagement session</h2>
-          <p className="text-base leading-relaxed text-primary-800">
-            A relaxed session before the wedding so you get comfortable in front
-            of the camera and we get to know you. The session is absolutely
-            optional, but it’s a great way to feel more relaxed on your wedding
-            day. The beautiful photos are just an added bonus.
-          </p>
-        </div>
-        <div className="space-y-2">
-          <h2 className="text-base font-semibold">
-            Planning and support, start to finish
-          </h2>
-          <p className="text-base leading-relaxed text-primary-800">
-            Great planning means great results. From the day you book until the
-            wedding, we’re always available to you. Whether it’s about the
-            photography itself, your wedding day timeline, or just general
-            questions about what we’ve seen work best over the years, we’ll help
-            you plan a day that lets you focus on the fun without the stress.
-          </p>
-        </div>
-        <div className="space-y-2">
-          <h2 className="text-base font-semibold">
-            Online gallery with high-resolution downloads and print rights
-          </h2>
-          <p className="text-base leading-relaxed text-primary-800">
-            A private, easy-to-use gallery for viewing, sharing, and downloading
-            your photos. Physical prints are not included but your gallery will
-            have convenient links to order through professional labs we trust.
-            You are always welcome to download and print your images elsewhere.
-          </p>
-        </div>
-        <div className="space-y-2">
-          <h2 className="text-base font-semibold">
-            Natural editing and fast delivery
-          </h2>
-          <p className="text-base leading-relaxed text-primary-800">
-            We deliver photos with careful, consistent editing on every
-            delivered image and an emphasis on natural, timeless color and skin
-            tones. No outsourcing or trendy filters.
-          </p>
-          <p className="text-base leading-relaxed text-primary-800">
-            You’ll receive sneak peeks within a few days and your full gallery
-            within 30 days.
-          </p>
+        <div className="grid gap-x-12 gap-y-7 text-base leading-7 text-primary-700 sm:grid-cols-2">
+          <p>We’re based in Rochester and include wedding-day travel within about 90 minutes. That comfortably covers Buffalo, Syracuse, and most of the Finger Lakes.</p>
+          <p>A $1,000 non-refundable deposit and online contract hold your date. The balance is due before editing and delivery begin.</p>
+          <p>The package fits most weddings, but weddings are not issued from a factory. If yours needs an adjustment, we’ll talk about it plainly.</p>
+          <p>Engagement sessions can happen any time between booking and the wedding. Choose a season you like and give us roughly a month to find the right date.</p>
+          <p>Engagement-session travel is separate. You’re welcome to join us somewhere lovely in Monroe County, or we can quote the trip to you.</p>
+          <p>We guarantee six months of gallery hosting and usually keep galleries online indefinitely. You should still download your own copy, because responsible adults have backups.</p>
         </div>
       </div>
 
-      <div className="space-y-4 border-t border-primary-200/70 pt-4 text-primary-800">
-        <h2 className="text-base font-semibold text-primary-900">
-          A few more details:
-        </h2>
-        <ul className="space-y-3 text-base leading-relaxed list-disc pl-5">
-          <li>
-            We’re based in Rochester and don’t charge for wedding day travel
-            within about 90 minutes. This comfortably covers Buffalo, Syracuse,
-            and most of the Finger Lakes region.
-          </li>
-          <li>
-            While our package covers most wedding needs, yours may be different
-            - we’re happy to discuss adjustments
-          </li>
-          <li>
-            We guarantee six months of cloud storage for your gallery. In
-            practice we host them permanently, but you should still download
-            your own copy for long-term safekeeping.
-          </li>
-          <li>
-            Engagement sessions can be scheduled any time between booking and
-            your wedding day. Some couples do them early, others closer to the
-            wedding. Pick a season you like and we’ll make it work! Give us
-            about a month of lead time to ensure we can find a good date for
-            you.
-          </li>
-          <li>
-            Travel for your engagement session is not included. We invite you to
-            join us in scenic Monroe Country.
-          </li>
-          <li>
-            A $1,000 deposit is required to hold your date. The remaining
-            balance is due before we begin editing and delivering your photos.
-          </li>
-          <li>
-            We prefer payments via Venmo because it’s simple and fee-free, but
-            we’re flexible and can accommodate other payment methods if needed.
-          </li>
-          <li>
-            Deposits are non-refundable. If your wedding is rescheduled and
-            we’re available on the new date, we’re happy to apply your original
-            deposit and honor your original pricing.
-          </li>
-        </ul>
+      <div className="grid gap-10 bg-[#e8e3d7] px-6 py-12 sm:px-10 sm:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:px-16">
+        <div>
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-[#53604b]">First question</p>
+          <h2 className="max-w-3xl font-display text-[clamp(2.5rem,5vw,5.2rem)] font-medium leading-[1.02] tracking-[-0.04em] text-balance">Are we free when you need us?</h2>
+        </div>
+        <div className="lg:justify-self-end">
+          <CheckAvailabilityCta fullWidthOnMobile />
+          <Link href="/faq" className="editorial-link mt-5 inline-block text-sm font-medium">Read the gloriously thorough FAQ</Link>
+        </div>
       </div>
-      <CheckAvailabilityCta className="pt-4" fullWidthOnMobile />
     </section>
   );
+}
+
+export function PricingHero() {
+  return <header><p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#a85235]">Straightforward on purpose</p><h1 className="font-display text-[clamp(3.2rem,5vw,5.8rem)] font-medium leading-[0.94] tracking-[-0.05em] text-balance">One very complete wedding package.</h1><p className="mt-7 font-display text-[clamp(2.8rem,4vw,4.6rem)] font-medium leading-none tracking-[-0.04em]">$4,200</p><p className="mt-5 max-w-md text-base leading-7 text-primary-700">Everything most weddings need, without a pricing maze designed to make the starting number look fictional.</p></header>;
 }

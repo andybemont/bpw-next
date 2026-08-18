@@ -2,11 +2,12 @@
 
 Marketing site for [Bemont Photo](https://www.bemontphoto.com), a Rochester wedding photography team.
 
-Built with [Next.js](https://nextjs.org) (App Router), React, TypeScript, and Tailwind CSS.
+Built with Next.js 16 (App Router), React 19, TypeScript 6, and Tailwind CSS 4.
 
 ## Getting started
 
 ```bash
+nvm use
 npm install
 npm run dev
 ```
@@ -21,6 +22,8 @@ Open [http://localhost:3000](http://localhost:3000).
 | `npm run build` | Create a production build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | Run ESLint |
+| `npm run typecheck` | Run strict TypeScript checking without generating files |
+| `npm run check` | Run lint, type-checking, and the production build |
 
 ## Project structure
 
@@ -45,18 +48,9 @@ CONTACT_TO_EMAIL=          # Where inquiries are delivered
 CONTACT_FROM_EMAIL=        # Verified sender in Resend (e.g. "Bemont Photo <hello@bemontphoto.com>")
 NEXT_PUBLIC_TURNSTILE_SITE_KEY=
 TURNSTILE_SECRET_KEY=
-NEXT_PUBLIC_FONT_SYSTEM=a    # Typography: a | b | c (requires rebuild)
 ```
 
-**Typography (`NEXT_PUBLIC_FONT_SYSTEM`)**
-
-| Value | Display | Body |
-|-------|---------|------|
-| `a` (default) | Fraunces | Source Sans 3 |
-| `b` | Manrope | IBM Plex Sans |
-| `c` | Newsreader | IBM Plex Sans |
-
-Set in `.env.local` or Vercel env vars, then rebuild. Fonts are centralized via CSS variables (`--font-display`, `--font-body`) in `app/ui/fonts/`.
+Typography is intentionally fixed: Literata for display type and IBM Plex Sans for body copy. Font loading lives in `app/ui/fonts.ts`; the Tailwind theme and site palette live in `app/ui/global.css`.
 
 **Setup checklist**
 
@@ -76,4 +70,4 @@ Image metadata lives in `app/lib/portfolio-manifest.json`. To add a photo:
 
 ## Deployment
 
-The site is configured for static generation and deploys cleanly to Vercel.
+The site requires Node 24 (declared in `package.json` and `.nvmrc`) and is configured for Vercel. Run `npm run check` before deploying.

@@ -18,14 +18,6 @@ function getClientIp(request: Request) {
 }
 
 export async function POST(request: Request) {
-  if (!isContactEmailConfigured()) {
-    console.error("Contact form: RESEND_API_KEY / CONTACT_* env vars missing.");
-    return NextResponse.json(
-      { ok: false, message: "Contact form is temporarily unavailable." },
-      { status: 503 },
-    );
-  }
-
   let body: unknown;
   try {
     body = await request.json();
@@ -53,6 +45,14 @@ export async function POST(request: Request) {
   // Honeypot — pretend success so bots don't adapt.
   if (data.website) {
     return NextResponse.json({ ok: true });
+  }
+
+  if (!isContactEmailConfigured()) {
+    console.error("Contact form: RESEND_API_KEY / CONTACT_* env vars missing.");
+    return NextResponse.json(
+      { ok: false, message: "Contact form is temporarily unavailable." },
+      { status: 503 },
+    );
   }
 
   const elapsed = Date.now() - data.formLoadedAt;

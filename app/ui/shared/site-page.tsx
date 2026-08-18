@@ -1,114 +1,44 @@
-"use client";
-
-import { PortfolioImage } from "@/app/lib/portfolio";
+import type { PortfolioImage } from "@/app/lib/portfolio";
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
 
-export default function SitePage(props: {
+export default function SitePage({
+  image,
+  hero,
+  children,
+  positioning = "object-center",
+  fullWidth = false,
+}: {
   image?: PortfolioImage;
+  hero?: React.ReactNode;
   children: React.ReactNode;
   positioning?: string;
-  heroAlign?: "auto" | "left" | "center" | "right";
   fullWidth?: boolean;
 }) {
-  const { image, children, positioning, heroAlign = "auto", fullWidth } = props;
-  const heroContainerRef = useRef<HTMLDivElement | null>(null);
-  const [autoAlign, setAutoAlign] = useState<"center" | "right">("center");
-
-  useEffect(() => {
-    if (!image) {
-      return;
-    }
-
-    const updateAlign = () => {
-      const container = heroContainerRef.current;
-      if (!container) {
-        return;
-      }
-
-      const viewportHeight = window.innerHeight;
-      const containerWidth = container.clientWidth;
-      const imageAspect = image.image.width / image.image.height;
-      const imageWidthAtViewportHeight = viewportHeight * imageAspect;
-      const shouldOverflow = imageWidthAtViewportHeight > containerWidth + 1;
-
-      setAutoAlign(shouldOverflow ? "right" : "center");
-    };
-
-    updateAlign();
-    window.addEventListener("resize", updateAlign);
-    return () => window.removeEventListener("resize", updateAlign);
-  }, [image]);
-
-  const resolvedAlign =
-    heroAlign === "auto"
-      ? autoAlign
-      : (heroAlign as "left" | "center" | "right");
-
-  const heroAlignClass = useMemo(() => {
-    return resolvedAlign === "right"
-      ? "justify-end"
-      : resolvedAlign === "left"
-        ? "justify-start"
-        : "justify-center";
-  }, [resolvedAlign]);
-
-  const heroObjectClass = useMemo(() => {
-    return resolvedAlign === "right"
-      ? "object-right"
-      : resolvedAlign === "left"
-        ? "object-left"
-        : "object-center";
-  }, [resolvedAlign]);
-
-  const contentAlignClass = useMemo(() => "sm:mx-auto", []);
-
   return (
-    <section className={`relative w-full ${image ? "" : "pt-[72px] md:pt-[128px]"}`}>
-      {image && (
-        <div className="w-full bg-white">
-          <div className="relative block h-[58svh] min-h-[240px] max-h-[520px] w-full overflow-hidden md:hidden">
+    <section className="w-full">
+      {image ? (
+        <div className={`${hero ? "mx-auto max-w-[96rem] lg:grid lg:grid-cols-[minmax(0,1.2fr)_minmax(22rem,0.8fr)] lg:items-center lg:gap-16 lg:px-12 lg:py-16" : "bg-primary-50 sm:px-8 lg:px-12"}`}>
+          <div className="relative aspect-[4/3] min-h-[22rem] w-full overflow-hidden bg-primary-100 sm:aspect-[3/2] sm:min-h-0">
             <Image
               src={image.image.src}
               alt={image.alt}
               fill
               priority
-              sizes="100vw"
-              className={`object-cover ${positioning || heroObjectClass}`}
+              sizes="(max-width: 640px) 100vw, 1280px"
+              className={`object-cover ${positioning}`}
             />
           </div>
-          <div
-            className={`hidden md:flex w-full h-[100svh] min-h-[420px] items-center ${heroAlignClass} overflow-hidden`}
-          >
-            <div
-              ref={heroContainerRef}
-              className={`flex w-full h-full ${heroAlignClass}`}
-            >
-              <Image
-                src={image.image.src}
-                alt={image.alt}
-                width={image.image.width}
-                height={image.image.height}
-                sizes="100vw"
-                className={`h-[100svh] w-auto max-w-none ${
-                  positioning || heroObjectClass
-                }`}
-                style={{ objectFit: "contain" }}
-              />
-            </div>
-          </div>
+          {hero ? <div className="px-6 py-12 sm:px-8 sm:py-16 lg:px-0 lg:py-0">{hero}</div> : null}
         </div>
-      )}
-      <div className={`relative ${image ? "md:-mt-[20svh]" : ""} pb-16`}>
-        {fullWidth ? (
-          <div className="w-full">{children}</div>
-        ) : (
-          <div className={`max-w-3xl px-6 sm:px-8 ${contentAlignClass}`}>
-            <div className="bg-primary-50/95 text-primary-900 border border-primary-200/50">
-              <div className="p-6 sm:p-10">{children}</div>
-            </div>
-          </div>
-        )}
+      ) : null}
+      <div
+        className={
+          fullWidth
+            ? "py-14 sm:py-20"
+            : `mx-auto max-w-7xl px-6 sm:px-8 ${hero ? "pb-16 sm:pb-24" : "py-16 sm:py-24"}`
+        }
+      >
+        {children}
       </div>
     </section>
   );

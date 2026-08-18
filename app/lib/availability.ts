@@ -2,8 +2,8 @@ import { isDateBooked } from "./booked-dates";
 
 export type AvailabilityStatus = {
   status: "available" | "unavailable";
+  tone: "open" | "ask" | "unavailable";
   label: string;
-  colorClass: string;
   note?: string;
 };
 
@@ -84,8 +84,8 @@ export function getAvailabilityStatus(
   if (dateValue < todayDate) {
     return {
       status: "unavailable",
-      label: "Unavailable",
-      colorClass: "bg-red-600/90",
+      tone: "unavailable",
+      label: "That date has already passed.",
       note: "We are not time travelers.",
     };
   }
@@ -93,17 +93,18 @@ export function getAvailabilityStatus(
   if (isDateBooked(dateString)) {
     return {
       status: "unavailable",
-      label: "Unavailable",
-      colorClass: "bg-red-600/90",
+      tone: "unavailable",
+      label: "We’re already committed that day.",
+      note: "If your plans have any flexibility, tell us. Otherwise, we’re genuinely sorry to miss it.",
     };
   }
 
   if (dateValue.getMonth() === 11 && dateValue.getDate() > 22) {
     return {
       status: "unavailable",
-      label: "Unavailable",
-      colorClass: "bg-red-600/90",
-      note: "We're so sorry! We wrap up for the year a few days before Christmas",
+      tone: "unavailable",
+      label: "We’re unavailable that day.",
+      note: "We wrap up for the year a few days before Christmas.",
     };
   }
 
@@ -114,9 +115,9 @@ export function getAvailabilityStatus(
   ) {
     return {
       status: "unavailable",
-      label: "Unavailable",
-      colorClass: "bg-red-600/90",
-      note: "We're so sorry! We spend Thanksgiving weekend with our families",
+      tone: "unavailable",
+      label: "We’re unavailable that weekend.",
+      note: "We spend Thanksgiving weekend with our families.",
     };
   }
 
@@ -124,8 +125,9 @@ export function getAvailabilityStatus(
   if (isWithinDays(dateValue, easter, 10)) {
     return {
       status: "unavailable",
-      label: "Unavailable",
-      colorClass: "bg-red-600/90",
+      tone: "unavailable",
+      label: "We’re unavailable around that date.",
+      note: "We reserve a little time around Easter for our families.",
     };
   }
 
@@ -135,17 +137,17 @@ export function getAvailabilityStatus(
   if (daysAway < 30) {
     return {
       status: "available",
-      label: "Available",
-      colorClass: "bg-orange-500/90",
-      note: "We do not normally book weddings on short notice - tell us about your situation below",
+      tone: "ask",
+      label: "Possibly—let’s talk.",
+      note: "We do not normally book weddings on short notice, but tell us what you’re planning below.",
     };
   }
 
   if (daysAway > 730) {
     return {
       status: "available",
-      label: "Available",
-      colorClass: "bg-orange-500/90",
+      tone: "ask",
+      label: "Possibly—let’s talk.",
       note: "We normally do not book weddings more than two years out. Feel free to get in touch anyway!",
     };
   }
@@ -153,8 +155,8 @@ export function getAvailabilityStatus(
   if (dateValue.getDay() >= 1 && dateValue.getDay() <= 4) {
     return {
       status: "available",
-      label: "Available",
-      colorClass: "bg-orange-500/90",
+      tone: "ask",
+      label: "Possibly—let’s talk.",
       note: `This is a ${dayOfWeek}. That's fine, but sometimes indicates a mistake.`,
     };
   }
@@ -162,8 +164,8 @@ export function getAvailabilityStatus(
   const monthsAway = Math.max(0, monthsFromNow(dateValue, todayDate));
   return {
     status: "available",
-    label: "Available",
-    colorClass: "bg-green-600/90",
+    tone: "open",
+    label: "Your date is open!",
     note: `Just to prevent mistakes: this is a ${dayOfWeek} in ${monthsAway} months. If that's right, get in touch!`,
   };
 }

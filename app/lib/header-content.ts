@@ -7,7 +7,7 @@ type HeaderLink = {
 
 const overview: HeaderLink = {
   url: "/",
-  tooltip: "Wedding Photography",
+  tooltip: "Home",
   tag: "overview",
   isExternal: false,
 };

@@ -1,6 +1,7 @@
 "use client";
 
-import { useContact } from "../contact/contact-provider";
+import Link from "next/link";
+import { trackEvent } from "@/app/lib/analytics";
 
 export default function CheckAvailabilityCta({
   className = "",
@@ -11,19 +12,17 @@ export default function CheckAvailabilityCta({
   source?: string;
   fullWidthOnMobile?: boolean;
 }) {
-  const { openContact } = useContact();
-
   return (
     <div className={`flex justify-center ${className}`.trim()}>
-      <button
-        type="button"
-        className={`inline-flex min-h-[44px] items-center justify-center rounded-full border border-primary-900/40 px-6 py-2.5 text-sm font-semibold text-primary-900 transition hover:border-primary-900 hover:bg-primary-50 ${
+      <Link
+        href="/contact"
+        className={`inline-flex min-h-[48px] items-center justify-center rounded-full border border-primary-900 px-7 py-3 font-display text-base font-medium text-primary-900 transition hover:bg-primary-900 hover:text-primary-50 ${
           fullWidthOnMobile ? "w-full sm:w-auto" : ""
         }`}
-        onClick={() => openContact(source)}
+        onClick={() => trackEvent("availability_cta_click", { source })}
       >
         Check availability
-      </button>
+      </Link>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import PricingContent from "../ui/pricing-content/pricing-content";
+import PricingContent, { PricingHero } from "../ui/pricing-content/pricing-content";
 import namedPortfolioImages from "../lib/named-portfolio-images";
 import SitePage from "../ui/shared/site-page";
 import PageBase from "../ui/page-base";
@@ -24,7 +24,7 @@ export default function Page() {
       <SitePage
         image={namedPortfolioImages.lydiaFlowers}
         positioning="object-top"
-        heroAlign="center"
+        hero={<PricingHero />}
       >
         <PricingContent />
       </SitePage>

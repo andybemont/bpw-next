@@ -12,7 +12,6 @@ export type AnalyticsEvent =
   | "contact_form_start"
   | "contact_form_submit_success"
   | "contact_form_submit_error"
-  | "contact_mode_switch"
   | "contact_text_unlock_start"
   | "contact_text_link_unlocked"
   | "contact_text_link_click"

@@ -1,5 +1,5 @@
 import "@/app/ui/global.css";
-import { getFontSystemClassName } from "@/app/ui/fonts";
+import { getBrandFontClassName } from "@/app/ui/fonts";
 import type { Metadata } from "next";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { Analytics } from "@vercel/analytics/react";
@@ -62,7 +62,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={getFontSystemClassName()}>
+    <html
+      lang="en"
+      className={getBrandFontClassName()}
+      data-scroll-behavior="smooth"
+    >
       <body className="font-body antialiased">
         <GoogleTagManager gtmId="AW-855505561" />
         <AnalyticsBootstrap />
