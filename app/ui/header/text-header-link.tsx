@@ -13,7 +13,8 @@ export default function TextHeaderLink(props: { link: HeaderLink }) {
     (link.url === "/"
       ? pathname === "/" || pathname.startsWith("/wedding-photography")
       : pathname.startsWith(link.url));
-  const linkClass = "text-sm px-2";
+  const linkClass =
+    "flex min-h-12 w-full items-center border-b border-primary-200/70 px-1 font-display text-xl font-medium last:border-b-0";
 
   if (isActive) {
     return (
@@ -24,7 +25,11 @@ export default function TextHeaderLink(props: { link: HeaderLink }) {
   }
 
   return (
-    <Link href={link.url} target={isExternal ? "_blank" : undefined}>
+    <Link
+      href={link.url}
+      target={isExternal ? "_blank" : undefined}
+      className="block w-full"
+    >
       <span className={linkClass}>{link.tooltip}</span>
     </Link>
   );

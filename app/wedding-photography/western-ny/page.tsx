@@ -15,7 +15,6 @@ export default function Page() {
     <PageBase
       h1Text="Bemont Photo Wedding Photography"
       h2Text="Western New York"
-      showFavoritesCarousel={false}
     >
       <HomePageContent locationKey="western-ny" />
     </PageBase>

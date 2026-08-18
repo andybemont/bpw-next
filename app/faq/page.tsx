@@ -1,4 +1,5 @@
 import FaqContent, {
+  FaqHero,
   faqItems,
   infrequentlyAskedItems,
 } from "../ui/faq-content/faq-content";
@@ -35,6 +36,7 @@ export default function Page() {
       <SitePage
         image={namedPortfolioImages.kidsWithDog}
         positioning="object-center"
+        hero={<FaqHero />}
       >
         <FaqContent />
       </SitePage>

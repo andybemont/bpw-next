@@ -13,25 +13,21 @@ export default function Page() {
   return (
     <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="Privacy">
       <SitePage>
-        <article className="space-y-6 text-primary-900">
-          <div className="space-y-2">
-            <h1 className="text-sm font-medium text-primary-700">
-              Privacy Policy
-            </h1>
-            <p className="text-2xl font-semibold text-pretty">
-              Plain-language summary of what this site collects
-            </p>
-          </div>
+        <article className="max-w-4xl text-primary-900">
+          <header className="border-b border-primary-300/60 pb-12 sm:pb-16">
+            <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#a85235]">Privacy policy</p>
+            <h1 className="font-display text-[clamp(3.2rem,7vw,6.8rem)] font-medium leading-[0.95] tracking-[-0.045em] text-balance">A plain-language account of what this site collects.</h1>
+          </header>
 
-          <div className="space-y-4 text-base leading-relaxed">
+          <div className="space-y-8 pt-12 text-base leading-7 text-primary-700 sm:pt-16 sm:text-lg sm:leading-8 [&_h2]:font-display [&_h2]:text-3xl [&_h2]:font-medium [&_h2]:text-primary-900 [&_section]:space-y-3">
             <p>
               Bemont Photo Wedding Photography (&quot;we,&quot; &quot;us&quot;)
               operates bemontphoto.com. This page explains what information the
               website collects and how it is used.
             </p>
 
-            <section className="space-y-2">
-              <h2 className="text-lg font-semibold">Contact inquiries</h2>
+            <section>
+              <h2>Contact inquiries</h2>
               <p>
                 When you submit the contact form, we receive the information you
                 enter—such as your name, email, wedding date, and message—and
@@ -45,8 +41,8 @@ export default function Page() {
               </p>
             </section>
 
-            <section className="space-y-2">
-              <h2 className="text-lg font-semibold">Analytics</h2>
+            <section>
+              <h2>Analytics</h2>
               <p>
                 We use privacy-friendly analytics (including Vercel Analytics and
                 Google Tag Manager) to understand how visitors use the site—
@@ -57,8 +53,8 @@ export default function Page() {
               </p>
             </section>
 
-            <section className="space-y-2">
-              <h2 className="text-lg font-semibold">Cookies and local storage</h2>
+            <section>
+              <h2>Cookies and local storage</h2>
               <p>
                 The site may store basic session information (such as how you
                 arrived or marketing tags in the URL) to understand where
@@ -67,8 +63,8 @@ export default function Page() {
               </p>
             </section>
 
-            <section className="space-y-2">
-              <h2 className="text-lg font-semibold">Third-party links</h2>
+            <section>
+              <h2>Third-party links</h2>
               <p>
                 Our site links to external services such as Instagram, Facebook,
                 PayPal, and client gallery hosts. Those sites have their own
@@ -76,8 +72,8 @@ export default function Page() {
               </p>
             </section>
 
-            <section className="space-y-2">
-              <h2 className="text-lg font-semibold">Questions</h2>
+            <section>
+              <h2>Questions</h2>
               <p>
                 If you have questions about this policy or want information
                 removed, use the contact form on this site or reach out through

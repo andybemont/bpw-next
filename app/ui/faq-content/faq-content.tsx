@@ -249,20 +249,19 @@ function FaqSection({
   };
 
   return (
-    <section id={id} className="space-y-4 scroll-mt-24">
-      <h2 className="text-2xl sm:text-3xl font-semibold border-b border-primary-300/70 pb-2">
-        {heading}
-      </h2>
-      <div className="space-y-5">
+    <section id={id} className="scroll-mt-24">
+      <h2 className="border-b border-primary-300/60 pb-5 font-display text-3xl font-medium sm:text-4xl">{heading}</h2>
+      <div>
         {items.map((item) => (
-          <div key={item.question} className="space-y-1">
-            <h3 className="text-base font-semibold">{item.question}</h3>
-            <div className="space-y-1.5 text-base leading-relaxed text-primary-800">
-              {item.answer.map((paragraph) => (
-                <p key={paragraph}>{renderParagraph(paragraph)}</p>
-              ))}
+          <details key={item.question} className="group border-b border-primary-300/50">
+            <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-5 font-display text-xl font-medium leading-tight marker:content-none sm:min-h-20 sm:text-2xl">
+              <span>{item.question}</span>
+              <span className="shrink-0 text-2xl font-light text-[#a85235] transition group-open:rotate-45" aria-hidden="true">+</span>
+            </summary>
+            <div className="max-w-3xl space-y-3 pb-7 pr-10 text-base leading-7 text-primary-700 sm:text-lg sm:leading-8">
+              {item.answer.map((paragraph) => <p key={paragraph}>{renderParagraph(paragraph)}</p>)}
             </div>
-          </div>
+          </details>
         ))}
       </div>
     </section>
@@ -271,46 +270,36 @@ function FaqSection({
 
 export default function FaqContent() {
   return (
-    <section className="space-y-6 text-primary-900">
-      <div className="space-y-3">
-        <h1 className="text-sm font-medium text-primary-700">
-          Wedding Photography FAQ
-        </h1>
-        <p className="text-2xl sm:text-3xl font-semibold text-pretty">
-          Everything you might be wondering
-        </p>
-      </div>
+    <section className="text-primary-900">
       <nav
-        className="flex flex-wrap gap-x-3 gap-y-2 border-b border-primary-200/70 pb-4 text-sm font-medium text-primary-800"
+        className="flex flex-wrap gap-6 border-t border-primary-300/60 py-8 font-display text-lg font-medium sm:py-10"
         aria-label="FAQ sections"
       >
         <a
           href="#faq-common"
-          className="underline decoration-primary-300/80 underline-offset-4"
+          className="editorial-link"
         >
           Common questions
         </a>
-        <span className="text-primary-400" aria-hidden="true">
-          ·
-        </span>
         <a
           href="#faq-infrequent"
-          className="underline decoration-primary-300/80 underline-offset-4"
+          className="editorial-link"
         >
           Infrequently asked
         </a>
       </nav>
-      <FaqSection
-        id="faq-common"
-        heading="Common questions"
-        items={faqItems}
-      />
-      <FaqSection
-        id="faq-infrequent"
-        heading="Infrequently Asked Questions"
-        items={infrequentlyAskedItems}
-      />
-      <CheckAvailabilityCta className="pt-4" fullWidthOnMobile />
+      <div className="space-y-20 sm:space-y-28">
+        <FaqSection id="faq-common" heading="Common questions" items={faqItems} />
+        <FaqSection id="faq-infrequent" heading="Infrequently asked questions" items={infrequentlyAskedItems} />
+      </div>
+      <div className="mx-auto max-w-4xl pb-8 pt-20 text-center sm:pb-12 sm:pt-28">
+        <p className="mb-8 font-display text-[clamp(2.3rem,5vw,4.8rem)] font-medium leading-[1.03] tracking-[-0.04em] text-balance">The question we cannot answer here: are we free on your date?</p>
+        <CheckAvailabilityCta fullWidthOnMobile />
+      </div>
     </section>
   );
+}
+
+export function FaqHero() {
+  return <header><p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#a85235]">Answers from people who have seen some things</p><h1 className="font-display text-[clamp(3.2rem,5vw,5.8rem)] font-medium leading-[0.94] tracking-[-0.05em] text-balance">Everything you might reasonably wonder.</h1><p className="mt-7 max-w-lg text-base leading-7 text-primary-700 sm:text-lg sm:leading-8">And several things almost nobody has wondered. Start with the useful questions or skip directly to the strange little basement.</p></header>;
 }

@@ -1,5 +1,5 @@
 import SitePage from "../ui/shared/site-page";
-import TeamContent from "../ui/team-content/team-content";
+import TeamContent, { TeamHero } from "../ui/team-content/team-content";
 import namedPortfolioImages from "../lib/named-portfolio-images";
 import PageBase from "../ui/page-base";
 import { buildPageMetadata } from "@/app/lib/seo";
@@ -18,7 +18,7 @@ export const metadata = buildPageMetadata({
 export default function Page() {
   return (
     <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="Meet the Team">
-      <SitePage image={namedPortfolioImages.team} positioning="object-top">
+      <SitePage image={namedPortfolioImages.team} positioning="object-top" hero={<TeamHero />}>
         <TeamContent />
       </SitePage>
     </PageBase>

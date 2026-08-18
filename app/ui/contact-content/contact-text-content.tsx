@@ -8,7 +8,19 @@ import ContactTurnstile, {
 
 type TextState = "verifying" | "ready" | "error";
 
-export default function ContactTextContent({ active }: { active: boolean }) {
+function formatShortDate(date: string) {
+  const parsed = new Date(`${date}T12:00:00`);
+  if (Number.isNaN(parsed.getTime())) return "your date";
+  return parsed.toLocaleDateString("en-US", { month: "long", day: "numeric" });
+}
+
+export default function ContactTextContent({
+  active,
+  date,
+}: {
+  active: boolean;
+  date: string;
+}) {
   const [textState, setTextState] = useState<TextState>("verifying");
   const [smsHref, setSmsHref] = useState<string | null>(null);
   const [phoneDisplay, setPhoneDisplay] = useState<string | null>(null);
@@ -29,7 +41,7 @@ export default function ContactTextContent({ active }: { active: boolean }) {
       const response = await fetch("/api/contact/text-link", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ turnstileToken }),
+        body: JSON.stringify({ turnstileToken, date }),
       });
 
       const result = (await response.json()) as {
@@ -53,7 +65,7 @@ export default function ContactTextContent({ active }: { active: boolean }) {
         "We couldn't verify you're human. Please try again in a moment.",
       );
     }
-  }, []);
+  }, [date]);
 
   const handleTurnstileReady = useCallback(
     (token: string) => {
@@ -92,7 +104,10 @@ export default function ContactTextContent({ active }: { active: boolean }) {
     if (!turnstileSiteKey) {
       hasFetched.current = true;
       trackEvent("contact_text_unlock_start");
-      void fetchTextLink("dev-bypass");
+      const timer = window.setTimeout(() => {
+        void fetchTextLink("dev-bypass");
+      }, 0);
+      return () => window.clearTimeout(timer);
     }
   }, [active, fetchTextLink, turnstileSiteKey]);
 
@@ -116,24 +131,24 @@ export default function ContactTextContent({ active }: { active: boolean }) {
   }
 
   return (
-    <section className="space-y-4 text-left">
+    <section className="text-left">
       {textState === "verifying" && (
-        <p className="text-base text-primary-800" aria-live="polite">
-          Running a quick verification check…
+        <p className="border-t border-primary-900/10 pt-4 text-sm leading-6 text-primary-700" aria-live="polite">
+          Preparing the text option…
         </p>
       )}
 
       {textState === "error" && (
         <>
           <div
-            className="rounded-lg border border-red-700/30 bg-red-50 px-4 py-3 text-sm text-red-800"
+            className="border-l-2 border-[#a85235] bg-[#f2e8df] px-4 py-3 text-sm leading-6 text-primary-800"
             role="alert"
           >
             {errorMessage}
           </div>
           <button
             type="button"
-            className="inline-flex min-h-[44px] items-center justify-center rounded-md bg-primary-900 px-5 text-base font-medium text-primary-50"
+            className="mt-4 inline-flex min-h-11 items-center justify-center rounded-full border border-primary-900 px-5 text-sm font-medium transition hover:bg-primary-900 hover:text-primary-50"
             onClick={resetTurnstile}
           >
             Try again
@@ -142,18 +157,21 @@ export default function ContactTextContent({ active }: { active: boolean }) {
       )}
 
       {textState === "ready" && smsHref && phoneDisplay && (
-        <>
-          <a
-            href={smsHref}
-            className="inline-flex min-h-[44px] w-full items-center justify-center rounded-md bg-primary-900 px-5 text-base font-medium text-primary-50 sm:w-auto"
-            onClick={() => trackEvent("contact_text_link_click")}
-          >
-            {phoneDisplay}
-          </a>
-          <p className="text-sm text-primary-700">
-            We try to respond to texts within a day.
+        <div className="mt-4 border-t border-primary-900/10 pt-4">
+          <p className="font-display text-xl font-medium leading-snug md:hidden">
+            Prefer to text?{" "}
+            <a
+              href={smsHref}
+              className="editorial-link"
+              onClick={() => trackEvent("contact_text_link_click", { date: formatShortDate(date) })}
+            >
+              {phoneDisplay}
+            </a>
           </p>
-        </>
+          <p className="hidden font-display text-xl font-medium leading-snug md:block">
+            Prefer to call or text? <span className="whitespace-nowrap">{phoneDisplay}</span>
+          </p>
+        </div>
       )}
 
       {turnstileSiteKey ? (

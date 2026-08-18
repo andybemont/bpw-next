@@ -1,7 +1,7 @@
 import PageBase from "../ui/page-base";
 import SitePage from "../ui/shared/site-page";
 import namedPortfolioImages from "../lib/named-portfolio-images";
-import WhoWereForContent from "../ui/who-were-for-content/who-were-for-content";
+import WhoWereForContent, { WhoWereForHero } from "../ui/who-were-for-content/who-were-for-content";
 import { buildPageMetadata } from "@/app/lib/seo";
 
 export const metadata = buildPageMetadata({
@@ -21,6 +21,7 @@ export default function Page() {
       <SitePage
         image={namedPortfolioImages.kacieDip}
         positioning="object-center"
+        hero={<WhoWereForHero />}
       >
         <WhoWereForContent />
       </SitePage>

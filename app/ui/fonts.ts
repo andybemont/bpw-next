@@ -1,31 +1,18 @@
-import { fontSystemAClassName } from "./fonts/system-a";
-import { fontSystemBClassName } from "./fonts/system-b";
-import { fontSystemCClassName } from "./fonts/system-c";
+import { IBM_Plex_Sans, Literata } from "next/font/google";
 
-export type FontSystemId = "a" | "b" | "c";
+const display = Literata({
+  subsets: ["latin"],
+  variable: "--font-bemont-display",
+  display: "swap",
+});
 
-export const fontSystemLabels: Record<FontSystemId, string> = {
-  a: "Editorial / Documentary — Fraunces + Source Sans 3",
-  b: "Modern Humanist — Manrope + IBM Plex Sans",
-  c: "Distinctive Classic — Newsreader + IBM Plex Sans",
-};
+const body = IBM_Plex_Sans({
+  weight: ["400", "500", "600"],
+  subsets: ["latin"],
+  variable: "--font-bemont-body",
+  display: "swap",
+});
 
-export function getActiveFontSystem(): FontSystemId {
-  const value = process.env.NEXT_PUBLIC_FONT_SYSTEM;
-  if (value === "b" || value === "c") {
-    return value;
-  }
-  return "a";
-}
-
-export function getFontSystemClassName() {
-  switch (getActiveFontSystem()) {
-    case "b":
-      return fontSystemBClassName;
-    case "c":
-      return fontSystemCClassName;
-    case "a":
-    default:
-      return fontSystemAClassName;
-  }
+export function getBrandFontClassName() {
+  return `${display.variable} ${body.variable}`;
 }

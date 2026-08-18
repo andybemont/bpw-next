@@ -1,71 +1,54 @@
 "use client";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+
+import { useEffect, useRef, useState } from "react";
 import { HeaderLink } from "@/app/lib/header-content";
 import TextHeaderLink from "./text-header-link";
 
-type MoreLinksMenuProps = {
-  links: HeaderLink[];
-};
-
-export default function MoreLinksMenu({ links }: MoreLinksMenuProps) {
+export default function MoreLinksMenu({ links }: { links: HeaderLink[] }) {
   const [showMenu, setShowMenu] = useState(false);
-
-  const handleToggleClick = (event: React.MouseEvent) => {
-    event.stopPropagation();
-    setShowMenu((prev) => !prev);
-  };
-
-  const handleOutsideClick = (event: MouseEvent) => {
-    const target = event?.target as HTMLElement;
-    const menuContainer = document.getElementById("menuContainer");
-    const menuList = document.getElementById("menuList");
-    if (
-      menuContainer &&
-      !menuContainer.contains(target) &&
-      menuList &&
-      !menuList.contains(target)
-    ) {
-      setShowMenu(false);
-    }
-  };
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (showMenu) {
-      window.addEventListener("click", handleOutsideClick);
-      return () => window.removeEventListener("click", handleOutsideClick);
-    }
+    if (!showMenu) return;
+
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) {
+        setShowMenu(false);
+      }
+    };
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setShowMenu(false);
+    };
+
+    window.addEventListener("click", handleOutsideClick);
+    window.addEventListener("keydown", handleEscape);
+    return () => {
+      window.removeEventListener("click", handleOutsideClick);
+      window.removeEventListener("keydown", handleEscape);
+    };
   }, [showMenu]);
 
   return (
-    <div className="relative flex flex-col items-center justify-center">
+    <div ref={containerRef} className="relative">
       <button
-        className="inline-flex h-11 w-11 items-center justify-center text-primary-900 transition hover:text-primary-950"
-        key="menu"
-        id="menuContainer"
-        onClick={handleToggleClick}
-        aria-haspopup="menu"
+        type="button"
+        onClick={() => setShowMenu((current) => !current)}
         aria-expanded={showMenu}
-        aria-label="Open menu"
+        className="flex min-h-11 items-center font-display text-[1.05rem] font-medium underline decoration-primary-300 underline-offset-4"
       >
-        <Image src="/menu.svg" alt="" width={22} height={22} aria-hidden="true" />
+        {showMenu ? "Close" : "Menu"}
       </button>
-      {showMenu && (
-        <ul
-          id="menuList"
-          className="absolute left-0 top-full z-20 mt-2 w-52 rounded-md bg-primary-900/95 py-1 text-left text-primary-50 shadow-lg md:left-0 md:top-[32px]"
-        >
-          {links.map((link) => (
-            <li
-              key={link.tag}
-              className="flex"
-              onClick={() => setShowMenu(false)}
-            >
-              <TextHeaderLink link={link} />
-            </li>
-          ))}
-        </ul>
-      )}
+      {showMenu ? (
+        <nav aria-label="Mobile navigation" className="absolute right-0 top-full z-30 mt-2 w-[min(20rem,calc(100vw-2rem))] border border-primary-300/70 bg-primary-50 px-5 py-4 shadow-[0_20px_60px_rgb(29_33_28/0.14)]">
+          <ul>
+            {links.map((link) => (
+              <li key={link.tag} onClick={() => setShowMenu(false)}>
+                <TextHeaderLink link={link} />
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ) : null}
     </div>
   );
 }

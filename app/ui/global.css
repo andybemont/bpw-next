@@ -1,10 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+
+@theme {
+  --font-display: var(--font-bemont-display), Georgia, serif;
+  --font-body: var(--font-bemont-body), system-ui, sans-serif;
+
+  --color-primary-50: #f6f3ec;
+  --color-primary-100: #eee8dc;
+  --color-primary-200: #d9d0c0;
+  --color-primary-300: #b8aa97;
+  --color-primary-400: #91816e;
+  --color-primary-500: #726452;
+  --color-primary-600: #5d5346;
+  --color-primary-700: #4d473e;
+  --color-primary-800: #39372f;
+  --color-primary-900: #292a25;
+  --color-primary-950: #1d211c;
+}
 
 @layer base {
+  :root {
+    --paper: #f6f3ec;
+    --ink: #292a25;
+    --moss: #53604b;
+    --rust: #a85235;
+    --lake: #66858a;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply font-body;
+    @apply bg-primary-50 font-body text-primary-900;
   }
 
   h2,
@@ -20,11 +48,66 @@
   .font-display {
     font-family: var(--font-display), Georgia, serif;
   }
+
+  ::selection {
+    background: #d7c4aa;
+    color: var(--ink);
+  }
 }
 
 html,
 body {
   overflow-x: hidden;
+}
+
+body {
+  background-image: radial-gradient(circle at 20% 0%, rgb(255 255 255 / 35%), transparent 36rem);
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--rust);
+  outline-offset: 4px;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+button[aria-haspopup="listbox"]:focus-visible,
+[role="option"]:focus-visible {
+  outline: none;
+}
+
+.editorial-link {
+  text-decoration-line: underline;
+  text-decoration-color: color-mix(in srgb, var(--rust) 55%, transparent);
+  text-underline-offset: 0.28em;
+  text-decoration-thickness: 1px;
+}
+
+.editorial-link:hover {
+  text-decoration-color: var(--rust);
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 [data-title] {

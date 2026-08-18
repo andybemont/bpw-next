@@ -20,7 +20,6 @@ export default function Page() {
     <PageBase
       h1Text="Bemont Photo Wedding Photography"
       h2Text="Galleries & Inspo"
-      showFavoritesCarousel={false}
     >
       <JsonLd
         data={breadcrumbStructuredData([

@@ -1,5 +1,7 @@
-import { permanentRedirect } from "next/navigation";
 import { buildPageMetadata } from "@/app/lib/seo";
+import PageBase from "@/app/ui/page-base";
+import PageAnalytics from "@/app/ui/analytics/page-analytics";
+import ContactPageContent from "@/app/ui/contact-content/contact-page-content";
 
 export const metadata = buildPageMetadata({
   title: "Contact Bemont Photo | Check Wedding Availability",
@@ -9,5 +11,13 @@ export const metadata = buildPageMetadata({
 });
 
 export default function Page() {
-  permanentRedirect("/?contact=1");
+  return (
+    <PageBase
+      h1Text="Bemont Photo Wedding Photography"
+      h2Text="Contact and Availability"
+    >
+      <PageAnalytics event="contact_form_view" />
+      <ContactPageContent />
+    </PageBase>
+  );
 }
