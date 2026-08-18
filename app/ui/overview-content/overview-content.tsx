@@ -2,16 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import namedPortfolioImages from "@/app/lib/named-portfolio-images";
 import { getLocationContent, LocationKey } from "@/app/lib/location-content";
-import CheckAvailabilityCta from "../shared/check-availability-cta";
-import ExplorablePhoto from "../shared/explorable-photo";
-
-const storyImages = [
-  namedPortfolioImages.kidsWithDog,
-  namedPortfolioImages.dadJokeSpeech,
-  namedPortfolioImages.mimiPartying,
-  namedPortfolioImages.kacieVeilKiss,
-  namedPortfolioImages.amandaFirstDance,
-];
+import UtilityLinks from "../shared/utility-links";
 
 export default function OverviewContent({
   locationKey,
@@ -40,8 +31,11 @@ export default function OverviewContent({
               <p className="mb-5 text-xs font-medium uppercase tracking-[0.24em]">
                 Rochester · Buffalo · The Finger Lakes
               </p>
-              <h1 className="font-display text-[clamp(3.7rem,6.5vw,7.4rem)] font-medium leading-[0.94] tracking-[-0.045em] text-balance">
-                Photographs that remember how it felt.
+              <h1 className="font-display text-[clamp(3.25rem,5.2vw,5.9rem)] font-medium leading-[0.96] tracking-[-0.045em] text-balance">
+                <span className="block">Photographs that capture the fun.</span>
+                <span className="mt-4 block">
+                  Photographers who don’t get in the way of it.
+                </span>
               </h1>
             </div>
           </div>
@@ -51,8 +45,11 @@ export default function OverviewContent({
           <p className="mb-4 text-[0.68rem] font-medium uppercase tracking-[0.2em] text-primary-600">
             Rochester · Buffalo · The Finger Lakes
           </p>
-          <h1 className="max-w-2xl font-display text-[clamp(2.85rem,13vw,5rem)] font-medium leading-[0.98] tracking-[-0.045em] text-balance">
-            Photographs that remember how it felt.
+          <h1 className="max-w-2xl font-display text-[clamp(2.65rem,11.5vw,4.6rem)] font-medium leading-[0.98] tracking-[-0.045em] text-balance">
+            <span className="block">Photographs that capture the fun.</span>
+            <span className="mt-4 block">
+              Photographers who don’t get in the way of it.
+            </span>
           </h1>
         </div>
       </section>
@@ -63,24 +60,34 @@ export default function OverviewContent({
         </h2>
         <div className="max-w-xl space-y-6 self-end text-base leading-7 text-primary-700 sm:text-lg sm:leading-8">
           <p>
-            We pay attention, anticipate what matters, and photograph what is
-            actually happening without slowing it down. When it’s time for
-            portraits and family formals, we give clear direction, work
-            efficiently, and get you back to your guests.
+            We’re Bemont Photo, a family team of wedding photographers. We
+            deliver beautiful, natural photographs without making your
+            wedding—or anything leading up to it—more complicated than it needs
+            to be.
           </p>
           <p>
-            Staying out of the way doesn’t mean leaving you wondering what to
-            do. When direction helps, we give it clearly. When everything is
-            already going beautifully, we let it happen.
+            We pay attention and photograph what’s happening without slowing
+            it down. When it’s time for portraits and family pictures, we give
+            clear direction, work efficiently, and get you back to your guests.
           </p>
-          <Link href="/who-were-for" className="editorial-link inline-block font-medium text-primary-900">
-            See if we sound like your people
-          </Link>
+          <UtilityLinks
+            className="pt-2"
+            primaryHref="/faq"
+            primaryLabel="Common Questions"
+          />
         </div>
       </section>
 
-      <section className="pb-20 sm:pb-32">
-        <ExplorablePhoto images={storyImages} />
+      <section className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 sm:pb-32">
+        <div className="relative aspect-[5/3] overflow-hidden bg-primary-100">
+          <Image
+            src={namedPortfolioImages.kidsWithDog.image.src}
+            alt={namedPortfolioImages.kidsWithDog.alt}
+            fill
+            sizes="(max-width: 1280px) calc(100vw - 3rem), 1280px"
+            className="object-cover object-center"
+          />
+        </div>
       </section>
 
       <section className="mx-auto grid max-w-7xl gap-12 px-6 pb-24 sm:px-8 sm:pb-36 lg:grid-cols-12 lg:items-center lg:gap-16">
@@ -94,17 +101,25 @@ export default function OverviewContent({
           <div className="mt-8 max-w-lg space-y-5 text-base leading-7 text-primary-700 sm:text-lg sm:leading-8">
             <p>
               Unlike most of your wedding vendors, we’ll be with you for
-              nearly the entire day. It matters that we are pleasant company—and
-              very difficult to rattle. After more than 200 weddings, we still
-              haven’t met a crisis that couldn’t be solved.
+              nearly the entire day. It matters that we’re pleasant company—and
+              after more than 200 weddings without seeing a “crisis” that
+              couldn’t be solved, we’re a calm, practical, and light-hearted
+              presence.
             </p>
             <p>
-              We also truly love doing this. We’re always sidling up to each
-              other during weddings to show off something wonderful—or
-              hilariously unflattering—on the back of a camera. A big hug from
-              happy, sweaty newlyweds remains our favorite way to end the night.
+              We also truly love doing this. We still show off to each other
+              when we know we just captured an absolute banger. We love the
+              crying dads, the allegedly “shy” bridesmaid who turns out to be
+              unhinged on the dance floor, and the old folks who arrive an hour
+              early because this is the highlight of their year. Weddings are a
+              joy. We love being part of them.
             </p>
           </div>
+          <UtilityLinks
+            className="mt-8"
+            primaryHref="/team"
+            primaryLabel="Meet the Team"
+          />
         </div>
         <div className="relative aspect-[4/5] overflow-hidden bg-primary-100 lg:col-span-5 lg:col-start-7">
           <Image
@@ -129,46 +144,67 @@ export default function OverviewContent({
 
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 sm:py-32">
         <div className="grid gap-12 border-b border-primary-300/60 pb-20 sm:pb-28 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
-          <p className="text-xs font-medium uppercase tracking-[0.22em] text-[#66858a]">
-            The photographs
-          </p>
-          <div>
-            <h2 className="max-w-4xl font-display text-[clamp(2.5rem,5vw,5.6rem)] font-medium leading-[1.02] tracking-[-0.04em] text-balance">
-              Real, flattering, and made to last.
-            </h2>
-            <p className="mt-8 max-w-2xl text-base leading-7 text-primary-700 sm:text-lg sm:leading-8">
-              Our editing is natural but careful, with true-to-life color that
-              won’t go out of style. This site includes photographs from every
-              year we have been in business; we want you to see the work we
-              actually deliver, not just whatever happens to match the current
-              trend.
+          <div className="lg:col-start-2">
+            <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#66858a]">
+              The photographs
             </p>
-            <Link href="/gallery" className="editorial-link mt-7 inline-block font-medium">
-              Wander through the galleries
-            </Link>
+            <h2 className="max-w-4xl font-display text-[clamp(2.5rem,5vw,5.6rem)] font-medium leading-[1.02] tracking-[-0.04em] text-balance">
+              Beautiful. Not trendy.
+            </h2>
+            <div className="mt-8 max-w-2xl space-y-5 text-base leading-7 text-primary-700 sm:text-lg sm:leading-8">
+              <p>
+                There’s nothing wrong with giving photographs “a look,” but
+                fashionable editing puts an expiration date on them. We’re
+                proud that this site includes photographs from every year we’ve
+                been in business. We can do that because vibrant, true-to-life
+                color never goes out of style.
+              </p>
+              <p>
+                The same philosophy guides how we photograph the day. We don’t
+                recreate whatever poses happen to be popular this year. Most of
+                the day is candid. When we do step in, the pictures should still
+                feel natural. We want people to look at your photos and think,
+                “What a great moment”—not, “What a cool photographer.”
+              </p>
+            </div>
+            <UtilityLinks
+              className="mt-8"
+              primaryHref="/gallery"
+              primaryLabel="Explore the Galleries"
+            />
           </div>
         </div>
 
         <div className="grid gap-10 pt-20 sm:pt-28 lg:grid-cols-[1.25fr_0.75fr] lg:items-end lg:gap-24">
           <div>
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#a85235]">
-              Wedding photography from $4,200
+              The practical stuff
             </p>
             <h2 className="max-w-4xl font-display text-[clamp(2.6rem,5.2vw,5.8rem)] font-medium leading-[1.01] tracking-[-0.04em] text-balance">
-              If this sounds like what you want, we’d love to hear what you’re planning.
+              Everything else should be easy, too.
             </h2>
           </div>
-          <div className="max-w-md lg:justify-self-end">
-            <p className="mb-7 text-base leading-7 text-primary-700">
-              Most weddings include two photographers, an engagement session,
-              and a high-resolution online gallery. We’ll also help you build
-              a sensible timeline and choose enough coverage without making
-              photography the main event.
-            </p>
-            <CheckAvailabilityCta source={`location_${locationKey}_primary`} fullWidthOnMobile />
-            <Link href="/pricing" className="editorial-link mt-5 inline-block text-sm font-medium">
-              See what’s included
-            </Link>
+          <div className="max-w-xl lg:justify-self-end">
+            <div className="space-y-5 text-base leading-7 text-primary-700">
+              <p>
+                We keep the logistics simple. Booking, contracts, payments,
+                planning, and gallery delivery can all be handled online. We
+                publish pricing because you shouldn’t need a consultation just
+                to find out what something costs. We’re flexible about payment
+                timing and method.
+              </p>
+              <p>
+                We’re organized, insured, and prepared. We arrive early with
+                backup equipment, keep your photographs backed up in multiple
+                places, and deliver your complete gallery within 30 days—usually
+                sooner. We don’t like work piling up, and you don’t like waiting.
+              </p>
+            </div>
+            <UtilityLinks
+              className="mt-8"
+              primaryHref="/pricing"
+              primaryLabel="See What’s Included"
+            />
           </div>
         </div>
       </section>
