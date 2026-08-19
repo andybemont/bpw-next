@@ -9,7 +9,7 @@ export const metadata = buildPageMetadata({
   title:
     "Rochester Wedding Photography by Bemont Photo | Packages and Availability",
   description:
-    "Bemont Photo is a Rochester wedding photography team serving Western New York. Explore packages from $4,200, view galleries, and check availability.",
+    "Bemont Photo is a Rochester wedding photography team serving Western New York. Explore packages from $3,200, view galleries, and check availability.",
   path: "",
 });
 

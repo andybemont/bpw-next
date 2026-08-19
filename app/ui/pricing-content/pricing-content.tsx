@@ -2,12 +2,12 @@ import Link from "next/link";
 import CheckAvailabilityCta from "../shared/check-availability-cta";
 
 const inclusions = [
-  ["Eight hours", "Enough to tell the complete story of most weddings—from the useful part of getting ready through a properly underway dance floor. Extra time is available when the day genuinely needs it."],
+  ["Your first six hours", "Enough coverage for a lot of wedding days, with a clear way to add time if yours needs it."],
   ["Two photographers", "More candid moments, both sides of the story, and the flexibility to be in two places without making the timeline perform gymnastics."],
-  ["An engagement session", "Relaxed practice before the wedding and a chance for us to learn how you fit together. Optional, useful, and incidentally a source of excellent pictures."],
   ["Planning that earns its keep", "Timeline help, practical answers, and a final sanity check from people who have watched more than 200 wedding days actually unfold."],
   ["A complete high-resolution gallery", "Carefully edited photographs, full personal printing rights, easy sharing and downloads, plus professional print ordering when you want it."],
-  ["Fast, natural editing", "Sneak peeks within a few days and the full gallery within 30 days—usually sooner. True-to-life color, no outsourced editing, no trend filter with an expiration date."],
+  ["Fast, natural editing", "Sneak peeks within a few days and the full gallery within 30 days—usually sooner. True-to-life color. No trendy filters."],
+  ["Easy to add later", "Extra coverage is $350 per hour, and an engagement session is $300. Neither needs to be decided when you book."],
 ];
 
 export default function PricingContent() {
@@ -29,11 +29,11 @@ export default function PricingContent() {
           <h2 className="mt-5 font-display text-4xl font-medium leading-tight sm:text-5xl">No tiny type required.</h2>
         </div>
         <div className="grid gap-x-12 gap-y-7 text-base leading-7 text-primary-700 sm:grid-cols-2">
-          <p>We’re based in Rochester and include wedding-day travel within about 90 minutes. That comfortably covers Buffalo, Syracuse, and most of the Finger Lakes.</p>
+          <p>Wedding-day travel is included within 45 minutes of Rochester. Beyond that, travel is a flat $225.</p>
           <p>A $1,000 non-refundable deposit and online contract hold your date. The balance is due before editing and delivery begin.</p>
+          <p>An engagement session is a $300 add-on. You can add it any time after booking, so there is no need to decide now.</p>
           <p>The package fits most weddings, but weddings are not issued from a factory. If yours needs an adjustment, we’ll talk about it plainly.</p>
-          <p>Engagement sessions can happen any time between booking and the wedding. Choose a season you like and give us roughly a month to find the right date.</p>
-          <p>Engagement-session travel is separate. You’re welcome to join us somewhere lovely in Monroe County, or we can quote the trip to you.</p>
+          <p>Extra coverage is $350 per hour, and it can be added later once your timeline starts to take shape.</p>
           <p>We guarantee six months of gallery hosting and usually keep galleries online indefinitely. You should still download your own copy, because responsible adults have backups.</p>
         </div>
       </div>
@@ -53,5 +53,5 @@ export default function PricingContent() {
 }
 
 export function PricingHero() {
-  return <header><p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#a85235]">Straightforward on purpose</p><h1 className="font-display text-[clamp(3.2rem,5vw,5.8rem)] font-medium leading-[0.94] tracking-[-0.05em] text-balance">One very complete wedding package.</h1><p className="mt-7 font-display text-[clamp(2.8rem,4vw,4.6rem)] font-medium leading-none tracking-[-0.04em]">$4,200</p><p className="mt-5 max-w-md text-base leading-7 text-primary-700">Everything most weddings need, without a pricing maze designed to make the starting number look fictional.</p></header>;
+  return <header><p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#a85235]">Straightforward on purpose</p><h1 className="font-display text-[clamp(3.2rem,5vw,5.8rem)] font-medium leading-[0.94] tracking-[-0.05em] text-balance">A complete place to start.</h1><p className="mt-7 font-display text-[clamp(2.8rem,4vw,4.6rem)] font-medium leading-none tracking-[-0.04em]">$3,200</p><p className="mt-5 max-w-md text-base leading-7 text-primary-700">Your first six hours, two photographers, planning, editing, and a complete gallery—without a pricing maze designed to make the starting number look fictional.</p></header>;
 }

@@ -16,7 +16,8 @@ export const faqItems: FaqItem[] = [
   {
     question: "How does pricing, booking, and payment work?",
     answer: [
-      "We keep things simple. We offer one primary wedding photography package, book with an online contract and deposit, and handle payments electronically.",
+      "We keep things simple. Our base package starts at $3,200 and includes your first six hours with two photographers, planning, editing, and a complete gallery. You can add extra time or an engagement session later, so you do not have to make every decision when you book.",
+      "We book with an online contract and deposit, and handle payments electronically.",
       "For all the details, see our Pricing page.",
     ],
   },
@@ -30,8 +31,8 @@ export const faqItems: FaqItem[] = [
   {
     question: "How many hours of coverage do we need?",
     answer: [
-      "We always provide at least 8 hours of coverage, which is plenty for most weddings.",
-      "If you think you might need more than 8 hours, we can always add time. That said, longer days are often unnecessary. You don’t need hours of getting-ready photos, and late-night dancing photos eventually start to look the same no matter how fun the party is.",
+      "Our package includes the first 6 hours of coverage, which is plenty for many weddings.",
+      "If you think you might need more time, we can add it at $350 per hour. You don’t need to decide that when you book—we can add coverage later once your timeline takes shape. That said, longer days are often unnecessary. You don’t need hours of getting-ready photos, and late-night dancing photos eventually start to look the same no matter how fun the party is.",
     ],
   },
   {
@@ -51,7 +52,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "How many photos will we receive?",
     answer: [
-      "Around 600 images is very typical, but it varies. The biggest factors are how long we’re there, how activity-heavy the day is, and how lively the dance floor gets. Last year our galleries ranged roughly from 450 to 950 images, with most landing in the low 600s.",
+      "Around 600 images is very typical, but it varies. The biggest factors are how long we’re there, how activity-heavy the day is, and how lively the dance floor gets. Our galleries usually range roughly from 450 to 950 images, with most landing in the low 600s.",
     ],
   },
   {
@@ -81,7 +82,7 @@ export const faqItems: FaqItem[] = [
   {
     question: "What happens if you’re sick or there’s an emergency?",
     answer: [
-      "There are three of us, and you get two photographers. So we won’t call in some random person to shoot your wedding—you’ll always get the people you expect.",
+      "There are three of us, and you get two photographers. So we won’t call in some random person to shoot your wedding—you’ll always get us.",
     ],
   },
   {
@@ -293,7 +294,13 @@ export default function FaqContent() {
         <FaqSection id="faq-infrequent" heading="Infrequently asked questions" items={infrequentlyAskedItems} />
       </div>
       <div className="mx-auto max-w-4xl pb-8 pt-20 text-center sm:pb-12 sm:pt-28">
-        <p className="mb-8 font-display text-[clamp(2.3rem,5vw,4.8rem)] font-medium leading-[1.03] tracking-[-0.04em] text-balance">The question we cannot answer here: are we free on your date?</p>
+        <p className="font-display text-[clamp(2.3rem,5vw,4.8rem)] font-medium leading-[1.03] tracking-[-0.04em] text-balance">
+          Can we book you? Sure!
+        </p>
+        <p className="mx-auto mb-8 mt-6 max-w-2xl text-base leading-7 text-primary-700 sm:text-lg sm:leading-8">
+          Start with the contact form, where you can check our availability.
+          Then we can do a Zoom call or stick to email.
+        </p>
         <CheckAvailabilityCta fullWidthOnMobile />
       </div>
     </section>
@@ -301,5 +308,14 @@ export default function FaqContent() {
 }
 
 export function FaqHero() {
-  return <header><p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#a85235]">Answers from people who have seen some things</p><h1 className="font-display text-[clamp(3.2rem,5vw,5.8rem)] font-medium leading-[0.94] tracking-[-0.05em] text-balance">Everything you might reasonably wonder.</h1><p className="mt-7 max-w-lg text-base leading-7 text-primary-700 sm:text-lg sm:leading-8">And several things almost nobody has wondered. Start with the useful questions or skip directly to the strange little basement.</p></header>;
+  return (
+    <header>
+      <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#a85235]">
+        Wedding photography FAQ
+      </p>
+      <h1 className="font-display text-[clamp(3.2rem,5vw,5.8rem)] font-medium leading-[0.94] tracking-[-0.05em] text-balance">
+        Everything you might be wondering.
+      </h1>
+    </header>
+  );
 }

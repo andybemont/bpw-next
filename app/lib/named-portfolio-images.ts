@@ -20,6 +20,7 @@ const namedPortfolioImages = {
   gcvm: getPortfolioImage("pi190713180705"),
   lydiaFlowers: getPortfolioImage("pi210516145713"),
   kacieDip: getPortfolioImage("pi230520180828"),
+  flowerGirlProcessional: getPortfolioImage("pi230910150438"),
   kidsWithDog: getPortfolioImage("pi230701150750"),
   aliciaField: getPortfolioImage("pi230916191334"),
   ringShot: getPortfolioImage("pi240616170506"),

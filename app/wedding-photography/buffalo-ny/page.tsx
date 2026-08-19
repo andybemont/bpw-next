@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   title:
     "Buffalo, NY Wedding Photography by Bemont Photo | Packages and Availability",
   description:
-    "Buffalo wedding photographers for city, waterfront, and industrial celebrations. Rochester-based team with travel included. Packages from $4,200.",
+    "Buffalo wedding photographers for city, waterfront, and industrial celebrations. Rochester-based team. Packages from $3,200.",
   path: "wedding-photography/buffalo-ny",
 });
 

@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   title:
     "Finger Lakes Wedding Photography by Bemont Photo | Packages and Availability",
   description:
-    "Finger Lakes wedding photographers for wineries, lakefront venues, and barn weddings from Canandaigua to Skaneateles. Packages from $4,200.",
+    "Finger Lakes wedding photographers for wineries, lakefront venues, and barn weddings from Canandaigua to Skaneateles. Packages from $3,200.",
   path: "wedding-photography/finger-lakes",
 });
 

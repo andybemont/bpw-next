@@ -1,6 +1,5 @@
 import { Resend } from "resend";
 import type { ContactFormInput } from "./contact-schema";
-import { getAvailabilityStatus } from "./availability";
 
 function getContactConfig() {
   const apiKey = process.env.RESEND_API_KEY;
@@ -15,31 +14,27 @@ function getContactConfig() {
 }
 
 function formatDate(date: string) {
-  const parsed = new Date(`${date}T12:00:00`);
-  if (Number.isNaN(parsed.getTime())) {
+  const match = /^(\d{4})-(\d{2})-(\d{2})$/.exec(date);
+  if (!match) {
     return date;
   }
-  return parsed.toLocaleDateString("en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const [, year, month, day] = match;
+  return `${month}/${day}/${year.slice(-2)}`;
+}
+
+function displayValue(value?: string | null) {
+  return value?.trim() || "—";
 }
 
 function buildInquiryText(data: ContactFormInput) {
-  const availability = getAvailabilityStatus(data.date);
   const lines = [
     "New wedding inquiry from bemontphoto.com",
     "",
     `Name: ${data.name}`,
     `Email: ${data.email}`,
-    data.phone ? `Phone: ${data.phone}` : null,
-    `Wedding date: ${formatDate(data.date)} (${data.date})`,
-    availability
-      ? `Availability hint: ${availability.label}${availability.note ? ` — ${availability.note}` : ""}`
-      : null,
-    data.reference ? `How they found us: ${data.reference}` : null,
+    `Phone: ${displayValue(data.phone)}`,
+    `Wedding date: ${formatDate(data.date)}`,
+    `Source: ${displayValue(data.reference)}`,
     "",
     "Message:",
     data.message,
@@ -50,11 +45,11 @@ function buildInquiryText(data: ContactFormInput) {
     lines.push(
       "",
       "Attribution:",
-      ctx.landingPage ? `Landing page: ${ctx.landingPage}` : null,
-      ctx.referrer ? `Referrer: ${ctx.referrer}` : null,
-      ctx.utmSource ? `UTM source: ${ctx.utmSource}` : null,
-      ctx.utmMedium ? `UTM medium: ${ctx.utmMedium}` : null,
-      ctx.utmCampaign ? `UTM campaign: ${ctx.utmCampaign}` : null,
+      ctx.landingPage ? `Landing page: ${ctx.landingPage}` : "",
+      ctx.referrer ? `Referrer: ${ctx.referrer}` : "",
+      ctx.utmSource ? `UTM source: ${ctx.utmSource}` : "",
+      ctx.utmMedium ? `UTM medium: ${ctx.utmMedium}` : "",
+      ctx.utmCampaign ? `UTM campaign: ${ctx.utmCampaign}` : "",
     );
   }
 
@@ -62,11 +57,6 @@ function buildInquiryText(data: ContactFormInput) {
 }
 
 function buildInquiryHtml(data: ContactFormInput) {
-  const availability = getAvailabilityStatus(data.date);
-  const availabilityLine = availability
-    ? `${availability.label}${availability.note ? ` — ${availability.note}` : ""}`
-    : "Unknown";
-
   const attribution = data.analyticsContext;
   const attributionRows = attribution
     ? [
@@ -89,10 +79,9 @@ function buildInquiryHtml(data: ContactFormInput) {
     <table style="border-collapse:collapse;margin-bottom:20px;">
       <tr><td style="padding:4px 12px 4px 0;color:#666;">Name</td><td><strong>${escapeHtml(data.name)}</strong></td></tr>
       <tr><td style="padding:4px 12px 4px 0;color:#666;">Email</td><td><a href="mailto:${escapeHtml(data.email)}">${escapeHtml(data.email)}</a></td></tr>
-      ${data.phone ? `<tr><td style="padding:4px 12px 4px 0;color:#666;">Phone</td><td>${escapeHtml(data.phone)}</td></tr>` : ""}
+      <tr><td style="padding:4px 12px 4px 0;color:#666;">Phone</td><td>${escapeHtml(displayValue(data.phone))}</td></tr>
       <tr><td style="padding:4px 12px 4px 0;color:#666;">Wedding date</td><td>${escapeHtml(formatDate(data.date))}</td></tr>
-      <tr><td style="padding:4px 12px 4px 0;color:#666;">Availability</td><td>${escapeHtml(availabilityLine)}</td></tr>
-      ${data.reference ? `<tr><td style="padding:4px 12px 4px 0;color:#666;">Source</td><td>${escapeHtml(data.reference)}</td></tr>` : ""}
+      <tr><td style="padding:4px 12px 4px 0;color:#666;">Source</td><td>${escapeHtml(displayValue(data.reference))}</td></tr>
     </table>
     <p style="margin:0 0 8px;color:#666;">Message</p>
     <p style="margin:0 0 24px;white-space:pre-wrap;">${escapeHtml(data.message)}</p>

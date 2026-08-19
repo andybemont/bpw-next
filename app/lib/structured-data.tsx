@@ -61,10 +61,10 @@ export const pricingStructuredData = {
   },
   areaServed: businessInfo.serviceAreas,
   description:
-    "Full wedding day coverage with two photographers, engagement session, online gallery, and planning support.",
+    "Six hours of wedding photography with two photographers, planning support, natural editing, and an online gallery.",
   offers: {
     "@type": "Offer",
-    price: "4200",
+    price: "3200",
     priceCurrency: "USD",
     availability: "https://schema.org/InStock",
     url: `${SITE_URL}/pricing`,

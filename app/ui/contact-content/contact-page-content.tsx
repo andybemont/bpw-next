@@ -12,7 +12,7 @@ export default function ContactPageContent() {
             Let’s see if we’re free.
           </h1>
           <p className="mt-5 max-w-md text-base leading-7 text-primary-700 sm:text-lg sm:leading-8">
-            Start with the date. If we’re open, tell us enough about the two of you and the wedding for us to begin a real conversation.
+            Start with the date and venue. If we’re open, tell us enough about the two of you and the wedding for us to begin a real conversation.
           </p>
 
           <div className="mt-5 sm:mt-6">

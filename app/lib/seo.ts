@@ -8,7 +8,7 @@ export const DEFAULT_OG_IMAGE_ALT =
   "Couple in a field at a Rochester, NY wedding photographed by Bemont Photo";
 
 export const DEFAULT_DESCRIPTION =
-  "Rochester wedding photographers serving Buffalo, Syracuse, the Finger Lakes, and Western New York. Candid, natural wedding coverage from a family team. Packages from $4,200.";
+  "Rochester wedding photographers serving Buffalo, Syracuse, the Finger Lakes, and Western New York. Candid, natural wedding coverage from a family team. Packages from $3,200.";
 
 type BuildPageMetadataOptions = {
   title: string;

@@ -6,7 +6,7 @@ export const metadata = buildPageMetadata({
   title:
     "Rochester, NY Wedding Photography by Bemont Photo | Packages and Availability",
   description:
-    "Rochester wedding photographers for candid, natural coverage at city venues, museums, parks, and suburbs across Monroe County. Packages from $4,200.",
+    "Rochester wedding photographers for candid, natural coverage at city venues, museums, parks, and suburbs across Monroe County. Packages from $3,200.",
   path: "wedding-photography/rochester-ny",
 });
 

@@ -17,7 +17,7 @@ export type LocationContent = {
 };
 
 const sharedPricingLine =
-  "Wedding photography is $4,200 for most weddings. That includes wedding day coverage from two photographers, an engagement session, an online gallery of high-resolution images, and all the help you need to ensure a day that’s about fun, not work.";
+  "Wedding photography starts at $3,200. That includes your first six hours with two photographers, planning help, natural editing, and an online gallery of high-resolution images. Extra hours and an engagement session can be added later if you need them.";
 
 export const locationContent: Record<LocationKey, LocationContent> = {
   rochester: {
@@ -29,7 +29,7 @@ export const locationContent: Record<LocationKey, LocationContent> = {
     localParagraphs: [
       "We’re based in Rochester, so this is home turf. We’ve photographed weddings at the Hyatt and Arbor at the Port, at Genesee Country Village and Rochester museums, in downtown lofts, suburban clubs, backyard tents, and everywhere in between.",
       "Rochester weddings often mean a little time at a pretty park or a quick stop near the river for portraits, then back to the party. We know the light at Highland Park in May, how reception timing works when you’re hopping between a ceremony and a city venue, and how to keep family formals moving so you can get back to your guests.",
-      "Because we live here, travel is built into the package for Rochester-area weddings. You’re not paying a premium for us to learn your venues on the fly—we’ve probably been there before.",
+      "Wedding-day travel within 45 minutes of Rochester is included. Beyond that, travel is a flat $225—simple enough to know where you stand before we start planning.",
     ],
     closingLine:
       "Based in Rochester. Also serving Buffalo, Syracuse, the Finger Lakes, and all of Western New York.",
@@ -44,7 +44,7 @@ export const locationContent: Record<LocationKey, LocationContent> = {
     localParagraphs: [
       "We love shooting in Buffalo. Some of our favorite weddings have been big city celebrations—industrial spaces, waterfront views, classic churches, and reception rooms that stay loud until the last dance.",
       "Buffalo couples often have guests spread across two cities or families split between Rochester and Buffalo, which means timelines need to be realistic and portrait time needs to be protected without killing the vibe. We’re used to that.",
-      "We travel to Buffalo regularly from Rochester. Travel for Buffalo-area weddings is included in our standard package, and we’ll help you plan a day that accounts for the drive, the light, and the fact that you’d rather be with your people than in a photo line.",
+      "We travel to Buffalo regularly from Rochester. Weddings beyond our included 45-minute travel radius have a flat $225 travel fee, and we’ll help you plan a day that accounts for the drive, the light, and the fact that you’d rather be with your people than in a photo line.",
     ],
     closingLine:
       "Rochester-based, Buffalo-ready. See our galleries for Buffalo-area weddings and get in touch to check your date.",
@@ -62,7 +62,7 @@ export const locationContent: Record<LocationKey, LocationContent> = {
       "Most Finger Lakes weddings involve a bit more travel for us than a Rochester Saturday, and that’s normal. We build timelines with drive time in mind so you’re not rushed through a first look because we’re watching the clock.",
     ],
     closingLine:
-      "From Rochester to the Finger Lakes—wineries, lake houses, and barns included. Packages start at $4,200.",
+      "From Rochester to the Finger Lakes—wineries, lake houses, and barns. Packages start at $3,200, plus a flat $225 travel fee beyond 45 minutes from Rochester.",
     heroImage: namedPortfolioImages.keukaFirstLook,
   },
   "western-ny": {

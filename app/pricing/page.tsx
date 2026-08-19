@@ -9,7 +9,7 @@ import PageAnalytics from "../ui/analytics/page-analytics";
 export const metadata = buildPageMetadata({
   title: "Wedding Photography Packages and Prices | Bemont Photo",
   description:
-    "One wedding photography package at $4,200: two photographers, 8 hours of coverage, engagement session, online gallery, and planning support in Rochester, NY.",
+    "Wedding photography starts at $3,200: six hours with two photographers, planning support, editing, and an online gallery in Rochester, NY.",
   path: "pricing",
 });
 

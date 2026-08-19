@@ -9,17 +9,17 @@ export const metadata = buildPageMetadata({
   description:
     "An honest guide to whether Bemont Photo is the right Rochester wedding photographer for your style, priorities, and personality.",
   path: "who-were-for",
-  ogImage: namedPortfolioImages.kacieDip.image.src,
-  ogImageAlt: namedPortfolioImages.kacieDip.alt,
-  ogImageWidth: namedPortfolioImages.kacieDip.image.width,
-  ogImageHeight: namedPortfolioImages.kacieDip.image.height,
+  ogImage: namedPortfolioImages.flowerGirlProcessional.image.src,
+  ogImageAlt: namedPortfolioImages.flowerGirlProcessional.alt,
+  ogImageWidth: namedPortfolioImages.flowerGirlProcessional.image.width,
+  ogImageHeight: namedPortfolioImages.flowerGirlProcessional.image.height,
 });
 
 export default function Page() {
   return (
     <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="">
       <SitePage
-        image={namedPortfolioImages.kacieDip}
+        image={namedPortfolioImages.flowerGirlProcessional}
         positioning="object-center"
         hero={<WhoWereForHero />}
       >
