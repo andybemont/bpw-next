@@ -33,7 +33,7 @@ export const locationContent: Record<LocationKey, LocationContent> = {
     ],
     closingLine:
       "Based in Rochester. Also serving Buffalo, Syracuse, the Finger Lakes, and all of Western New York.",
-    heroImage: namedPortfolioImages.aliciaField,
+    heroImage: namedPortfolioImages.amandaFirstDance,
   },
   buffalo: {
     key: "buffalo",

@@ -34,7 +34,7 @@ export default function Page() {
     <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="">
       <JsonLd data={faqStructuredData} />
       <SitePage
-        image={namedPortfolioImages.kidsWithDog}
+        image={namedPortfolioImages.maryCovell}
         positioning="object-center"
         hero={<FaqHero />}
       >

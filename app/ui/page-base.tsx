@@ -17,7 +17,7 @@ export default function PageBase({
       <main className="relative overflow-x-hidden">
         <article>{children}</article>
       </main>
-      <Footer h1Text={h1Text} />
+      <Footer />
     </>
   );
 }

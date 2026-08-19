@@ -1,23 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import namedPortfolioImages from "@/app/lib/named-portfolio-images";
+import type { PortfolioImage } from "@/app/lib/portfolio";
 import { getLocationContent, LocationKey } from "@/app/lib/location-content";
 import UtilityLinks from "../shared/utility-links";
+import CheckAvailabilityCta from "../shared/check-availability-cta";
 
 export default function OverviewContent({
   locationKey,
+  heroImage: heroImageOverride,
 }: {
   locationKey: LocationKey;
+  heroImage?: PortfolioImage;
 }) {
   const location = getLocationContent(locationKey);
+  const heroImage = heroImageOverride ?? location.heroImage;
 
   return (
-    <div className="pb-8 text-primary-900 sm:pb-16">
+    <div className="text-primary-900">
       <section className="relative">
         <div className="relative aspect-[4/3] min-h-[21rem] w-full overflow-hidden bg-primary-100 sm:aspect-[16/9] lg:h-[calc(100svh-5.75rem)] lg:min-h-[42rem] lg:aspect-auto">
           <Image
-            src={location.heroImage.image.src}
-            alt={location.heroImage.alt}
+            src={heroImage.image.src}
+            alt={heroImage.alt}
             fill
             priority
             sizes="100vw"
@@ -56,19 +61,19 @@ export default function OverviewContent({
 
       <section className="mx-auto grid max-w-7xl gap-10 px-6 pb-20 sm:px-8 sm:pb-28 lg:grid-cols-[minmax(0,1.25fr)_minmax(18rem,0.75fr)] lg:gap-24 lg:pt-24">
         <h2 className="max-w-4xl font-display text-[clamp(2.2rem,4.6vw,5rem)] font-medium leading-[1.04] tracking-[-0.035em] text-balance">
-          Your wedding should feel like a wedding, not a photo shoot.
+          It’s a wedding, not a photo shoot.
         </h2>
         <div className="max-w-xl space-y-6 self-end text-base leading-7 text-primary-700 sm:text-lg sm:leading-8">
           <p>
-            We’re Bemont Photo, a family team of wedding photographers. We
-            deliver beautiful, natural photographs without making your
-            wedding—or anything leading up to it—more complicated than it needs
-            to be.
+            Photography shouldn’t become another part of the wedding you have
+            to manage. We keep the planning straightforward, answer questions
+            plainly, and don’t create work for you just to prove we’re doing
+            ours.
           </p>
           <p>
-            We pay attention and photograph what’s happening without slowing
-            it down. When it’s time for portraits and family pictures, we give
-            clear direction, work efficiently, and get you back to your guests.
+            Most of the day, we follow what’s happening rather than stopping
+            it. When it’s time for portraits and family pictures, we take
+            charge, work quickly, and get you back to your guests.
           </p>
           <UtilityLinks
             className="pt-2"
@@ -81,8 +86,8 @@ export default function OverviewContent({
       <section className="mx-auto max-w-7xl px-6 pb-20 sm:px-8 sm:pb-32">
         <div className="relative aspect-[5/3] overflow-hidden bg-primary-100">
           <Image
-            src={namedPortfolioImages.kidsWithDog.image.src}
-            alt={namedPortfolioImages.kidsWithDog.alt}
+            src={namedPortfolioImages.aliciaField.image.src}
+            alt={namedPortfolioImages.aliciaField.alt}
             fill
             sizes="(max-width: 1280px) calc(100vw - 3rem), 1280px"
             className="object-cover object-center"
@@ -96,18 +101,17 @@ export default function OverviewContent({
             Good company all day
           </p>
           <h2 className="font-display text-[clamp(2.4rem,4.5vw,4.7rem)] font-medium leading-[1.02] tracking-[-0.035em] text-balance">
-            We take the work seriously. Ourselves, somewhat less so.
+            After more than 200 weddings, very little rattles us.
           </h2>
           <div className="mt-8 max-w-lg space-y-5 text-base leading-7 text-primary-700 sm:text-lg sm:leading-8">
             <p>
-              Unlike most of your wedding vendors, we’ll be with you for
-              nearly the entire day. It matters that we’re pleasant company—and
-              after more than 200 weddings without seeing a “crisis” that
-              couldn’t be solved, we’re a calm, practical, and light-hearted
-              presence.
+              Unlike most of your wedding vendors, we’ll be with you all day.
+              The fact that we’re utterly delightful isn’t some trivial
+              bonus—it’s critical. You get our great jokes when things are going
+              perfectly, and you get our calm and experience when they aren’t.
             </p>
             <p>
-              We also truly love doing this. We still show off to each other
+              We truly love doing this. We still show off to each other
               when we know we just captured an absolute banger. We love the
               crying dads, the allegedly “shy” bridesmaid who turns out to be
               unhinged on the dance floor, and the old folks who arrive an hour
@@ -123,19 +127,19 @@ export default function OverviewContent({
         </div>
         <div className="relative aspect-[4/5] overflow-hidden bg-primary-100 lg:col-span-5 lg:col-start-7">
           <Image
-            src={namedPortfolioImages.kacieDip.image.src}
-            alt={namedPortfolioImages.kacieDip.alt}
+            src={namedPortfolioImages.lovelyHolly.image.src}
+            alt={namedPortfolioImages.lovelyHolly.alt}
             fill
             sizes="(max-width: 1024px) 100vw, 42vw"
-            className="object-cover object-right"
+            className="object-cover object-[43%_center]"
           />
         </div>
       </section>
 
       <section className="relative min-h-[70svh] overflow-hidden bg-primary-950 sm:min-h-[78svh]">
         <Image
-          src={namedPortfolioImages.lydiaFlowers.image.src}
-          alt={namedPortfolioImages.lydiaFlowers.alt}
+          src={namedPortfolioImages.totoAfrica.image.src}
+          alt={namedPortfolioImages.totoAfrica.alt}
           fill
           sizes="100vw"
           className="object-cover object-center"
@@ -190,8 +194,7 @@ export default function OverviewContent({
                 We keep the logistics simple. Booking, contracts, payments,
                 planning, and gallery delivery can all be handled online. We
                 publish pricing because you shouldn’t need a consultation just
-                to find out what something costs. We’re flexible about payment
-                timing and method.
+                to find out what something costs.
               </p>
               <p>
                 We’re organized, insured, and prepared. We arrive early with
@@ -204,6 +207,30 @@ export default function OverviewContent({
               className="mt-8"
               primaryHref="/pricing"
               primaryLabel="See What’s Included"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#a85235] px-6 py-20 text-primary-50 sm:px-8 sm:py-28">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-end lg:gap-24">
+          <div>
+            <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-primary-100/80">
+              Your turn
+            </p>
+            <h2 className="max-w-4xl font-display text-[clamp(2.8rem,5.5vw,6rem)] font-medium leading-[0.98] tracking-[-0.04em] text-balance">
+              We’ve said enough. Tell us about your wedding.
+            </h2>
+          </div>
+          <div>
+            <p className="max-w-lg text-base leading-7 text-primary-50/85 sm:text-lg sm:leading-8">
+              Start with your date and the basics. We’ll tell you whether we’re
+              free and take it from there.
+            </p>
+            <CheckAvailabilityCta
+              className="mt-8 sm:justify-start"
+              source="homepage_closing"
+              fullWidthOnMobile
             />
           </div>
         </div>

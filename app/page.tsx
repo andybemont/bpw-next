@@ -3,6 +3,7 @@ import PageBase from "./ui/page-base";
 import { buildPageMetadata } from "@/app/lib/seo";
 import { JsonLd, businessStructuredData } from "@/app/lib/structured-data";
 import { permanentRedirect } from "next/navigation";
+import namedPortfolioImages from "@/app/lib/named-portfolio-images";
 
 export const metadata = buildPageMetadata({
   title:
@@ -24,7 +25,10 @@ export default async function Page({
     <>
       <JsonLd data={businessStructuredData} />
       <PageBase h1Text="Bemont Photo Wedding Photography" h2Text="">
-        <HomePageContent locationKey="rochester" />
+        <HomePageContent
+          locationKey="rochester"
+          heroImage={namedPortfolioImages.kidsWithDog}
+        />
       </PageBase>
     </>
   );
