@@ -1,4 +1,6 @@
 import CheckAvailabilityCta from "../shared/check-availability-cta";
+import ClosingPhoto from "../shared/closing-photo";
+import namedPortfolioImages from "@/app/lib/named-portfolio-images";
 
 const pairs = [
   ["Calm and practical", "Always crying and screaming"],
@@ -114,7 +116,8 @@ export default function WhoWereForContent() {
         ))}
       </div>
 
-      <div className="mx-auto max-w-4xl pb-10 pt-16 text-center sm:pb-16 sm:pt-24">
+      <ClosingPhoto image={namedPortfolioImages.laughingBridesmaids} />
+      <div className="mx-auto max-w-4xl pb-8 pt-2 text-center sm:pb-12 sm:pt-2">
         <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-[#a85235]">
           A difficult decision
         </p>

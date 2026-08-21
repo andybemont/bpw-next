@@ -65,8 +65,15 @@ Turnstile is optional in local dev; production requires both Turnstile keys.
 Image metadata lives in `app/lib/portfolio-manifest.json`. To add a photo:
 
 1. Place the JPG in `public/portfolio/`
-2. Add an entry to `portfolio-manifest.json` with alt text, keywords, venue, and rating
-3. Optionally reference it from `named-portfolio-images.ts` or a gallery filter in `galleries.ts`
+2. Export Lightroom metadata with the image, including description, keywords,
+   rating, headline, venue, and camera settings
+3. Run `npm run portfolio:import` to add every new image to the manifest
+4. Optionally reference it from `named-portfolio-images.ts` or a gallery filter in `galleries.ts`
+
+The importer is incremental: it preserves existing manifest entries and adds
+only portfolio JPGs that are not already represented. Unknown venues or missing
+required metadata stop the import with an explicit error rather than producing
+an incomplete entry.
 
 ## Deployment
 

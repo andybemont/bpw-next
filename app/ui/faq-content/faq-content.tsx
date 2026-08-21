@@ -1,5 +1,7 @@
 import Link from "next/link";
 import CheckAvailabilityCta from "../shared/check-availability-cta";
+import ClosingPhoto from "../shared/closing-photo";
+import namedPortfolioImages from "@/app/lib/named-portfolio-images";
 
 type FaqItem = {
   question: string;
@@ -293,7 +295,8 @@ export default function FaqContent() {
         <FaqSection id="faq-common" heading="Common questions" items={faqItems} />
         <FaqSection id="faq-infrequent" heading="Infrequently asked questions" items={infrequentlyAskedItems} />
       </div>
-      <div className="mx-auto max-w-4xl pb-8 pt-20 text-center sm:pb-12 sm:pt-28">
+      <ClosingPhoto image={namedPortfolioImages.naturalDanceParty} />
+      <div className="mx-auto max-w-4xl pb-4 pt-2 text-center sm:pb-8 sm:pt-2">
         <p className="font-display text-[clamp(2.3rem,5vw,4.8rem)] font-medium leading-[1.03] tracking-[-0.04em] text-balance">
           Can we book you? Sure!
         </p>

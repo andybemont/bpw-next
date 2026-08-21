@@ -147,7 +147,7 @@ export default function OverviewContent({
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-8 sm:py-32">
-        <div className="grid gap-12 border-b border-primary-300/60 pb-20 sm:pb-28 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
+        <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr] lg:gap-24">
           <div className="lg:col-start-2">
             <p className="mb-5 text-xs font-medium uppercase tracking-[0.22em] text-[#66858a]">
               The photographs
@@ -177,6 +177,16 @@ export default function OverviewContent({
               primaryLabel="Explore the Galleries"
             />
           </div>
+        </div>
+
+        <div className="relative mt-20 aspect-[16/9] overflow-hidden bg-primary-100 sm:mt-28">
+          <Image
+            src={namedPortfolioImages.maisonDance.image.src}
+            alt={namedPortfolioImages.maisonDance.alt}
+            fill
+            sizes="(max-width: 1280px) calc(100vw - 3rem), 1280px"
+            className="object-cover object-center"
+          />
         </div>
 
         <div className="grid gap-10 pt-20 sm:pt-28 lg:grid-cols-[1.25fr_0.75fr] lg:items-end lg:gap-24">

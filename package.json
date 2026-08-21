@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit --incremental false",
+    "portfolio:import": "node scripts/import-portfolio.mjs",
     "check": "npm run lint && npm run typecheck && npm run build"
   },
   "dependencies": {

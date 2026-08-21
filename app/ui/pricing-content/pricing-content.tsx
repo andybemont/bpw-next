@@ -1,5 +1,7 @@
 import Link from "next/link";
 import CheckAvailabilityCta from "../shared/check-availability-cta";
+import ClosingPhoto from "../shared/closing-photo";
+import namedPortfolioImages from "@/app/lib/named-portfolio-images";
 
 const inclusions = [
   ["Your first six hours", "Enough coverage for a lot of wedding days, with a clear way to add time if yours needs it."],
@@ -38,7 +40,8 @@ export default function PricingContent() {
         </div>
       </div>
 
-      <div className="grid gap-10 bg-[#e8e3d7] px-6 py-12 sm:px-10 sm:py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:px-16">
+      <ClosingPhoto image={namedPortfolioImages.ceremonyCrowdKiss} />
+      <div className="grid gap-8 bg-[#e8e3d7] px-6 py-9 sm:px-10 sm:py-11 lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:px-16">
         <div>
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.2em] text-[#53604b]">First question</p>
           <h2 className="max-w-3xl font-display text-[clamp(2.5rem,5vw,5.2rem)] font-medium leading-[1.02] tracking-[-0.04em] text-balance">Are we free when you need us?</h2>
