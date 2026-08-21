@@ -206,7 +206,7 @@ function ConnorWeddingStory() {
         className="sm:col-span-6"
         photo={[
           "250510194637",
-          "Andy quietly deciding he’ll never do simultaneous parenting and photography ever, ever again. Little does he know that Gray is scared of the AirBnB they were going to that night, so Andy will have to drive all the way back to Rochester. Except the groom forgot he stashed his phone and wallet in Andy’s camera bag, so halfway home Andy has to turn around and go back. But then Gray was too tired to be scared and went to bed at the AirBnB and it all turned into a nice little afterparty! So cheer up, Andy.",
+          "Andy quietly deciding he’ll never do simultaneous parenting and photography ever, ever again. Little does he know that Gray will be scared of the AirBnB they’re going to that night, so Andy will have to drive all the way back to Rochester. Except the groom will have forgotten that he stashed his phone and wallet in Andy’s camera bag, so halfway home Andy will have to turn around and go back. But then Gray will be too tired to be scared, will go to bed at the AirBnB, and it’ll all turn into a nice little afterparty! So cheer up, Andy.",
         ]}
       />
     </div>
